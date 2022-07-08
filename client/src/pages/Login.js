@@ -3,8 +3,6 @@ import axios from "axios";
 import textContent from "../assets/text.json";
 
 function Login() {
-  // Take outside Login() component? Only if other components will need it
-  // Add useCallback()??
   async function handleClickLoginTest() {
     console.log("Clicked login.");
     let temp = await axios.get("/auth/login/callback");
