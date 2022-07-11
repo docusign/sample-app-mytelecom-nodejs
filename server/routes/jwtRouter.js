@@ -1,0 +1,10 @@
+const express = require("express");
+const router = express.Router();
+const jwtController = require("../controllers/jwtController");
+
+router.get("/login", jwtController.login);
+router.get("/login/callback", (req, res) => {
+  res.json({ name: "Patrick Mackle", favoriteFood: "Test" });
+});
+
+module.exports = router;
