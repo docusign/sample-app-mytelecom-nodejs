@@ -16,7 +16,7 @@ const restApi = eSignSDK.ApiClient.RestApi;
 // Constants
 const rsaKey = fs.readFileSync(path.resolve(__dirname, "../../private.key"));
 const jwtLifeSec = 60 * 60; // Request lifetime of JWT token is 60 minutes
-const scopes = "signature";
+const scopes = ["signature", "impersonation"];
 
 // TODO: save this into a session
 var accessToken;
@@ -35,10 +35,8 @@ const oAuthBasePath = oAuth.BasePath.DEMO; // account-d.docusign.com
  */
 const getToken = async () => {
   // Get API client and set the base paths
-  //   const eSignApi = new eSignSDK.ApiClient({
-  //     basePath: basePath,
-  //     oAuthBasePath: oAuthBasePath,
-  //   });
+
+  // TODO: CREATE HELPER IN utils FOR CREATING API CLIENTS
   const eSignApi = new eSignSDK.ApiClient();
   eSignApi.setOAuthBasePath(oAuthBasePath);
 
@@ -156,11 +154,11 @@ module.exports.login = async (req, res) => {
 
     // User has not provided consent yet, send the redirect URL to user.
     if (error.message === "Consent required") {
-      let consent_scopes = scopes + "%20impersonation",
-        consent_url =
-          `${process.env.DS_OAUTH_SERVER}/oauth/auth?response_type=code&` +
-          `scope=${consent_scopes}&client_id=${process.env.INTEGRATION_KEY}&` +
-          `redirect_uri=${process.env.REDIRECT_URI}`;
+      let consent_scopes = scopes.join("%20");
+      consent_url =
+        `${process.env.DS_OAUTH_SERVER}/oauth/auth?response_type=code&` +
+        `scope=${consent_scopes}&client_id=${process.env.INTEGRATION_KEY}&` +
+        `redirect_uri=${process.env.REDIRECT_URI}`;
 
       console.log("\t\t Consent URL: " + consent_url);
       console.log("\t\t Successfully created consent URL and sending it back!");
