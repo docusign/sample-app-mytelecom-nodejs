@@ -9,6 +9,8 @@ const { login } = require("./controllers/jwtController");
 // Route imports
 const authRouter = require("./routes/jwtRouter");
 const assumptionLiabilityRouter = require("./routes/assumptionLiabilityRouter");
+const purchaseDeviceRouter = require("./routes/purchaseDeviceRouter");
+const serviceChangeRouter = require("./routes/serviceChangeRouter");
 
 // Max session age
 const maxSessionAge = 1000 * 60 * 60 * 24 * 1; // One day
@@ -44,6 +46,8 @@ app.post("/testapi", (req, res) => {
 // Routing
 app.use("/auth", authRouter);
 app.use("/assumptionLiability", assumptionLiabilityRouter);
+app.use("/purchaseDevice", purchaseDeviceRouter);
+app.use("/serviceChange", serviceChangeRouter);
 
 app.listen(port, () => {
   console.log(`Server started and listening on port ${port}`);
