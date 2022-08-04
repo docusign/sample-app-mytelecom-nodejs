@@ -3,8 +3,8 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const cookieSession = require("cookie-session");
 const bodyParser = require("body-parser");
-const port = 8000;
 const { login } = require("./controllers/jwtController");
+const port = process.env.PORT_NUMBER;
 
 // Route imports
 const authRouter = require("./routes/jwtRouter");
@@ -49,6 +49,7 @@ app.use("/assumptionLiability", assumptionLiabilityRouter);
 app.use("/purchaseDevice", purchaseDeviceRouter);
 app.use("/serviceChange", serviceChangeRouter);
 
+// Leting dev know server started
 app.listen(port, () => {
   console.log(`Server started and listening on port ${port}`);
 });
