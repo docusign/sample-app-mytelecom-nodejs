@@ -1,5 +1,8 @@
 {
     "login": {
         "loginButton": "Login here"
+    },
+    "errorText": {
+        "unknownError": "Unknown API response error, response did not return with a status code of 200."
     }
 }

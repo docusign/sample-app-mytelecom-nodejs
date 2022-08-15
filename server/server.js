@@ -1,9 +1,8 @@
-require("dotenv").config({ path: `${process.env.PWD}/.env` });
+require("dotenv").config({ path: __dirname + "/./../.env" });
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const cookieSession = require("cookie-session");
 const bodyParser = require("body-parser");
-const { login } = require("./controllers/jwtController");
 const port = process.env.PORT_NUMBER;
 
 // Route imports
@@ -33,14 +32,6 @@ const app = express()
 app.get("/", (req, res) => {
   res.send("Server started");
   res.end();
-});
-
-// Test receiving a POST request
-app.post("/testapi", (req, res) => {
-  const name = req.body.name;
-  const email = req.body.email;
-  const result = "Response formed!\nName: " + name + "\nEmail: " + email;
-  res.status(200).send(result);
 });
 
 // Routing

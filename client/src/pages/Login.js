@@ -3,12 +3,6 @@ import axios from "axios";
 import textContent from "../assets/text.json";
 
 function Login() {
-  async function handleLoginTest() {
-    console.log("Clicked login.");
-    let temp = await axios.get("/auth/login/callback");
-    console.log(temp.data);
-  }
-
   async function handleLogin() {
     try {
       let res = await axios.get("/auth/login");

@@ -6,6 +6,7 @@ import PurchaseDevice from "./pages/PurchaseDevice";
 import ServiceChange from "./pages/ServiceChange";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
+import SubmittedPurchaseDevice from "./pages/SubmittedPurchaseDevice";
 
 function App() {
   return (
@@ -19,11 +20,14 @@ function App() {
             path="assumption-of-liability"
             element={<AssumptionLiability />}
           />
-          <Route path="purchase-new-device" element={<PurchaseDevice />} />
-          <Route
-            path="multi-line-service-change-request-for-business-accounts"
-            element={<ServiceChange />}
-          />
+          <Route path="purchase-new-device" element={<PurchaseDevice />}>
+            <Route
+              path="submitted-purchase-device"
+              element={<SubmittedPurchaseDevice />}
+            />
+          </Route>
+
+          <Route path="service-change" element={<ServiceChange />} />
         </Routes>
       </Router>
     </div>
