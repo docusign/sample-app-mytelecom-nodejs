@@ -26,10 +26,7 @@ const createController = async (req, res) => {
   const envelopeArgs = {
     signerEmail: body.signerEmail,
     signerName: body.signerName,
-    signerClientId: signerClientId,
     status: "sent", // TODO: or "created" to create draft envelope but not send it
-    dsReturnUrl: dsReturnUrl,
-    dsPingUrl: dsPingUrl,
     docFile: path.resolve(docsPath, docFile),
   };
   const args = {
@@ -52,7 +49,7 @@ const createController = async (req, res) => {
 
   if (results) {
     req.session.envelopeId = results.envelopeId;
-    res.status(200).send(results.redirectUrl);
+    res.status(200).send("Envelope Successfully Sent!");
   }
 };
 
@@ -79,15 +76,7 @@ const sendEnvelope = async (args) => {
   let envelopeId = results.envelopeId;
   console.log(`Envelope was created. EnvelopeId ${envelopeId}`);
 
-  // Step 3. create the recipient view, the embedded signing
-  let viewRequest = makeRecipientViewRequest(args.envelopeArgs);
-  // Call the CreateRecipientView API
-  // Exceptions will be caught by the calling function
-  results = await envelopesApi.createRecipientView(args.accountId, envelopeId, {
-    recipientViewRequest: viewRequest,
-  });
-
-  return { envelopeId: envelopeId, redirectUrl: results.url };
+  return { envelopeId: envelopeId };
 };
 
 /**
@@ -122,7 +111,6 @@ function makeEnvelope(args) {
   let signer = eSignSdk.Signer.constructFromObject({
     email: args.signerEmail,
     name: args.signerName,
-    clientUserId: args.signerClientId,
     recipientId: "1",
   });
 
@@ -151,28 +139,6 @@ function makeEnvelope(args) {
   env.status = args.status;
 
   return env;
-}
-
-function makeRecipientViewRequest(args) {
-  // Data for this method
-  // args.dsReturnUrl
-  // args.signerEmail
-  // args.signerName
-  // args.signerClientId
-  // args.dsPingUrl
-
-  // Create the recipient view request object
-  const viewRequest = new eSignSdk.RecipientViewRequest.constructFromObject({
-    authenticationMethod: "none",
-    clientUserId: args.signerClientId,
-    recipientId: "1",
-    returnUrl: args.dsReturnUrl, // TODO: After finish signing, how to get back to this URL?
-    userName: args.signerName,
-    email: args.signerEmail,
-    pingFrequency: "600",
-    pingUrl: args.dsPingUrl, // optional setting
-  });
-  return viewRequest;
 }
 
 module.exports = { createController };
