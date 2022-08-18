@@ -7,12 +7,8 @@ const eSignSdk = require("docusign-esign");
 const fs = require("fs");
 const { checkToken } = require("./jwtController");
 
-const signerClientId = 1000; // The id of the signer within this application.
 const docsPath = path.resolve(__dirname, "../documents");
 const docFile = "World_Wide_Corp_lorem.pdf";
-const dsReturnUrl =
-  process.env.REDIRECT_URI + "/purchase-new-device/submitted-purchase-device";
-const dsPingUrl = process.env.REDIRECT_URI + "/";
 
 /**
  * Controller that creates and sends an envelope to the signer.
@@ -26,7 +22,7 @@ const createController = async (req, res) => {
   const envelopeArgs = {
     signerEmail: body.signerEmail,
     signerName: body.signerName,
-    status: "sent", // TODO: or "created" to create draft envelope but not send it
+    status: "sent",
     docFile: path.resolve(docsPath, docFile),
   };
   const args = {
