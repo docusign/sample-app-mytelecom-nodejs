@@ -7,13 +7,13 @@ export async function sendRequest(urlPath, request) {
     const response = await axios.post(urlPath, request);
     return handleResponse(response);
   } catch (error) {
-    throw error;
+    console.error(error);
   }
 }
 
 // Returning response if a success, otherwise throw an error
 export async function handleResponse(response) {
-  if (response.status === 200) {
+  if (response.status === 200 || response.status === 201) {
     return response;
   }
 

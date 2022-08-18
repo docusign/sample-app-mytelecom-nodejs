@@ -1,7 +1,7 @@
 import React from "react";
 import { sendRequest } from "../api/apiHelper";
 import Form from "../components/Form";
-
+import text from "../assets/Titles.json";
 function PurchaseDevice() {
   async function handleSubmit(event) {
     // Make request body
@@ -30,7 +30,7 @@ function PurchaseDevice() {
 
   return (
     <div>
-      <h1>{"Purchase New Device"}</h1>
+      <h1>{text.purchaseTitle}</h1>
       <Form includePhone={false} onSubmit={handleSubmit} />
     </div>
   );

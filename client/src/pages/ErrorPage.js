@@ -1,9 +1,9 @@
-import React from 'react';
-
+import React from "react";
+import text from "../assets/Text.json";
 function ErrorPage() {
   return (
     <div>
-      <h1>404: Page not found.</h1>
+      <h1>{text.errorText.notFound}</h1>
     </div>
   );
 }

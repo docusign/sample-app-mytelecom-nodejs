@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import textContent from "../assets/text.json";
+import text from "../assets/Text.json";
 
 function Login() {
   async function handleLogin() {
@@ -36,8 +36,8 @@ function Login() {
 
   return (
     <>
-      <button onClick={handleLogin}>{textContent.login.loginButton}</button>
-      <button onClick={handleLogout}>Logout</button>
+      <button onClick={handleLogin}>{text.login.loginButton}</button>
+      <button onClick={handleLogout}>{text.logout.logoutButton}</button>
     </>
   );
 }
