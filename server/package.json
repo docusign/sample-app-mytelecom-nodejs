@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js --ignore client",
+    "client": "cd ../ && npm start --prefix client",
+    "server": "nodemon server.js --ignore client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +19,7 @@
   "dependencies": {
     "axios": "^0.25.0",
     "body-parser": "^1.20.0",
+    "concurrently": "^7.3.0",
     "cookie-parser": "^1.4.6",
     "cookie-session": "^2.0.0",
     "cors": "^2.8.5",
