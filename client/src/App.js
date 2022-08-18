@@ -20,14 +20,13 @@ function App() {
             path="assumption-of-liability"
             element={<AssumptionLiability />}
           />
-          <Route path="purchase-new-device" element={<PurchaseDevice />}>
-            <Route
-              path="submitted-purchase-device"
-              element={<SubmittedPurchaseDevice />}
-            />
-          </Route>
+          <Route
+            path="purchase-new-device"
+            element={<PurchaseDevice />}
+          ></Route>
 
           <Route path="service-change" element={<ServiceChange />} />
+          <Route path="submitted" element={<SubmittedPurchaseDevice />} />
         </Routes>
       </Router>
     </div>

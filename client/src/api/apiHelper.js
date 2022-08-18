@@ -1,5 +1,5 @@
 import axios from "axios";
-import errorText from "../assets/text.json";
+import errorText from "../assets/Text.json";
 
 // For making HTTP POST request using the given url and request
 export async function sendRequest(urlPath, request) {

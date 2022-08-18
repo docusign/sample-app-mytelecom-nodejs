@@ -1,8 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import { sendRequest } from "../api/apiHelper";
 import Form from "../components/Form";
 import text from "../assets/Titles.json";
 function PurchaseDevice() {
+  const navigate = useNavigate();
   async function handleSubmit(event) {
     // Make request body
     const body = {
@@ -18,10 +21,7 @@ function PurchaseDevice() {
       console.log("Received response:");
       console.log(response.data);
 
-      // Received URL for embedded signing, redirect user
-      if (response.status === 200) {
-        window.location = response.data;
-      }
+      navigate("/submitted");
     } catch (error) {
       console.log("handleSubmit error");
       console.log(error);
