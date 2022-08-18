@@ -1,14 +1,8 @@
 import React from "react";
 import axios from "axios";
-import textContent from "../assets/text.json";
+import text from "../assets/Text.json";
 
 function Login() {
-  async function handleLoginTest() {
-    console.log("Clicked login.");
-    let temp = await axios.get("/auth/login/callback");
-    console.log(temp.data);
-  }
-
   async function handleLogin() {
     try {
       let res = await axios.get("/auth/login");
@@ -42,8 +36,8 @@ function Login() {
 
   return (
     <>
-      <button onClick={handleLogin}>{textContent.login.loginButton}</button>
-      <button onClick={handleLogout}>Logout</button>
+      <button onClick={handleLogin}>{text.login.loginButton}</button>
+      <button onClick={handleLogout}>{text.logout.logoutButton}</button>
     </>
   );
 }

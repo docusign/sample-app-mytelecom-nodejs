@@ -29,7 +29,6 @@ const oAuthBasePath = oAuth.BasePath.DEMO; // account-d.docusign.com
 const getToken = async (req) => {
   // Get API client and set the base paths
 
-  // TODO: CREATE HELPER IN utils FOR CREATING API CLIENTS
   const eSignApi = new eSignSDK.ApiClient();
   eSignApi.setOAuthBasePath(oAuthBasePath);
 
@@ -121,6 +120,7 @@ const getUserInfo = async (req) => {
   }
 
   req.session.accountId = accountInfo.accountId;
+  req.session.basePath = accountInfo.baseUri + baseUriSuffix;
 };
 
 /**
@@ -128,16 +128,12 @@ const getUserInfo = async (req) => {
  * then gets some user info. If the user has never provided consent, then they are
  * redirected to a login screen.
  */
-module.exports.login = async (req, res) => {
+login = async (req, res) => {
   try {
-    console.log("\t Login try block");
     await checkToken(req);
     await getUserInfo(req);
     console.log("\t\tAlready logged in, got the info needed.");
     console.log("\t\taccessToken: " + req.session.accessToken);
-    console.log(
-      "\t\ttokenExpirationTimestamp: " + req.session.tokenExpirationTimestamp
-    );
     console.log("\t\taccountId: " + req.session.accountId);
 
     res.status(200).send("Success");
@@ -165,8 +161,14 @@ module.exports.login = async (req, res) => {
 /**
  * Logs the user out by destroying the session.
  */
-module.exports.logout = (req, res) => {
+const logout = (req, res) => {
   req.session = null;
   console.log("Successfully logged out!");
   res.status(200).send("Success: you have logged out");
+};
+
+module.exports = {
+  checkToken,
+  login,
+  logout,
 };

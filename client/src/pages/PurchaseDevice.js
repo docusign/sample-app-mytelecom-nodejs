@@ -1,43 +1,27 @@
-import axios from "axios";
 import React from "react";
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+import { sendRequest } from "../api/apiHelper";
+import Form from "../components/Form";
+import text from "../assets/Titles.json";
 function PurchaseDevice() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-
-  async function sendRequest(urlPath, request) {
-    try {
-      const response = await axios.post(urlPath, request);
-
-      if (response.status === 200) return response;
-      else {
-        console.log("Response error, response did not return status of 200");
-        console.log("Response status: " + response.status);
-      }
-    } catch (error) {
-      console.log("Send request error");
-      console.log(error.response.data);
-    }
-  }
+  const navigate = useNavigate();
   async function handleSubmit(event) {
-    event.preventDefault();
-
     // Make request body
-    const el = event.target.elements;
     const body = {
-      name: el.name.value,
-      email: el.email.value,
+      signerName: event.firstName + " " + event.lastName,
+      signerEmail: event.signerEmail,
     };
 
     console.log(body);
 
     // Send request to server
-    // TODO: validate input
     try {
-      const response = await sendRequest("/testapi", body);
+      const response = await sendRequest("/purchaseDevice", body);
       console.log("Received response:");
       console.log(response.data);
+
+      navigate("/submitted");
     } catch (error) {
       console.log("handleSubmit error");
       console.log(error);
@@ -45,27 +29,10 @@ function PurchaseDevice() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Name2:
-        <input
-          type="text"
-          name="name"
-          // value={name}
-        />
-      </label>
-      <p />
-      <label>
-        Email2:
-        <input
-          type="text"
-          name="email"
-          // value={email}
-        />
-      </label>
-      <p />
-      <input type="submit" value="Submit" />
-    </form>
+    <div>
+      <h1>{text.purchaseTitle}</h1>
+      <Form includePhone={false} onSubmit={handleSubmit} />
+    </div>
   );
 }
 

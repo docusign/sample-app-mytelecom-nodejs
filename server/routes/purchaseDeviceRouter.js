@@ -1,9 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const purchaseDeviceRouter = require("../controllers/purchaseDeviceController.js");
+const { createController } = require("../controllers/purchaseDeviceController");
 
-router.get("/callback", (req, res) => {
-  res.json({ name: "Patrick Mackle", country: "USA" });
-});
+router.post("/", createController);
 
 module.exports = router;

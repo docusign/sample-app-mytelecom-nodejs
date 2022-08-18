@@ -1,5 +1,12 @@
 {
     "login": {
         "loginButton": "Login here"
+    },
+    "logout": {
+        "logoutButton": "Logout"
+    },
+    "errorText": {
+        "unknownError": "Unknown API response error, response did not return with a status code of 200.",
+        "notFound": "404: Page not found."
     }
 }

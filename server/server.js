@@ -1,10 +1,9 @@
-require("dotenv").config({ path: `${process.env.PWD}/.env` });
+require("dotenv").config({ path: __dirname + "/./../.env" });
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const cookieSession = require("cookie-session");
 const bodyParser = require("body-parser");
-const port = 8000;
-const { login } = require("./controllers/jwtController");
+const port = process.env.PORT_NUMBER;
 
 // Route imports
 const authRouter = require("./routes/jwtRouter");
@@ -35,20 +34,13 @@ app.get("/", (req, res) => {
   res.end();
 });
 
-// Test receiving a POST request
-app.post("/testapi", (req, res) => {
-  const name = req.body.name;
-  const email = req.body.email;
-  const result = "Response formed!\nName: " + name + "\nEmail: " + email;
-  res.status(200).send(result);
-});
-
 // Routing
 app.use("/auth", authRouter);
 app.use("/assumptionLiability", assumptionLiabilityRouter);
 app.use("/purchaseDevice", purchaseDeviceRouter);
 app.use("/serviceChange", serviceChangeRouter);
 
+// Leting dev know server started
 app.listen(port, () => {
   console.log(`Server started and listening on port ${port}`);
 });
