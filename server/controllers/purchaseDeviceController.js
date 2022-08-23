@@ -6,10 +6,10 @@ const path = require("path");
 const eSignSdk = require("docusign-esign");
 const fs = require("fs");
 const { checkToken } = require("./jwtController");
+const errorText = require("../assets/errorText.json");
 
 const docsPath = path.resolve(__dirname, "../documents");
 const docFile = "World_Wide_Corp_lorem.pdf";
-
 /**
  * Controller that creates and sends an envelope to the signer.
  */
@@ -24,6 +24,11 @@ const createController = async (req, res) => {
     signerName: body.signerName,
     status: "sent",
     docFile: path.resolve(docsPath, docFile),
+
+    // Payments
+    gatewayAccountId: process.env.PAYMENT_GATEWAY_ACCOUNT_ID,
+    gatewayName: process.env.PAYMENT_GATEWAY_NAME,
+    gatewayDisplayName: process.env.PAYMENT_GATEWAY_DISPLAY_NAME,
   };
   const args = {
     accessToken: req.session.accessToken,
@@ -32,6 +37,21 @@ const createController = async (req, res) => {
     envelopeArgs: envelopeArgs,
   };
   let results = null;
+
+  // Before doing anything with envelopes
+  // first make sure the .env variables are set up
+  try {
+    if (
+      !process.env.PAYMENT_GATEWAY_ACCOUNT_ID ||
+      !process.env.PAYMENT_GATEWAY_NAME ||
+      !process.env.PAYMENT_GATEWAY_DISPLAY_NAME
+    ) {
+      throw error;
+      console.log();
+    }
+  } catch (error) {
+    throw new Error(errorText.api.paymentConfigsUndefined);
+  }
 
   // Send the envelope to signer
   try {

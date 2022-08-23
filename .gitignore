@@ -21,6 +21,7 @@
 .env.production.local
 private.key
 .env
+/.vscode
 
 npm-debug.log*
 yarn-debug.log*
