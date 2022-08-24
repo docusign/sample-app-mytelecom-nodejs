@@ -1,7 +1,3 @@
-// To implement:
-// Embedded Signing
-// Scheduled Sending
-// Payments
 const path = require("path");
 const eSignSdk = require("docusign-esign");
 const fs = require("fs");
@@ -43,11 +39,12 @@ const createController = async (req, res) => {
   try {
     if (
       !process.env.PAYMENT_GATEWAY_ACCOUNT_ID ||
+      process.env.PAYMENT_GATEWAY_ACCOUNT_ID ==
+        "{YOUR_PAYMENT_GATEWAY_ACCOUNT_ID}" ||
       !process.env.PAYMENT_GATEWAY_NAME ||
       !process.env.PAYMENT_GATEWAY_DISPLAY_NAME
     ) {
       throw error;
-      console.log();
     }
   } catch (error) {
     throw new Error(errorText.api.paymentConfigsUndefined);
@@ -57,7 +54,6 @@ const createController = async (req, res) => {
   try {
     results = await sendEnvelope(args);
   } catch (error) {
-    // TODO: better error handling
     console.log("Error sending the envelope."); // ######## Error here
     console.log(error);
     throw new Error("Error sending envelope in PurchaseDeviceController.");
@@ -96,7 +92,7 @@ const sendEnvelope = async (args) => {
 };
 
 /**
- * Creates envelope definition with embedded signing.
+ * Creates envelope definition with remote signing.
  */
 function makeEnvelope(args) {
   // Data for this method
@@ -123,7 +119,6 @@ function makeEnvelope(args) {
   env.documents = [doc];
 
   // Create a signer recipient to sign the document, identified by name and email
-  // We set the clientUserId to enable embedded signing for the recipient
   let signer = eSignSdk.Signer.constructFromObject({
     email: args.signerEmail,
     name: args.signerName,
