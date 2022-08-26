@@ -5,7 +5,7 @@ const { checkToken } = require("./jwtController");
 const errorText = require("../assets/errorText.json");
 
 const docsPath = path.resolve(__dirname, "../documents");
-const docFile = "World_Wide_Corp_lorem.pdf";
+const docFile = "Purchase_New_Device.pdf";
 /**
  * Controller that creates and sends an envelope to the signer.
  */
@@ -127,15 +127,33 @@ function makeEnvelope(args) {
 
   // Create signHere fields (also known as tabs) on the documents,
   // We're using anchor (autoPlace) positioning
-  let signHere = eSignSdk.SignHere.constructFromObject({
+  eSignSdk.In;
+  let signTerms = eSignSdk.InitialHere.constructFromObject({
     anchorString: "/sn1/",
-    anchorYOffset: "10",
     anchorUnits: "pixels",
-    anchorXOffset: "20",
+    anchorXOffset: "10",
+    anchorIgnoreIfNotPresent: "false",
   });
+
+  let signBuyer = eSignSdk.SignHere.constructFromObject({
+    anchorString: "/sn2/",
+    anchorUnits: "pixels",
+    anchorXOffset: "10",
+    anchorIgnoreIfNotPresent: "false",
+  });
+
+  let fullName = eSignSdk.FullName.constructFromObject({
+    anchorString: "/sn3/",
+    anchorUnits: "pixels",
+    anchorXOffset: "10",
+    anchorIgnoreIfNotPresent: "false",
+  });
+
   // Tabs are set per recipient / signer
   let signerTabs = eSignSdk.Tabs.constructFromObject({
-    signHereTabs: [signHere],
+    initialHereTabs: [signTerms],
+    signHereTabs: [signBuyer],
+    fullNameTabs: [fullName],
   });
   signer.tabs = signerTabs;
 
