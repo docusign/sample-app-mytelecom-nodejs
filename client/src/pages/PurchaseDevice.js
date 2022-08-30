@@ -11,6 +11,9 @@ function PurchaseDevice() {
     const body = {
       signerName: event.firstName + " " + event.lastName,
       signerEmail: event.signerEmail,
+      signerPhoneSelection: event.phoneSelection,
+      signerInsuranceSelection: event.insurance,
+      signerDownPayment: event.downPayment,
     };
 
     console.log(body);
@@ -31,7 +34,7 @@ function PurchaseDevice() {
   return (
     <div>
       <h1>{text.purchaseTitle}</h1>
-      <Form includePhone={false} onSubmit={handleSubmit} />
+      <Form includePhone={false} onSubmit={handleSubmit} phonePurchase={true} />
     </div>
   );
 }

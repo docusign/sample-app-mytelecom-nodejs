@@ -25,6 +25,10 @@ const createController = async (req, res) => {
     gatewayAccountId: process.env.PAYMENT_GATEWAY_ACCOUNT_ID,
     gatewayName: process.env.PAYMENT_GATEWAY_NAME,
     gatewayDisplayName: process.env.PAYMENT_GATEWAY_DISPLAY_NAME,
+
+    signerPhoneSelection: body.signerPhoneSelection,
+    signerInsuranceSelection: body.signerInsuranceSelection,
+    signerDownPayment: body.signerDownPayment,
   };
   const args = {
     accessToken: req.session.accessToken,
@@ -98,8 +102,29 @@ function makeEnvelope(args) {
   // Data for this method
   // args.signerEmail
   // args.signerName
-  // args.signerClientId
-  // docFile
+  // args.docFile
+  // args.status
+  // args.signerPhoneSelection
+  // args.gatewayAccountId
+  // args.gatewayName
+  // args.gatewayDisplayName
+
+  // Map all of the phone options to prices
+  let signerPhonePrice = 0;
+  switch (args.signerPhoneSelection) {
+    case "iPhone 13 128GB":
+      signerPhonePrice = 799;
+    case "iPhone 13 Pro 128GB":
+      signerPhonePrice = 999;
+    case "iPhone 13 Pro Max 128GB":
+      signerPhonePrice = 1099;
+    case "Samsung Galaxy S22 Ultra 128GB":
+      signerPhonePrice = 1199;
+    case "Google Pixel 6 Pro 128GB":
+      signerPhonePrice = 899;
+  }
+
+  let insuranceSelected = args.signerInsuranceSelection === "Yes" ? 240 : 0;
 
   // Read and create document from file in the local directory
   let docPdfBytes = fs.readFileSync(args.docFile);
@@ -127,7 +152,6 @@ function makeEnvelope(args) {
 
   // Create signHere fields (also known as tabs) on the documents,
   // We're using anchor (autoPlace) positioning
-  eSignSdk.In;
   let signTerms = eSignSdk.InitialHere.constructFromObject({
     anchorString: "/sn1/",
     anchorUnits: "pixels",
@@ -148,12 +172,129 @@ function makeEnvelope(args) {
     anchorXOffset: "10",
     anchorIgnoreIfNotPresent: "false",
   });
+  let date = eSignSdk.DateSigned.constructFromObject({
+    anchorString: "/date/",
+    anchorUnits: "pixels",
+    anchorXOffset: "10",
+    anchorIgnoreIfNotPresent: "false",
+  });
+
+  let buyerAddress = eSignSdk.Text.constructFromObject({
+    anchorString: "/adr/",
+    anchorUnits: "pixels",
+    anchorYOffset: "15",
+    anchorXOffset: "-35",
+    anchorIgnoreIfNotPresent: "false",
+    width: 150,
+    height: 80,
+  });
+
+  // BALANCES
+
+  let itemDescription1 = eSignSdk.Text.constructFromObject({
+    anchorString: "/itemdesc1/",
+    anchorIgnoreIfNotPresent: "false",
+    value: args.signerPhoneSelection,
+    locked: "true",
+  });
+
+  let itemDescription2 = eSignSdk.Text.constructFromObject({
+    anchorString: "/itemdesc2/",
+    anchorIgnoreIfNotPresent: "false",
+    value: insuranceSelected ? "Insurance" : "",
+    locked: "true",
+  });
+
+  let price1 = eSignSdk.Text.constructFromObject({
+    anchorString: "/price1/",
+    anchorIgnoreIfNotPresent: "false",
+    value: "$" + signerPhonePrice,
+    locked: "true",
+  });
+
+  let price2 = eSignSdk.Text.constructFromObject({
+    anchorString: "/price2/",
+    anchorIgnoreIfNotPresent: "false",
+    value: insuranceSelected ? "$240/24 months" : "",
+    locked: "true",
+  });
+
+  let price3 = eSignSdk.Text.constructFromObject({
+    anchorString: "/price3/",
+    anchorIgnoreIfNotPresent: "false",
+    value: "$" + (insuranceSelected + signerPhonePrice),
+    locked: "true",
+  });
+
+  let downPayment1 = eSignSdk.Text.constructFromObject({
+    anchorString: "/dpay1/",
+    anchorIgnoreIfNotPresent: "false",
+    value: "$" + args.signerDownPayment,
+    locked: "true",
+  });
+
+  let downPayment2 = eSignSdk.Text.constructFromObject({
+    anchorString: "/dpay2/",
+    anchorIgnoreIfNotPresent: "false",
+    value: "$" + args.signerDownPayment,
+    locked: "true",
+  });
+
+  let balance1 = eSignSdk.Text.constructFromObject({
+    anchorString: "/bal1/",
+    anchorIgnoreIfNotPresent: "false",
+    value: "$" + (signerPhonePrice - args.signerDownPayment),
+    locked: "true",
+  });
+
+  let balance2 = eSignSdk.Text.constructFromObject({
+    anchorString: "/bal2/",
+    anchorIgnoreIfNotPresent: "false",
+    value: "$" + insuranceSelected,
+    locked: "true",
+  });
+
+  let balance3 = eSignSdk.Text.constructFromObject({
+    anchorString: "/bal3/",
+    anchorIgnoreIfNotPresent: "false",
+    value:
+      "$" + (signerPhonePrice - args.signerDownPayment + insuranceSelected),
+    locked: "true",
+  });
+
+  let amountPayments = eSignSdk.Text.constructFromObject({
+    anchorString: "/amntpay/",
+    anchorIgnoreIfNotPresent: "false",
+    value:
+      "$" +
+      (
+        (signerPhonePrice - args.signerDownPayment + insuranceSelected) /
+        24.0
+      ).toFixed(2),
+    locked: "true",
+  });
+  /////////////
 
   // Tabs are set per recipient / signer
   let signerTabs = eSignSdk.Tabs.constructFromObject({
     initialHereTabs: [signTerms],
     signHereTabs: [signBuyer],
     fullNameTabs: [fullName],
+    textTabs: [
+      buyerAddress,
+      itemDescription1,
+      itemDescription2,
+      price1,
+      price2,
+      price3,
+      downPayment1,
+      downPayment2,
+      balance1,
+      balance2,
+      balance3,
+      amountPayments,
+    ],
+    dateSignedTabs: [date],
   });
   signer.tabs = signerTabs;
 
