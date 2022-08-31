@@ -2,8 +2,7 @@ const path = require("path");
 const eSignSdk = require("docusign-esign");
 const fs = require("fs");
 const { checkToken } = require("./jwtController");
-const errorText = require("../assets/errorText.json");
-
+const text = require("../assets/text.json");
 const docsPath = path.resolve(__dirname, "../documents");
 const docFile = "Purchase_New_Device.pdf";
 /**
@@ -51,21 +50,20 @@ const createController = async (req, res) => {
       throw error;
     }
   } catch (error) {
-    throw new Error(errorText.api.paymentConfigsUndefined);
+    throw new Error(text.apiErrors.paymentConfigsUndefined);
   }
 
   // Send the envelope to signer
   try {
     results = await sendEnvelope(args);
   } catch (error) {
-    console.log("Error sending the envelope."); // ######## Error here
     console.log(error);
-    throw new Error("Error sending envelope in PurchaseDeviceController.");
+    throw new Error(text.envelope.purchaseDeviceError);
   }
 
   if (results) {
     req.session.envelopeId = results.envelopeId;
-    res.status(200).send("Envelope Successfully Sent!");
+    res.status(200).send(text.envelope.envelopeSent);
   }
 };
 
@@ -90,7 +88,7 @@ const sendEnvelope = async (args) => {
   });
 
   let envelopeId = results.envelopeId;
-  console.log(`Envelope was created. EnvelopeId ${envelopeId}`);
+  console.log(text.envelope.envelopeCreated + envelopeId);
 
   return { envelopeId: envelopeId };
 };
@@ -131,14 +129,14 @@ function makeEnvelope(args) {
   let docb64 = Buffer.from(docPdfBytes).toString("base64");
   let doc = new eSignSdk.Document.constructFromObject({
     documentBase64: docb64,
-    name: "Purchase Device Sample", // can be different from actual file name
+    name: "Purchase Device Doc", // can be different from actual file name
     fileExtension: "pdf",
     documentId: "1",
   });
 
   // Create the envelope definition
   let env = new eSignSdk.EnvelopeDefinition();
-  env.emailSubject = "Purchase New Device: Subject";
+  env.emailSubject = text.purchaseDeviceControler.emailSubject;
 
   // Add the document to the envelope
   env.documents = [doc];
