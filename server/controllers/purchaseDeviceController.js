@@ -5,6 +5,7 @@ const { checkToken } = require("./jwtController");
 const text = require("../assets/text.json");
 const docsPath = path.resolve(__dirname, "../documents");
 const docFile = "Purchase_New_Device.pdf";
+const currencyMultiplier = 100;
 /**
  * Controller that creates and sends an envelope to the signer.
  */
@@ -289,6 +290,52 @@ function makeEnvelope(args) {
       ).toFixed(2),
     locked: "true",
   });
+  // Actual payment tabs
+
+  let dueToday = eSignSdk.FormulaTab.constructFromObject({
+    font: "helvetica",
+    fontSize: "size9",
+    tabLabel: "l1e",
+    anchorString: "/duetoday/",
+    anchorIgnoreIfNotPresent: "false",
+    locked: "true",
+    formula: args.signerDownPayment,
+    anchorUnits: "pixels",
+    anchorXOffset: "60",
+    roundDecimalPlaces: "0",
+    required: "true",
+    disableAutoSize: "false",
+  });
+
+  let paymentLineItem = eSignSdk.PaymentLineItem.constructFromObject({
+    name: "Down Payment",
+    description: `$${args.signerDownPayment}`,
+    amountReference: "l1e",
+  });
+
+  let paymentDetails = eSignSdk.PaymentDetails.constructFromObject({
+    gatewayAccountId: args.gatewayAccountId,
+    currencyCode: "USD",
+    gatewayName: args.gatewayName,
+    gatewayDisplayName: args.gatewayDisplayName,
+    lineItems: [paymentLineItem],
+  });
+
+  // Hidden formula for the payment itself
+  let formulaPayment = eSignSdk.FormulaTab.constructFromObject({
+    tabLabel: "payment",
+    formula: `${args.signerDownPayment} * ${currencyMultiplier}`,
+    roundDecimalPlaces: "0",
+    paymentDetails: paymentDetails,
+    hidden: "true",
+    required: "true",
+    locked: "true",
+    documentId: "1",
+    pageNumber: "1",
+    xPosition: "0",
+    yPosition: "0",
+  });
+
   /////////////
 
   // Tabs are set per recipient / signer
@@ -296,6 +343,7 @@ function makeEnvelope(args) {
     initialHereTabs: [signTerms],
     signHereTabs: [signBuyer],
     fullNameTabs: [fullName],
+    formulaTabs: [dueToday, formulaPayment],
     textTabs: [
       buyerAddress,
       itemDescription1,
