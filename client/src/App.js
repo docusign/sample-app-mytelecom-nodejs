@@ -7,11 +7,11 @@ import ServiceChange from "./pages/ServiceChange";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import SubmittedPurchaseDevice from "./pages/SubmittedPurchaseDevice";
-import text from "./assets/Titles.json";
+import text from "./assets/Text.json";
 function App() {
   return (
     <div>
-      <h1>{text.homeTitle}</h1>
+      <h1>{text.titles.homeTitle}</h1>
       <Router>
         <Header />
         <Routes>

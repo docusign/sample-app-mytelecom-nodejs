@@ -8,5 +8,48 @@
     "errorText": {
         "unknownError": "Unknown API response error, response did not return with a status code of 200.",
         "notFound": "404: Page not found."
+    },
+    "requestSigningSucess": {
+        "title": "Successfully sent request!",
+        "description": "Your request for signing a document has been sent to the specified email."
+    },
+    "signingComplete": {
+        "title": "Signing Complete!",
+        "description": "You have signed the document. The document will be securely stored on the DocuSign, Inc. servers."
+    },
+    "backLink": "Back to Home",
+    "formLabels":   {
+        "firstName": "First name:",
+        "lastName": "Last name:",
+        "fullName": "Name",
+        "email": "Email:",
+        "countryCode": "Country code",
+        "phoneNumber": "Phone number",
+        "phonePlaceholder": "000-000-0000",
+        "requiredFieldError": "This field is required.",
+        "inputTooLongError": "Your input is too long.",
+        "invalidEmailFormatError": "Invalid email format.",
+        "invalidCountryCodeError": "Invalid country code.",
+        "invalidPhoneNumberError": "Invalid phone number.",
+        "buttonName": "Submit"
+    },
+    "titles": {
+        "loginTitle": "Login",
+        "assumptionTitle": "Assumption of Liability",
+        "purchaseTitle": "Purchase New Device",
+        "serviceChangeTitle": "Multi-Line Service Change Request for Business Accounts",
+        "homeTitle": "Home"
+    },
+    "purchaseDevice": {
+        "iPhone14": "iPhone 14 128GB ($799)",
+        "iPhone14Pro": "iPhone 14 Pro 128GB ($999)",
+        "iPhone14ProMax": "iPhone 14 Pro Max 128GB ($1099)",
+        "samsungGalaxy": "Samsung Galaxy S22 Ultra 128GB ($1199)",
+        "googlePixel": "Google Pixel 6 Pro 128GB ($899)",
+        "selectPhone": "Select a phone",
+        "insuranceLabel": "Would you like to include device insurance at $5/month for 2 years?",
+        "downPayment": "How much would you like to put down for a down payment?",
+        "yes": "Yes",
+        "no": "No"
     }
 }

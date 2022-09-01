@@ -108,18 +108,33 @@ function makeEnvelope(args) {
   // args.gatewayDisplayName
 
   // Map all of the phone options to prices
-  let signerPhonePrice = 0;
+  let signerPhoneSelection = { name: "", price: 0 };
   switch (args.signerPhoneSelection) {
-    case "iPhone 13 128GB":
-      signerPhonePrice = 799;
-    case "iPhone 13 Pro 128GB":
-      signerPhonePrice = 999;
-    case "iPhone 13 Pro Max 128GB":
-      signerPhonePrice = 1099;
-    case "Samsung Galaxy S22 Ultra 128GB":
-      signerPhonePrice = 1199;
-    case "Google Pixel 6 Pro 128GB":
-      signerPhonePrice = 899;
+    case "0":
+      signerPhoneSelection = {
+        name: text.purchaseDeviceControler.iPhone14,
+        price: 799,
+      };
+    case "1":
+      signerPhoneSelection = {
+        name: text.purchaseDeviceControler.iPhone14Pro,
+        price: 999,
+      };
+    case "2":
+      signerPhoneSelection = {
+        name: text.purchaseDeviceControler.iPhone14ProMax,
+        price: 1099,
+      };
+    case "3":
+      signerPhoneSelection = {
+        name: text.purchaseDeviceControler.samsungGalaxy,
+        price: 1199,
+      };
+    case "4":
+      signerPhoneSelection = {
+        name: text.purchaseDeviceControler.googlePixel,
+        price: 899,
+      };
   }
 
   let insuranceSelected = args.signerInsuranceSelection === "Yes" ? 240 : 0;
@@ -192,7 +207,7 @@ function makeEnvelope(args) {
   let itemDescription1 = eSignSdk.Text.constructFromObject({
     anchorString: "/itemdesc1/",
     anchorIgnoreIfNotPresent: "false",
-    value: args.signerPhoneSelection,
+    value: signerPhoneSelection.name,
     locked: "true",
   });
 
@@ -206,7 +221,7 @@ function makeEnvelope(args) {
   let price1 = eSignSdk.Text.constructFromObject({
     anchorString: "/price1/",
     anchorIgnoreIfNotPresent: "false",
-    value: "$" + signerPhonePrice,
+    value: "$" + signerPhoneSelection.price,
     locked: "true",
   });
 
@@ -220,7 +235,7 @@ function makeEnvelope(args) {
   let price3 = eSignSdk.Text.constructFromObject({
     anchorString: "/price3/",
     anchorIgnoreIfNotPresent: "false",
-    value: "$" + (insuranceSelected + signerPhonePrice),
+    value: "$" + (insuranceSelected + signerPhoneSelection.price),
     locked: "true",
   });
 
@@ -241,7 +256,7 @@ function makeEnvelope(args) {
   let balance1 = eSignSdk.Text.constructFromObject({
     anchorString: "/bal1/",
     anchorIgnoreIfNotPresent: "false",
-    value: "$" + (signerPhonePrice - args.signerDownPayment),
+    value: "$" + (signerPhoneSelection.price - args.signerDownPayment),
     locked: "true",
   });
 
@@ -256,7 +271,8 @@ function makeEnvelope(args) {
     anchorString: "/bal3/",
     anchorIgnoreIfNotPresent: "false",
     value:
-      "$" + (signerPhonePrice - args.signerDownPayment + insuranceSelected),
+      "$" +
+      (signerPhoneSelection.price - args.signerDownPayment + insuranceSelected),
     locked: "true",
   });
 
@@ -266,7 +282,9 @@ function makeEnvelope(args) {
     value:
       "$" +
       (
-        (signerPhonePrice - args.signerDownPayment + insuranceSelected) /
+        (signerPhoneSelection.price -
+          args.signerDownPayment +
+          insuranceSelected) /
         24.0
       ).toFixed(2),
     locked: "true",

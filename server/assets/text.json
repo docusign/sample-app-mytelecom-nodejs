@@ -13,7 +13,12 @@
         "purchaseDeviceError": "Error sending envelope in PurchaseDeviceController."
     },
     "purchaseDeviceControler": {
-        "emailSubject": "myTelecom: Purchase a New Device"
+        "emailSubject": "myTelecom: Purchase a New Device",
+        "iPhone14": "iPhone 14 128GB",
+        "iPhone14Pro": "iPhone 14 Pro 128GB",
+        "iPhone14ProMax": "iPhone 14 Pro Max 128GB",
+        "samsungGalaxy": "Samsung Galaxy S22 Ultra 128GB",
+        "googlePixel": "Google Pixel 6 Pro 128GB"
     },
     "jwt": {
         "consentError": "Consent required",
