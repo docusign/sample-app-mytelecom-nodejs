@@ -12,7 +12,7 @@ const fs = require("fs"); // Used to parse RSA key
 const dayjs = require("dayjs"); // Used to set and determine a token's expiration date
 const oAuth = eSignSDK.ApiClient.OAuth;
 const restApi = eSignSDK.ApiClient.RestApi;
-
+const text = require("../assets/text.json");
 // Constants
 const rsaKey = fs.readFileSync(path.resolve(__dirname, "../../private.key"));
 const jwtLifeSec = 60 * 60; // Request lifetime of JWT token is 60 minutes
@@ -36,7 +36,6 @@ const getToken = async (req) => {
   let results;
 
   try {
-    console.log("\t Enter getToken try");
     results = await eSignApi.requestJWTUserToken(
       process.env.INTEGRATION_KEY,
       process.env.USER_ID,
@@ -45,19 +44,15 @@ const getToken = async (req) => {
       jwtLifeSec
     );
   } catch (error) {
-    console.log("\t getToken error");
-    if (
-      error.response.body.error &&
-      error.response.body.error === "consent_required"
-    ) {
-      throw new Error("Consent required");
+    if (error.response.body.error === "consent_required") {
+      throw new Error(text.jwt.consentError);
     } else {
       throw error;
     }
   }
 
   // Save the access token and the expiration
-  const expiresAt = dayjs().add(results.body.expires_in, "s"); // TODO: subtract tokenReplaceMin?
+  const expiresAt = dayjs().add(results.body.expires_in, "s");
   req.session.accessToken = results.body.access_token;
   req.session.tokenExpirationTimestamp = expiresAt;
 };
@@ -68,13 +63,10 @@ const getToken = async (req) => {
  * Must be called before every DocuSign API call.
  */
 const checkToken = async (req) => {
-  console.log("\t Entered checkToken.");
   const noToken =
       !req.session.accessToken || !req.session.tokenExpirationTimestamp,
     currentTime = dayjs(),
     bufferTime = 1; // One minute buffer time
-
-  console.log("\t\t currentTime: " + currentTime);
 
   // Check to see if we have a token or if the token is expired
   let needToken =
@@ -85,7 +77,6 @@ const checkToken = async (req) => {
 
   // Update the token if needed
   if (needToken) {
-    console.log("\t\t Need token, calling getToken.");
     await getToken(req);
   }
 };
@@ -132,30 +123,22 @@ login = async (req, res) => {
   try {
     await checkToken(req);
     await getUserInfo(req);
-    console.log("\t\tAlready logged in, got the info needed.");
-    console.log("\t\taccessToken: " + req.session.accessToken);
-    console.log("\t\taccountId: " + req.session.accountId);
 
-    res.status(200).send("Success");
+    res.status(200).send(text.jwt.successfulLogin);
   } catch (error) {
-    console.log("\t JWT Login error");
-
     // User has not provided consent yet, send the redirect URL to user.
-    if (error.message === "Consent required") {
+    if (error.message === text.jwt.consentError) {
       let consent_scopes = scopes.join("%20");
       consent_url =
         `${process.env.DS_OAUTH_SERVER}/oauth/auth?response_type=code&` +
         `scope=${consent_scopes}&client_id=${process.env.INTEGRATION_KEY}&` +
         `redirect_uri=${process.env.REDIRECT_URI}`;
 
-      console.log("\t\t Consent URL: " + consent_url);
-      console.log("\t\t Successfully created consent URL and sending it back!");
       res.status(210).send(consent_url);
     } else {
-      console.log("JWT error logging: \n" + error);
+      console.log(text.jwt.jwtError + error);
       res.status(error.status).send(error.message);
     }
-    console.log("\t End of login catch");
   }
 };
 /**
@@ -163,8 +146,7 @@ login = async (req, res) => {
  */
 const logout = (req, res) => {
   req.session = null;
-  console.log("Successfully logged out!");
-  res.status(200).send("Success: you have logged out");
+  res.status(200).send(text.jwt.successfulLogout);
 };
 
 module.exports = {

@@ -3,7 +3,7 @@ import text from "../assets/Titles.json";
 function Home() {
   return (
     <div>
-      <h1>{text.homeTitle}</h1>
+      <h1>{text.titles.homeTitle}</h1>
     </div>
   );
 }

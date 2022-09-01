@@ -1,0 +1,30 @@
+{
+    "apiErrors": {
+        "certifiedDeliveryNotEnabled": "Send to CertifiedDelivery recipients is not enabled on your account. Please refer to the README to enable this setting.",
+        "conditionalRoutingNotEnabled": "Conditional routing is not enabled on your account. Please refer to the README to enable this setting.",
+        "docusignApiError": "DocuSign API error occurred",
+        "paymentConfigsUndefined": "Payment gateway configurations missing. Please refer to the README to set up a payment gateway and update the .env file accordingly.",
+        "smsNotEnabled": "SMS Delivery is not enabled on your account. Please contact Support to enable this feature.",
+        "unknownError": "An unknown error occurred. Check the server console for the stack trace."
+    },
+    "envelope": {
+        "envelopeCreated": "Envelope was created. EnvelopeId: ",
+        "envelopeSent": "Envelope succesfully sent!",
+        "purchaseDeviceError": "Error sending envelope in PurchaseDeviceController."
+    },
+    "purchaseDeviceControler": {
+        "emailSubject": "myTelecom: Purchase a New Device",
+        "iPhone14": "iPhone 14 128GB",
+        "iPhone14Pro": "iPhone 14 Pro 128GB",
+        "iPhone14ProMax": "iPhone 14 Pro Max 128GB",
+        "samsungGalaxy": "Samsung Galaxy S22 Ultra 128GB",
+        "googlePixel": "Google Pixel 6 Pro 128GB"
+    },
+    "jwt": {
+        "consentError": "Consent required",
+        "jwtError": "JWT error logging: \n",
+        "successfulLogin": "Successfully logged in!",
+        "successfulLogout": "Successfully logged out!"
+    }
+
+}

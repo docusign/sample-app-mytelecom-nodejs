@@ -29,11 +29,6 @@ const app = express()
     })
   );
 
-app.get("/", (req, res) => {
-  res.send("Server started");
-  res.end();
-});
-
 // Routing
 app.use("/auth", authRouter);
 app.use("/assumptionLiability", assumptionLiabilityRouter);

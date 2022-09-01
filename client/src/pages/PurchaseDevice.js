@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { sendRequest } from "../api/apiHelper";
 import Form from "../components/Form";
-import text from "../assets/Titles.json";
+import text from "../assets/Text.json";
 function PurchaseDevice() {
   const navigate = useNavigate();
   async function handleSubmit(event) {
@@ -11,6 +11,9 @@ function PurchaseDevice() {
     const body = {
       signerName: event.firstName + " " + event.lastName,
       signerEmail: event.signerEmail,
+      signerPhoneSelection: event.phoneSelection,
+      signerInsuranceSelection: event.insurance,
+      signerDownPayment: event.downPayment,
     };
 
     console.log(body);
@@ -30,8 +33,8 @@ function PurchaseDevice() {
 
   return (
     <div>
-      <h1>{text.purchaseTitle}</h1>
-      <Form includePhone={false} onSubmit={handleSubmit} />
+      <h1>{text.titles.purchaseTitle}</h1>
+      <Form includePhone={false} onSubmit={handleSubmit} phonePurchase={true} />
     </div>
   );
 }

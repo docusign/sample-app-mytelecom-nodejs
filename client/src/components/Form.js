@@ -1,9 +1,9 @@
 import React from "react";
-import textContent from "../assets/FormLabels.json";
+import text from "../assets/Text.json";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
-function Form({ includePhone, onSubmit }) {
+function Form({ includePhone, onSubmit, phonePurchase }) {
   // Grab register and handleSubmit from useForm hook
   const {
     register,
@@ -17,15 +17,15 @@ function Form({ includePhone, onSubmit }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <label>{textContent.firstName}</label>
+      <label>{text.formLabels.firstName}</label>
       <input
         type="text"
         {...register("firstName", {
           required: {
             value: true,
-            message: textContent.requiredFieldError,
+            message: text.formLabels.requiredFieldError,
           },
-          maxLength: { value: 30, message: textContent.inputTooLongError },
+          maxLength: { value: 30, message: text.formLabels.inputTooLongError },
         })}
       />
       <ErrorMessage
@@ -36,15 +36,15 @@ function Form({ includePhone, onSubmit }) {
 
       <p></p>
 
-      <label>{textContent.lastName}</label>
+      <label>{text.formLabels.lastName}</label>
       <input
         type="text"
         {...register("lastName", {
           required: {
             value: true,
-            message: textContent.requiredFieldError,
+            message: text.formLabels.requiredFieldError,
           },
-          maxLength: { value: 50, message: textContent.inputTooLongError },
+          maxLength: { value: 50, message: text.formLabels.inputTooLongError },
         })}
       />
       <ErrorMessage
@@ -55,18 +55,18 @@ function Form({ includePhone, onSubmit }) {
 
       <p></p>
 
-      <label>{textContent.email}</label>
+      <label>{text.formLabels.email}</label>
       <input
         type="text"
         {...register("signerEmail", {
           required: {
             value: true,
-            message: textContent.requiredFieldError,
+            message: text.formLabels.requiredFieldError,
           },
           pattern: {
             value:
               /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-            message: textContent.invalidEmailFormatError,
+            message: text.formLabels.invalidEmailFormatError,
           },
         })}
       />
@@ -80,18 +80,18 @@ function Form({ includePhone, onSubmit }) {
 
       {includePhone && (
         <>
-          <label>{textContent.countryCode}</label>
+          <label>{text.formLabels.countryCode}</label>
           <input
             type="text"
             placeholder="1"
             {...register("countryCode", {
               required: {
                 value: true,
-                message: textContent.requiredFieldError,
+                message: text.formLabels.requiredFieldError,
               },
               pattern: {
                 value: /^([+]?\d+)$/,
-                message: textContent.invalidCountryCodeError,
+                message: text.formLabels.invalidCountryCodeError,
               },
             })}
           />
@@ -100,26 +100,26 @@ function Form({ includePhone, onSubmit }) {
             name="countryCode"
             as={<ErrorMessageContainer />}
           />
-          <label>{textContent.phoneNumber}</label>
+          <label>{text.formLabels.phoneNumber}</label>
           <input
             type="tel"
-            placeholder={textContent.phonePlaceholder}
+            placeholder={text.formLabels.phonePlaceholder}
             {...register("phoneNumber", {
               required: {
                 value: true,
-                message: textContent.requiredFieldError,
+                message: text.formLabels.requiredFieldError,
               },
               pattern: {
                 value: /^(\d+-?)+\d+$/,
-                message: textContent.invalidPhoneNumberError,
+                message: text.formLabels.invalidPhoneNumberError,
               },
               maxLength: {
                 value: 11,
-                message: textContent.invalidPhoneNumberError,
+                message: text.formLabels.invalidPhoneNumberError,
               },
               minLength: {
                 value: 8,
-                message: textContent.invalidPhoneNumberError,
+                message: text.formLabels.invalidPhoneNumberError,
               },
             })}
           />
@@ -133,7 +133,50 @@ function Form({ includePhone, onSubmit }) {
 
       <p></p>
 
-      <input type="submit" value={textContent.buttonName} />
+      <p></p>
+      {phonePurchase && (
+        <>
+          <label>{text.purchaseDevice.selectPhone}</label>
+          <select {...register("phoneSelection")}>
+            <option value="0">{text.purchaseDevice.iPhone14}</option>
+            <option value="1">{text.purchaseDevice.iPhone14Pro}</option>
+            <option value="2">{text.purchaseDevice.iPhone14ProMax}</option>
+            <option value="3">{text.purchaseDevice.samsungGalaxy}</option>
+            <option value="4">{text.purchaseDevice.googlePixel}</option>
+          </select>
+
+          <p></p>
+
+          <label>{text.purchaseDevice.insuranceLabel}</label>
+          <label>
+            <input {...register("insurance")} type="radio" value="Yes" />
+            {text.purchaseDevice.yes}
+          </label>
+          <label>
+            <input {...register("insurance")} type="radio" value="No" />
+            {text.purchaseDevice.no}
+          </label>
+
+          <p></p>
+          <label>{text.purchaseDevice.downPayment}</label>
+          <input
+            type="number"
+            {...register("downPayment", {
+              required: {
+                value: true,
+                message: text.formLabels.requiredFieldError,
+              },
+              maxLength: {
+                value: 10,
+                message: text.formLabels.inputTooLongError,
+              },
+            })}
+          />
+        </>
+      )}
+      <p></p>
+
+      <input type="submit" value={text.formLabels.buttonName} />
     </form>
   );
 }

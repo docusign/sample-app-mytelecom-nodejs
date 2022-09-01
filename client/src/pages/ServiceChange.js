@@ -1,7 +1,7 @@
 import React from "react";
-import text from "../assets/Titles.json";
+import text from "../assets/Text.json";
 function ServiceChange() {
-  return <h1>{text.serviceChangeTitle}</h1>;
+  return <h1>{text.titles.serviceChangeTitle}</h1>;
 }
 
 export default ServiceChange;
