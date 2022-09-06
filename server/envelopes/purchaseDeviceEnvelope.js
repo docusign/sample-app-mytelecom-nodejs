@@ -123,6 +123,7 @@ function makeEnvelope(args) {
     anchorIgnoreIfNotPresent: "false",
     width: 150,
     height: 80,
+    tooltip: "Enter address here",
   });
 
   ////// Phone Selection & Prices //////
