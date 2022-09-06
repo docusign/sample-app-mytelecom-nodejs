@@ -1,5 +1,5 @@
 import React from "react";
-import text from "../assets/Titles.json";
+import text from "../assets/Text.json";
 function Home() {
   return (
     <div>
