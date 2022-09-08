@@ -47,6 +47,9 @@ const createController = async (req, res) => {
     gatewayAccountId: process.env.PAYMENT_GATEWAY_ACCOUNT_ID,
     gatewayName: process.env.PAYMENT_GATEWAY_NAME,
     gatewayDisplayName: process.env.PAYMENT_GATEWAY_DISPLAY_NAME,
+
+    // Scheduled Sending
+    resumeTime: body.signerResumeTime,
   };
 
   const args = {
@@ -76,7 +79,7 @@ const createController = async (req, res) => {
 
   // Step 1: Create Envelopes
   // The first envelope in this instance is the initial device purchase envelope
-  // The second envelope is to demonstrate scheduled routing, in this case, for monthly payments
+  // The second envelope is to demonstrate scheduled sending, in this case, for monthly payments
   let initialEnvelope = makePurchasedEnvelope(args.initialEnvelopeArgs);
   let monthlyPaymentEnvelope = makeScheduledEnvelope(
     args.monthlyPaymentEnvelopeArgs

@@ -159,7 +159,7 @@ function Form({ includePhone, onSubmit, phonePurchase }) {
                 message: text.formLabels.requiredFieldError,
               },
               maxLength: {
-                value: 10,
+                value: 4,
                 message: text.formLabels.inputTooLongError,
               },
             })}
@@ -167,7 +167,20 @@ function Form({ includePhone, onSubmit, phonePurchase }) {
         </>
       )}
       <p></p>
-      {text.purchaseDevice.demoText}
+      <label>{text.purchaseDevice.scheduleSend}</label>
+      <input
+        type="number"
+        {...register("resumeTime", {
+          required: {
+            value: true,
+            message: text.formLabels.requiredFieldError,
+          },
+          maxLength: {
+            value: 4,
+            message: text.formLabels.inputTooLongError,
+          },
+        })}
+      />
       <p></p>
       <input type="submit" value={text.formLabels.buttonName} />
     </form>

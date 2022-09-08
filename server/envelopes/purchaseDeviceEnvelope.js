@@ -58,7 +58,7 @@ function makePurchasedEnvelope(args) {
   let docb64 = Buffer.from(docPdfBytes).toString("base64");
   let doc = new eSignSdk.Document.constructFromObject({
     documentBase64: docb64,
-    name: "Purchase Device Doc", // Can be different from actual file name
+    name: "Purchase Device Document", // Can be different from actual file name
     fileExtension: "pdf",
     documentId: "1",
   });
@@ -331,12 +331,22 @@ function makePurchasedEnvelope(args) {
 // This is the 2nd envelope to be sent. Ordinarily, this would be sent monthly with scheduled sending
 // But for demo purposes, we are mocking the date and actually sending 3 minutes later
 function makeScheduledEnvelope(args) {
+  // Data for this method
+  // args.signerEmail,
+  // args.signerName,
+  // args.status,
+  // args.docFile,
+  // args.gatewayAccountId
+  // args.gatewayName
+  // args.gatewayDisplayName
+  // args.resumeTime
+
   // Read and create document from file in the local directory
   let docPdfBytes = fs.readFileSync(args.docFile);
   let docb64 = Buffer.from(docPdfBytes).toString("base64");
   let doc = new eSignSdk.Document.constructFromObject({
     documentBase64: docb64,
-    name: "Purchase Device Doc", // Can be different from actual file name
+    name: "Monthly Payment Document", // Can be different from actual file name
     fileExtension: "pdf",
     documentId: "1",
   });
@@ -355,8 +365,10 @@ function makeScheduledEnvelope(args) {
     recipientId: "1",
   });
 
-  // Sending the scheduled envelope 3 minutes from now so the user doesn't have to wait long
-  resumeDate = new Date(todaysDate.getTime() + 3 * 60000).toISOString();
+  // Schedule the envelope to send after waiting the amount of time defined by the sender
+  resumeDate = new Date(
+    todaysDate.getTime() + args.resumeTime * 60000
+  ).toISOString();
 
   // Create a workflow model
   // Add the workflow rule that sets the schedule for the envelope to be sent
@@ -377,7 +389,7 @@ function makeScheduledEnvelope(args) {
   //////////////////// TAB CONSTRUCTIONS /////////////////////////
   ////////////////////////////////////////////////////////////////
 
-  // Display the first day of the next month as the first payment
+  // Display the first day of the month after the next as the 2nd payment
   let paymentDate = eSignSdk.Text.constructFromObject({
     anchorString: "/datepay/",
     anchorUnits: "pixels",

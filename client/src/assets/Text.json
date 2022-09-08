@@ -51,6 +51,6 @@
         "downPayment": "How much would you like to put down for a down payment?",
         "yes": "Yes",
         "no": "No",
-        "demoText": "For demonstration purposes, the 2nd scheduled envelope (which is the monthly payment) will send in 3 minutes instead of on the monthly payment date"
+        "scheduleSend": "Enter the amount of time in minutes you would like to wait for the 2nd envelope to send:"
     }
 }
