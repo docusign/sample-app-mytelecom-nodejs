@@ -2,7 +2,7 @@
 Welcome to the DocuSign sample app MyTelecom. MyTelecom showcases how the telecommunications industry could integrate with DocuSign technologies using Node.js and React. All scenarios are for **demonstration purposes only**, meaning none of what you sign is binding in any way and envelopes in their entirety are deleted after 30 days. The following are the 3 different scenarios you can test out yourself:
 1. Assumption of Liability
    * **(UPDATE DESCRIPTION)**
-2. **Purchase New Device:** The user can purchase a new device from the telecom provider through remote signing.  TESTING
+2. **Purchase New Device:** The user can purchase a new device from the telecom provider through remote signing.  TESTING TEST
    * **(UPDATE DESCRIPTION)**
 3. Multi-Line Service Change Request for Business Accounts
    * **(UPDATE DESCRIPTION)**
