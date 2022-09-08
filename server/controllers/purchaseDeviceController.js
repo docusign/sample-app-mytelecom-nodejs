@@ -75,12 +75,14 @@ const createController = async (req, res) => {
   }
 
   // Step 1: Create Envelopes
+  // The first envelope in this instance is the initial device purchase envelope
+  // The second envelope is to demonstrate scheduled routing, in this case, for monthly payments
   let initialEnvelope = makePurchasedEnvelope(args.initialEnvelopeArgs);
   let monthlyPaymentEnvelope = makeScheduledEnvelope(
     args.monthlyPaymentEnvelopeArgs
   );
 
-  // Step 2: Send the envelope to signer
+  // Step 2: Send the envelopes to the signer
   try {
     firstResults = await sendEnvelope(initialEnvelope, args);
   } catch (error) {

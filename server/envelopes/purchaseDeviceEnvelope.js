@@ -328,6 +328,8 @@ function makePurchasedEnvelope(args) {
   return env;
 }
 
+// This is the 2nd envelope to be sent. Ordinarily, this would be sent monthly with scheduled sending
+// But for demo purposes, we are mocking the date and actually sending 3 minutes later
 function makeScheduledEnvelope(args) {
   // Read and create document from file in the local directory
   let docPdfBytes = fs.readFileSync(args.docFile);
