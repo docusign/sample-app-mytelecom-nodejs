@@ -1,7 +1,7 @@
 const path = require("path");
 const docsPath = path.resolve(__dirname, "../documents");
 const initialDocFile = "Purchase_New_Device.pdf";
-const monthlyPaymentDocFile = "World_Wide_Corp_lorem.pdf";
+const monthlyPaymentDocFile = "Purchase_New_Device_Monthly_Payment.pdf";
 const text = require("../assets/text.json");
 const { sendEnvelope } = require("../envelopes/sendEnvelope");
 const {

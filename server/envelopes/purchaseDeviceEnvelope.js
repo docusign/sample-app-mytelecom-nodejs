@@ -230,6 +230,7 @@ function makePurchasedEnvelope(args) {
     (signerPhoneSelection.price - args.signerDownPayment + insuranceSelected) /
     24.0
   ).toFixed(2);
+
   let amountPayments = eSignSdk.Text.constructFromObject({
     anchorString: "/amntpay/",
     anchorIgnoreIfNotPresent: "false",
@@ -370,18 +371,77 @@ function makeScheduledEnvelope(args) {
   });
   env.workflow = workflow;
 
-  ///// TAB CONSTRUCTION /////
-  let signTerms = eSignSdk.InitialHere.constructFromObject({
-    anchorString: "/sn1/",
+  ////////////////////////////////////////////////////////////////
+  //////////////////// TAB CONSTRUCTIONS /////////////////////////
+  ////////////////////////////////////////////////////////////////
+
+  // Display the first day of the next month as the first payment
+  let paymentDate = eSignSdk.Text.constructFromObject({
+    anchorString: "/datepay/",
     anchorUnits: "pixels",
     anchorXOffset: "10",
     anchorIgnoreIfNotPresent: "false",
+    locked: "true",
+    value: new Date(
+      todaysDate.getFullYear(),
+      todaysDate.getMonth() + 2,
+      1
+    ).toDateString(),
   });
-  //// END TAB CONSTRUCTION /////
+
+  ///// The payment tabs themselves /////
+  // The amount due today with a dollar sign next to it
+  let dueToday = eSignSdk.FormulaTab.constructFromObject({
+    font: "helvetica",
+    fontSize: "size9",
+    tabLabel: "l1e",
+    anchorString: "/duetoday/",
+    anchorIgnoreIfNotPresent: "false",
+    locked: "true",
+    formula: monthlyPayment,
+    anchorUnits: "pixels",
+    anchorXOffset: "60",
+    required: "true",
+    disableAutoSize: "false",
+  });
+
+  // The amount listed for Down Payment when the payment page pops up
+  let paymentLineItem = eSignSdk.PaymentLineItem.constructFromObject({
+    name: "Down Payment",
+    description: `$${monthlyPayment}`,
+    amountReference: "l1e",
+  });
+
+  // More info about the payments and how they will be processed
+  let paymentDetails = eSignSdk.PaymentDetails.constructFromObject({
+    gatewayAccountId: args.gatewayAccountId,
+    currencyCode: "USD",
+    gatewayName: args.gatewayName,
+    gatewayDisplayName: args.gatewayDisplayName,
+    lineItems: [paymentLineItem],
+  });
+
+  // Hidden formula for the payment itself
+  let formulaPayment = eSignSdk.FormulaTab.constructFromObject({
+    tabLabel: "payment",
+    formula: `${monthlyPayment} * ${currencyMultiplier}`,
+    paymentDetails: paymentDetails,
+    hidden: "true",
+    required: "true",
+    locked: "true",
+    documentId: "1",
+    pageNumber: "1",
+    xPosition: "0",
+    yPosition: "0",
+  });
+  ////////////////////////////////////////////////////////////////
+  ////////////////// TAB CONSTRUCTIONS END ///////////////////////
+  ////////////////////////////////////////////////////////////////
 
   // Tabs are set per recipient / signer
   let signerTabs = eSignSdk.Tabs.constructFromObject({
-    initialHereTabs: [signTerms],
+    formulaTabs: [dueToday, formulaPayment],
+    textTabs: [paymentDate],
   });
   signer.tabs = signerTabs;
 
