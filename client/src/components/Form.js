@@ -33,9 +33,7 @@ function Form({ includePhone, onSubmit, phonePurchase }) {
         name="firstName"
         as={<ErrorMessageContainer />}
       />
-
       <p></p>
-
       <label>{text.formLabels.lastName}</label>
       <input
         type="text"
@@ -52,9 +50,7 @@ function Form({ includePhone, onSubmit, phonePurchase }) {
         name="lastName"
         as={<ErrorMessageContainer />}
       />
-
       <p></p>
-
       <label>{text.formLabels.email}</label>
       <input
         type="text"
@@ -75,9 +71,7 @@ function Form({ includePhone, onSubmit, phonePurchase }) {
         name="signerEmail"
         as={<ErrorMessageContainer />}
       />
-
       <p></p>
-
       {includePhone && (
         <>
           <label>{text.formLabels.countryCode}</label>
@@ -130,9 +124,7 @@ function Form({ includePhone, onSubmit, phonePurchase }) {
           />
         </>
       )}
-
       <p></p>
-
       <p></p>
       {phonePurchase && (
         <>
@@ -175,7 +167,8 @@ function Form({ includePhone, onSubmit, phonePurchase }) {
         </>
       )}
       <p></p>
-
+      {text.purchaseDevice.demoText}
+      <p></p>
       <input type="submit" value={text.formLabels.buttonName} />
     </form>
   );
