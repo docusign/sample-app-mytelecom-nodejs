@@ -10,7 +10,8 @@
     "envelope": {
         "envelopeCreated": "Envelope was created. EnvelopeId: ",
         "envelopeSent": "Envelope succesfully sent!",
-        "purchaseDeviceError": "Error sending envelope in PurchaseDeviceController."
+        "purchaseDeviceFirstEnvelopeError": "Error sending the first envelope in PurchaseDeviceController.",
+        "purchaseDeviceSecondEnvelopeError": "Error sending the second envelope in PurchaseDeviceController."
     },
     "purchaseDeviceControler": {
         "emailSubject": "myTelecom: Purchase a New Device",

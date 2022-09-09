@@ -3,11 +3,14 @@ const eSignSdk = require("docusign-esign");
 const text = require("../assets/text.json");
 
 const currencyMultiplier = 100;
+let signerPhoneSelection = { name: "", price: 0 };
+let monthlyPayment = 0;
+let todaysDate = new Date();
 
 /**
  * Creates envelope definition with remote signing.
  */
-function makeEnvelope(args) {
+function makePurchasedEnvelope(args) {
   // Data for this method
   // args.signerEmail
   // args.signerName
@@ -19,7 +22,6 @@ function makeEnvelope(args) {
   // args.gatewayDisplayName
 
   // Map all of the phone options and their prices
-  let signerPhoneSelection = { name: "", price: 0 };
   switch (args.signerPhoneSelection) {
     case "0":
       signerPhoneSelection = {
@@ -56,7 +58,7 @@ function makeEnvelope(args) {
   let docb64 = Buffer.from(docPdfBytes).toString("base64");
   let doc = new eSignSdk.Document.constructFromObject({
     documentBase64: docb64,
-    name: "Purchase Device Doc", // Can be different from actual file name
+    name: "Purchase Device Document", // Can be different from actual file name
     fileExtension: "pdf",
     documentId: "1",
   });
@@ -107,11 +109,25 @@ function makeEnvelope(args) {
   });
 
   // Another autofilled spot that uses current date
-  let date = eSignSdk.DateSigned.constructFromObject({
+  let dateToday = eSignSdk.DateSigned.constructFromObject({
     anchorString: "/date/",
     anchorUnits: "pixels",
     anchorXOffset: "10",
     anchorIgnoreIfNotPresent: "false",
+  });
+
+  // Display the first day of the next month as the first payment
+  let paymentDate = eSignSdk.Text.constructFromObject({
+    anchorString: "/datePay/",
+    anchorUnits: "pixels",
+    anchorXOffset: "10",
+    anchorIgnoreIfNotPresent: "false",
+    locked: "true",
+    value: new Date(
+      todaysDate.getFullYear(),
+      todaysDate.getMonth() + 1,
+      1
+    ).toDateString(),
   });
 
   // A text box for the user to enter their address
@@ -210,17 +226,15 @@ function makeEnvelope(args) {
   });
 
   // The monthly price
+  monthlyPayment = (
+    (signerPhoneSelection.price - args.signerDownPayment + insuranceSelected) /
+    24.0
+  ).toFixed(2);
+
   let amountPayments = eSignSdk.Text.constructFromObject({
     anchorString: "/amntpay/",
     anchorIgnoreIfNotPresent: "false",
-    value:
-      "$" +
-      (
-        (signerPhoneSelection.price -
-          args.signerDownPayment +
-          insuranceSelected) /
-        24.0
-      ).toFixed(2),
+    value: "$" + monthlyPayment,
     locked: "true",
   });
 
@@ -295,8 +309,9 @@ function makeEnvelope(args) {
       balance2,
       balance3,
       amountPayments,
+      paymentDate,
     ],
-    dateSignedTabs: [date],
+    dateSignedTabs: [dateToday],
   });
   signer.tabs = signerTabs;
 
@@ -313,4 +328,148 @@ function makeEnvelope(args) {
   return env;
 }
 
-module.exports = { makeEnvelope };
+// This is the 2nd envelope to be sent. Ordinarily, this would be sent monthly with scheduled sending
+// But for demo purposes, we are mocking the date and actually sending 3 minutes later
+function makeScheduledEnvelope(args) {
+  // Data for this method
+  // args.signerEmail,
+  // args.signerName,
+  // args.status,
+  // args.docFile,
+  // args.gatewayAccountId
+  // args.gatewayName
+  // args.gatewayDisplayName
+  // args.resumeTime
+
+  // Read and create document from file in the local directory
+  let docPdfBytes = fs.readFileSync(args.docFile);
+  let docb64 = Buffer.from(docPdfBytes).toString("base64");
+  let doc = new eSignSdk.Document.constructFromObject({
+    documentBase64: docb64,
+    name: "Monthly Payment Document", // Can be different from actual file name
+    fileExtension: "pdf",
+    documentId: "1",
+  });
+
+  // Create the envelope definition
+  let env = new eSignSdk.EnvelopeDefinition();
+  env.emailSubject = text.purchaseDeviceControler.emailSubject;
+
+  // Add the document to the envelope
+  env.documents = [doc];
+
+  // Create a signer recipient to sign the document, identified by name and email
+  let signer = eSignSdk.Signer.constructFromObject({
+    email: args.signerEmail,
+    name: args.signerName,
+    recipientId: "1",
+  });
+
+  // Schedule the envelope to send after waiting the amount of time defined by the sender
+  resumeDate = new Date(
+    todaysDate.getTime() + args.resumeTime * 60000
+  ).toISOString();
+
+  // Create a workflow model
+  // Add the workflow rule that sets the schedule for the envelope to be sent
+  const rule = eSignSdk.EnvelopeDelayRule.constructFromObject({
+    resumeDate: resumeDate,
+  });
+
+  const scheduledSendingModel = eSignSdk.ScheduledSending.constructFromObject({
+    rules: [rule],
+  });
+
+  const workflow = eSignSdk.Workflow.constructFromObject({
+    scheduledSending: scheduledSendingModel,
+  });
+  env.workflow = workflow;
+
+  ////////////////////////////////////////////////////////////////
+  //////////////////// TAB CONSTRUCTIONS /////////////////////////
+  ////////////////////////////////////////////////////////////////
+
+  // Display the first day of the month after the next as the 2nd payment
+  let paymentDate = eSignSdk.Text.constructFromObject({
+    anchorString: "/datepay/",
+    anchorUnits: "pixels",
+    anchorXOffset: "10",
+    anchorIgnoreIfNotPresent: "false",
+    locked: "true",
+    value: new Date(
+      todaysDate.getFullYear(),
+      todaysDate.getMonth() + 2,
+      1
+    ).toDateString(),
+  });
+
+  ///// The payment tabs themselves /////
+  // The amount due today with a dollar sign next to it
+  let dueToday = eSignSdk.FormulaTab.constructFromObject({
+    font: "helvetica",
+    fontSize: "size9",
+    tabLabel: "l1e",
+    anchorString: "/duetoday/",
+    anchorIgnoreIfNotPresent: "false",
+    locked: "true",
+    formula: monthlyPayment,
+    anchorUnits: "pixels",
+    anchorXOffset: "60",
+    required: "true",
+    disableAutoSize: "false",
+  });
+
+  // The amount listed for Down Payment when the payment page pops up
+  let paymentLineItem = eSignSdk.PaymentLineItem.constructFromObject({
+    name: "Down Payment",
+    description: `$${monthlyPayment}`,
+    amountReference: "l1e",
+  });
+
+  // More info about the payments and how they will be processed
+  let paymentDetails = eSignSdk.PaymentDetails.constructFromObject({
+    gatewayAccountId: args.gatewayAccountId,
+    currencyCode: "USD",
+    gatewayName: args.gatewayName,
+    gatewayDisplayName: args.gatewayDisplayName,
+    lineItems: [paymentLineItem],
+  });
+
+  // Hidden formula for the payment itself
+  let formulaPayment = eSignSdk.FormulaTab.constructFromObject({
+    tabLabel: "payment",
+    formula: `${monthlyPayment} * ${currencyMultiplier}`,
+    paymentDetails: paymentDetails,
+    hidden: "true",
+    required: "true",
+    locked: "true",
+    documentId: "1",
+    pageNumber: "1",
+    xPosition: "0",
+    yPosition: "0",
+  });
+  ////////////////////////////////////////////////////////////////
+  ////////////////// TAB CONSTRUCTIONS END ///////////////////////
+  ////////////////////////////////////////////////////////////////
+
+  // Tabs are set per recipient / signer
+  let signerTabs = eSignSdk.Tabs.constructFromObject({
+    formulaTabs: [dueToday, formulaPayment],
+    textTabs: [paymentDate],
+  });
+  signer.tabs = signerTabs;
+
+  // Add the recipient to the envelope object
+  let recipients = eSignSdk.Recipients.constructFromObject({
+    signers: [signer],
+  });
+  env.recipients = recipients;
+
+  // Request that the envelope be sent by setting |status| to "sent".
+  // To request that the envelope be created as a draft, set to "created"
+  env.status = args.status;
+
+  return env;
+}
+
+module.exports = { makePurchasedEnvelope, makeScheduledEnvelope };

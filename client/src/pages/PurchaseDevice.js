@@ -14,6 +14,7 @@ function PurchaseDevice() {
       signerPhoneSelection: event.phoneSelection,
       signerInsuranceSelection: event.insurance,
       signerDownPayment: event.downPayment,
+      signerResumeTime: event.resumeTime,
     };
 
     console.log(body);
