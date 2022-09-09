@@ -187,10 +187,54 @@ function Form({ includePhone, onSubmit, phonePurchase, assumptionLiability }) {
 
       {assumptionLiability && (
         <>
+        <label>{text.formLabels.newPhoneOwnerInfo}</label>
+        <p></p>
         <label>{text.formLabels.firstName}</label>
+        <input
+        type="text"
+        {...register("recipientFirstName", {
+          required: {
+            value: true,
+            message: text.formLabels.requiredFieldError,
+          },
+          maxLength: { value: 30, message: text.formLabels.inputTooLongError },
+        })}
+      />
+        <p></p>
+        <label>{text.formLabels.lastName}</label>
+        <input
+        type="text"
+        {...register("recipientLastName", {
+          required: {
+            value: true,
+            message: text.formLabels.requiredFieldError,
+          },
+          maxLength: { value: 30, message: text.formLabels.inputTooLongError },
+        })}
+      />
+        <p></p>
+        <label>{text.formLabels.email}</label>
+        <input
+        type="text"
+        {...register("signerEmail", {
+          required: {
+            value: true,
+            message: text.formLabels.requiredFieldError,
+          },
+          pattern: {
+            value:
+              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            message: text.formLabels.invalidEmailFormatError,
+          },
+        })}
+      />
+      <ErrorMessage
+        errors={errors}
+        name="signerEmail"
+        as={<ErrorMessageContainer />}
+      />
         </>
       )}
-      />
       <p></p>
 
       <input type="submit" value={text.formLabels.buttonName} />
