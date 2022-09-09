@@ -3,7 +3,7 @@ import text from "../assets/Text.json";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
-function Form({ includePhone, onSubmit, phonePurchase }) {
+function Form({ includePhone, onSubmit, phonePurchase, assumptionLiability }) {
   // Grab register and handleSubmit from useForm hook
   const {
     register,
@@ -163,25 +163,36 @@ function Form({ includePhone, onSubmit, phonePurchase }) {
                 message: text.formLabels.inputTooLongError,
               },
             })}
-          />
+            />
+
+            <p></p>
+
+            <label>{text.purchaseDevice.scheduleSend}</label>
+            <input
+              type="number"
+              {...register("resumeTime", {
+                required: {
+                  value: true,
+                  message: text.formLabels.requiredFieldError,
+                },
+                maxLength: {
+                  value: 4,
+                  message: text.formLabels.inputTooLongError,
+                },
+              })}
+
+            />
+          </>
+      )}
+
+      {assumptionLiability && (
+        <>
+        <label>{text.formLabels.firstName}</label>
         </>
       )}
-      <p></p>
-      <label>{text.purchaseDevice.scheduleSend}</label>
-      <input
-        type="number"
-        {...register("resumeTime", {
-          required: {
-            value: true,
-            message: text.formLabels.requiredFieldError,
-          },
-          maxLength: {
-            value: 4,
-            message: text.formLabels.inputTooLongError,
-          },
-        })}
       />
       <p></p>
+
       <input type="submit" value={text.formLabels.buttonName} />
     </form>
   );
