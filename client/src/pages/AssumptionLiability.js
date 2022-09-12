@@ -13,17 +13,15 @@ function Liability() {
     const body = {
       signerName: event.firstName + " " + event.lastName,
       signerEmail: event.signerEmail,
-      signerPhoneSelection: event.phoneSelection,
-      signerInsuranceSelection: event.insurance,
-      signerDownPayment: event.downPayment,
-      signerResumeTime: event.resumeTime,
+      recipientName: event.recipientFirstName + " " + event.recipientLastName,
+      recipientEmail: event.recipientEmail
     };
 
     console.log(body);
 
     // Send request to server
     try {
-      const response = await sendRequest("/purchaseDevice", body);
+      const response = await sendRequest("/assumptionLiability", body);
       console.log("Received response:");
       console.log(response.data);
 
