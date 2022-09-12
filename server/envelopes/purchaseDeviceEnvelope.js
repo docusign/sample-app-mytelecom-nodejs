@@ -25,27 +25,27 @@ function makePurchasedEnvelope(args) {
   switch (args.signerPhoneSelection) {
     case "0":
       signerPhoneSelection = {
-        name: text.purchaseDeviceControler.iPhone14,
+        name: text.purchaseDeviceController.iPhone14,
         price: 799,
       };
     case "1":
       signerPhoneSelection = {
-        name: text.purchaseDeviceControler.iPhone14Pro,
+        name: text.purchaseDeviceController.iPhone14Pro,
         price: 999,
       };
     case "2":
       signerPhoneSelection = {
-        name: text.purchaseDeviceControler.iPhone14ProMax,
+        name: text.purchaseDeviceController.iPhone14ProMax,
         price: 1099,
       };
     case "3":
       signerPhoneSelection = {
-        name: text.purchaseDeviceControler.samsungGalaxy,
+        name: text.purchaseDeviceController.samsungGalaxy,
         price: 1199,
       };
     case "4":
       signerPhoneSelection = {
-        name: text.purchaseDeviceControler.googlePixel,
+        name: text.purchaseDeviceController.googlePixel,
         price: 899,
       };
   }
@@ -65,7 +65,7 @@ function makePurchasedEnvelope(args) {
 
   // Create the envelope definition
   let env = new eSignSdk.EnvelopeDefinition();
-  env.emailSubject = text.purchaseDeviceControler.emailSubject;
+  env.emailSubject = text.purchaseDeviceController.emailSubject;
 
   // Add the document to the envelope
   env.documents = [doc];
@@ -353,7 +353,7 @@ function makeScheduledEnvelope(args) {
 
   // Create the envelope definition
   let env = new eSignSdk.EnvelopeDefinition();
-  env.emailSubject = text.purchaseDeviceControler.emailSubject;
+  env.emailSubject = text.purchaseDeviceController.emailSubject;
 
   // Add the document to the envelope
   env.documents = [doc];
