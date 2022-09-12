@@ -1,8 +1,9 @@
 const path = require("path");
+const eSignSdk = require("docusign-esign");
 const docsPath = path.resolve(__dirname, "../documents");
 const initialDocFile = "Purchase_New_Device.pdf";
 const text = require("../assets/text.json");
-const { sendEnvelope } = require("../envelopes/sendEnvelope");
+const { sendEnvelope, makeRecipientViewRequest } = require("../envelopes/sendEnvelope");
 const {
   makeEnvelope
 } = require("../envelopes/assumptionLiabilityEnvelope");
@@ -21,8 +22,6 @@ const createController = async (req, res) => {
   const envelopeArgs = {
     signerEmail: body.signerEmail,
     signerName: body.signerName,
-    recipientEmail: body.recipientEmail,
-    recipientName: body.recipientName,
     status: "sent",
     docFile: path.resolve(docsPath, initialDocFile),
 
@@ -37,36 +36,42 @@ const createController = async (req, res) => {
     accountId: req.session.accountId,
     envelopeArgs: envelopeArgs
   };
-  let results = null;
+  
 
-  // Before doing anything with envelopes
-  // first make sure the .env variables are set up
-  try {
-    if (
-      !process.env.PAYMENT_GATEWAY_ACCOUNT_ID ||
-      process.env.PAYMENT_GATEWAY_ACCOUNT_ID ==
-        "{YOUR_PAYMENT_GATEWAY_ACCOUNT_ID}" ||
-      !process.env.PAYMENT_GATEWAY_NAME ||
-      !process.env.PAYMENT_GATEWAY_DISPLAY_NAME
-    ) {
-      throw error;
-    }
-  } catch (error) {
-    throw new Error(text.apiErrors.paymentConfigsUndefined);
-  }
-
-  // Step 1: Create Envelopes
-  // The first envelope in this instance is the initial device purchase envelope
-  // The second envelope is to demonstrate scheduled sending, in this case, for monthly payments
-  let initialEnvelope = makePurchasedEnvelope(args.initialEnvelopeArgs);
-  let assumptionLiabilityEnvelope = makeEnvelope(args.)
+  // Step 1: Create Envelope
+  let assumptionLiabilityEnvelope = makeEnvelope(args.envelopeArgs)
 
   // Step 2: Send the envelopes to the signer
   try {
-    results = await sendEnvelope(initialEnvelope, args);
+    let results = null;
+    results = await sendEnvelope(assumptionLiabilityEnvelope, args);
+    let envelopeId = results.envelopeId;
+    console.log(`Envelope was created. EnvelopeId ${envelopeId}`);
+  
+    // Step 3. create the recipient view, the embedded signing
+    let viewRequest = makeRecipientViewRequest(args.envelopeArgs);
+    // Call the CreateRecipientView API
+    // Exceptions will be caught by the calling function
+
+    let eSignApi = new eSignSdk.ApiClient();
+    eSignApi.setBasePath(args.basePath);
+    eSignApi.addDefaultHeader("Authorization", "Bearer " + args.accessToken);
+    let envelopesApi = new eSignSdk.EnvelopesApi(eSignApi);
+
+    results = await envelopesApi.createRecipientView(args.accountId, envelopeId, {
+      recipientViewRequest: viewRequest,
+    });
+
+    if (results) {
+        req.session.envelopeId = results.envelopeId;
+        res.status(200).send(results.redirectUrl);
+    }
+  
+    return { envelopeId: envelopeId, redirectUrl: results.url };
+
   } catch (error) {
     console.log(error);
-    throw new Error(text.envelope.purchaseDeviceFirstEnvelopeError);
+    throw new Error(text.envelope.assumptionLiabilityEnvelopeError);
   }
 
 };

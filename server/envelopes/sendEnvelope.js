@@ -24,4 +24,24 @@ const sendEnvelope = async (envelope, args) => {
   return { envelopeId: envelopeId };
 };
 
-module.exports = { sendEnvelope };
+function makeRecipientViewRequest(args) {
+  // Data for this method
+  // args.dsReturnUrl
+  // args.signerEmail
+  // args.signerName
+  // args.signerClientId
+  // args.dsPingUrl
+
+  // Create the recipient view request object
+  const viewRequest = new eSignSdk.RecipientViewRequest.constructFromObject({
+    authenticationMethod: "none",
+    clientUserId: "1",
+    recipientId: "1",
+    returnUrl: "http://localhost:3000/", // TODO: After finish signing, how to get back to this URL?
+    userName: args.signerName,
+    email: args.signerEmail
+  });
+  return viewRequest;
+};
+
+module.exports = { sendEnvelope, makeRecipientViewRequest };

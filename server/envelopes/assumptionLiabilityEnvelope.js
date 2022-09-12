@@ -36,6 +36,7 @@ function makeEnvelope(args) {
     email: args.signerEmail,
     name: args.signerName,
     recipientId: "1",
+    clientUserId: "1"
   });
 
   ////////////////////////////////////////////////////////////////
@@ -80,22 +81,9 @@ function makeEnvelope(args) {
     initialHereTabs: [signTerms],
     signHereTabs: [signBuyer],
     fullNameTabs: [fullName],
-    formulaTabs: [dueToday, formulaPayment],
     textTabs: [
-      buyerAddress,
-      itemDescription1,
-      itemDescription2,
-      price1,
-      price2,
-      price3,
-      downPayment1,
-      downPayment2,
-      balance1,
-      balance2,
-      balance3,
-      amountPayments,
-    ],
-    dateSignedTabs: [date],
+
+    ]
   });
   signer.tabs = signerTabs;
 
