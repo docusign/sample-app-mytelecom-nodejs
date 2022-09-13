@@ -6,7 +6,6 @@ import Form from "../components/Form";
 import text from "../assets/Text.json";
 
 function Liability() {
-  const navigate = useNavigate();
 
   async function handleSubmit(event) {
     // Make request body
@@ -26,7 +25,10 @@ function Liability() {
       console.log("Received response:");
       console.log(response.data);
 
-      navigate("/submitted");
+      // Received URL for embedded signing, redirect user
+      if (response.status === 200) {
+        window.location = response.data;
+      }
     } catch (error) {
       console.log("handleSubmit error");
       console.log(error);

@@ -47,10 +47,10 @@ const createController = async (req, res) => {
     let results = null;
     results = await sendEnvelope(assumptionLiabilityEnvelope, args);
     let envelopeId = results.envelopeId;
-    console.log(`Envelope was created. EnvelopeId ${envelopeId}`);
   
     // Step 3. create the recipient view, the embedded signing
     let viewRequest = makeRecipientViewRequest(args.envelopeArgs);
+
     // Call the CreateRecipientView API
     // Exceptions will be caught by the calling function
 
@@ -64,11 +64,12 @@ const createController = async (req, res) => {
     });
 
     if (results) {
+        console.log(results);
         req.session.envelopeId = envelopeId;
-        res.status(200).send(results.redirectUrl);
+        res.status(200).send(results.url);
     }
   
-    return { envelopeId: envelopeId, redirectUrl: results.url };
+    //return { envelopeId: envelopeId, redirectUrl: results.url };
 
   } catch (error) {
     console.log(error);
