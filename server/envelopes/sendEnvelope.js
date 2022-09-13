@@ -1,5 +1,7 @@
 const eSignSdk = require("docusign-esign");
 const text = require("../assets/text.json");
+const dsReturnUrl =
+  process.env.REDIRECT_URI + "/submitted";
 const sendEnvelope = async (envelope, args) => {
   // Data for this method
   // args.basePath
@@ -37,7 +39,7 @@ function makeRecipientViewRequest(args) {
     authenticationMethod: "none",
     clientUserId: "1",
     recipientId: "1",
-    returnUrl: "http://localhost:3000/", // TODO: After finish signing, how to get back to this URL?
+    returnUrl: dsReturnUrl, // TODO: After finish signing, how to get back to this URL?
     userName: args.signerName,
     email: args.signerEmail
   });
