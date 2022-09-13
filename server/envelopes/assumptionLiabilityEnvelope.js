@@ -39,7 +39,7 @@ function makeEnvelope(args) {
     clientUserId: "1"
   });
 
-  let signerPhoneNumber = docusign.RecipientPhoneNumber.constructFromObject({
+  let signerPhoneNumber = eSignSdk.RecipientPhoneNumber.constructFromObject({
     countryCode: args.recipientCountryCode,
     number: args.phoneNumber,
   });
@@ -100,7 +100,7 @@ function makeEnvelope(args) {
 
   // Add the recipient to the envelope object
   let recipients = eSignSdk.Recipients.constructFromObject({
-    signers: [signer],
+    signers: [signer, newPhoneRecipient],
   });
   env.recipients = recipients;
 

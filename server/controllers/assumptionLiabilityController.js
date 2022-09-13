@@ -64,7 +64,7 @@ const createController = async (req, res) => {
     });
 
     if (results) {
-        req.session.envelopeId = results.envelopeId;
+        req.session.envelopeId = envelopeId;
         res.status(200).send(results.redirectUrl);
     }
   
