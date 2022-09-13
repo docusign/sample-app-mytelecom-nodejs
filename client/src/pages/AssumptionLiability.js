@@ -14,7 +14,8 @@ function Liability() {
       signerName: event.firstName + " " + event.lastName,
       signerEmail: event.signerEmail,
       recipientName: event.recipientFirstName + " " + event.recipientLastName,
-      recipientEmail: event.recipientEmail
+      recipientPhone: event.recipientPhoneNumber,
+      recipientCountryCode: event.countryCode
     };
 
     console.log(body);

@@ -52,7 +52,7 @@ function Form({ includePhone, onSubmit, phonePurchase, assumptionLiability }) {
       />
       <p></p>
       <label>{text.formLabels.email}</label>
-      <input
+        <input
         type="text"
         {...register("signerEmail", {
           required: {
@@ -213,25 +213,48 @@ function Form({ includePhone, onSubmit, phonePurchase, assumptionLiability }) {
         })}
       />
         <p></p>
-        <label>{text.formLabels.email}</label>
-        <input
+        <label>{text.formLabels.countryCode}</label>
+          <input
+            type="text"
+            placeholder="1"
+            {...register("countryCode", {
+              required: {
+                value: true,
+                message: text.formLabels.requiredFieldError,
+              },
+              pattern: {
+                value: /^([+]?\d+)$/,
+                message: text.formLabels.invalidCountryCodeError,
+              },
+            })}
+          />
+          <ErrorMessage
+            errors={errors}
+            name="countryCode"
+            as={<ErrorMessageContainer />}
+          />
+        <p></p>
+        <label>{text.formLabels.phoneNumber}</label>
+      <input
         type="text"
-        {...register("signerEmail", {
+        {...register("recipientPhoneNumber", {
           required: {
             value: true,
             message: text.formLabels.requiredFieldError,
           },
           pattern: {
-            value:
-              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-            message: text.formLabels.invalidEmailFormatError,
+            value: /^(\d+-?)+\d+$/,
+            message: text.formLabels.invalidPhoneNumberError,
+          },
+          maxLength: {
+            value: 11,
+            message: text.formLabels.invalidPhoneNumberError,
+          },
+          minLength: {
+            value: 8,
+            message: text.formLabels.invalidPhoneNumberError,
           },
         })}
-      />
-      <ErrorMessage
-        errors={errors}
-        name="signerEmail"
-        as={<ErrorMessageContainer />}
       />
         </>
       )}

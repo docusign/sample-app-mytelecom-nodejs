@@ -39,6 +39,17 @@ function makeEnvelope(args) {
     clientUserId: "1"
   });
 
+  let signerPhoneNumber = docusign.RecipientPhoneNumber.constructFromObject({
+    countryCode: args.recipientCountryCode,
+    number: args.phoneNumber,
+  });
+
+  let newPhoneRecipient = eSignSdk.Signer.constructFromObject({
+    phoneNumber: signerPhoneNumber,
+    name: args.recipientName,
+    recipientId: "2"
+  });
+
   ////////////////////////////////////////////////////////////////
   //////////////////// TAB CONSTRUCTIONS /////////////////////////
   ////////////////////////////////////////////////////////////////

@@ -27,7 +27,8 @@ const createController = async (req, res) => {
 
     // New phone owner info
     recipientName: body.recipientName,
-    recipientEmail: body.recipientEmail
+    recipientCountryCode: body.countryCode,
+    recipientPhone: body.recipientPhoneNumber
   };
 
   const args = {
