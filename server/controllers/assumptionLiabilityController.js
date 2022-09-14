@@ -27,8 +27,8 @@ const createController = async (req, res) => {
 
     // New phone owner info
     recipientName: body.recipientName,
-    recipientCountryCode: body.countryCode,
-    recipientPhone: body.recipientPhoneNumber
+    recipientCountryCode: body.recipientCountryCode,
+    recipientPhone: body.recipientPhone
   };
 
   const args = {
@@ -37,7 +37,6 @@ const createController = async (req, res) => {
     accountId: req.session.accountId,
     envelopeArgs: envelopeArgs
   };
-  
 
   // Step 1: Create Envelope
   let assumptionLiabilityEnvelope = makeEnvelope(args.envelopeArgs)

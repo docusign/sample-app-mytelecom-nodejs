@@ -13,7 +13,7 @@ function Liability() {
       signerName: event.firstName + " " + event.lastName,
       signerEmail: event.signerEmail,
       recipientName: event.recipientFirstName + " " + event.recipientLastName,
-      recipientPhone: event.recipientPhoneNumber,
+      recipientPhone: event.phoneNumber,
       recipientCountryCode: event.countryCode
     };
 

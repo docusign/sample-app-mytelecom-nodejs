@@ -41,7 +41,7 @@ function makeEnvelope(args) {
 
   let signerPhoneNumber = eSignSdk.RecipientPhoneNumber.constructFromObject({
     countryCode: args.recipientCountryCode,
-    number: args.phoneNumber,
+    number: args.recipientPhone,
   });
 
   let newPhoneRecipient = eSignSdk.Signer.constructFromObject({
@@ -100,7 +100,7 @@ function makeEnvelope(args) {
 
   // Add the recipient to the envelope object
   let recipients = eSignSdk.Recipients.constructFromObject({
-    signers: [signer],
+    signers: [signer, newPhoneRecipient],
   });
   env.recipients = recipients;
 
