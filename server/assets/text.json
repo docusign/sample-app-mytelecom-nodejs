@@ -10,8 +10,9 @@
     "envelope": {
         "envelopeCreated": "Envelope was created. EnvelopeId: ",
         "envelopeSent": "Envelope succesfully sent!",
-        "purchaseDeviceFirstEnvelopeError": "Error sending the first envelope in PurchaseDeviceController.",
-        "purchaseDeviceSecondEnvelopeError": "Error sending the second envelope in PurchaseDeviceController."
+        "purchaseDeviceFirstEnvelopeError": "Error sending the first envelope in purchaseDeviceController.",
+        "purchaseDeviceSecondEnvelopeError": "Error sending the second envelope in purchaseDeviceController.",
+        "serviceChangeEnvelopeError": "Error sending envelope in serviceChangeController."
     },
     "purchaseDeviceController": {
         "emailSubject": "myTelecom: Purchase a New Device",
@@ -20,6 +21,9 @@
         "iPhone14ProMax": "iPhone 14 Pro Max 128GB",
         "samsungGalaxy": "Samsung Galaxy S22 Ultra 128GB",
         "googlePixel": "Google Pixel 6 Pro 128GB"
+    },
+    "serviceChangeController": {
+        "emailSubject": "Multi-Line Service Change Request for Business Accounts"
     },
     "jwt": {
         "consentError": "Consent required",
