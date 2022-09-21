@@ -125,7 +125,6 @@ function Form({ includePhone, onSubmit, phonePurchase }) {
         </>
       )}
       <p></p>
-      <p></p>
       {phonePurchase && (
         <>
           <label>{text.purchaseDevice.selectPhone}</label>
@@ -181,7 +180,6 @@ function Form({ includePhone, onSubmit, phonePurchase }) {
           />
         </>
       )}
-      <p></p>
       <p></p>
       <input type="submit" value={text.formLabels.buttonName} />
     </form>

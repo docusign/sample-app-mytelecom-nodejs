@@ -32,7 +32,12 @@ function PurchaseDevice() {
   return (
     <div>
       <h1>{text.titles.purchaseTitle}</h1>
-      <Form includePhone={false} onSubmit={handleSubmit} phonePurchase={true} />
+      <Form
+        includePhone={false}
+        onSubmit={handleSubmit}
+        phonePurchase={true}
+        serviceChange={false}
+      />
     </div>
   );
 }

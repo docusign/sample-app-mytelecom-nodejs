@@ -52,5 +52,13 @@
         "yes": "Yes",
         "no": "No",
         "scheduleSend": "Enter the amount of time in minutes you would like to wait for the 2nd envelope to send:"
+    },
+    "serviceChange": {
+        "formTitle": "Input 3 or more emails to bulk send an envelope to. You may use the same email for demo purposes if you do not have at least 3 different emails to use.",
+        "signerOne": "First Signer",
+        "signerTwo": "Second Signer",
+        "signerThree": "Third Signer",
+        "signerFour": "Fourth Signer",
+        "signerFive": "Fifth Signer"
     }
 }
