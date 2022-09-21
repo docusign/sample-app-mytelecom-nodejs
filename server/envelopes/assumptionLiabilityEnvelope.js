@@ -55,31 +55,100 @@ function makeEnvelope(args) {
   // Create signing and other fields (also known as tabs) on the documents,
   // We're using anchor (autoPlace) positioning
 
-  // The 1st signing tab with just initials
-  let signTerms = eSignSdk.InitialHere.constructFromObject({
-    anchorString: "/sn1/",
+  let signOg = eSignSdk.SignHere.constructFromObject({
+    anchorString: "/ogsign/",
     anchorUnits: "pixels",
     anchorXOffset: "10",
+    anchorYOffset: "19",
+    scaleValue: "0.65",
     anchorIgnoreIfNotPresent: "true",
   });
 
-  // The 2nd signing tab for full signature
-  let signBuyer = eSignSdk.SignHere.constructFromObject({
-    anchorString: "/sn2/",
+  let newSign = eSignSdk.SignHere.constructFromObject({
+    anchorString: "/newsigner/",
     anchorUnits: "pixels",
     anchorXOffset: "10",
+    anchorYOffset: "19",
+    scaleValue: "0.65",
     anchorIgnoreIfNotPresent: "true",
   });
 
   // An autofilled spot that uses the user's full name
-  let fullName = eSignSdk.FullName.constructFromObject({
-    anchorString: "/sn3/",
+  let ogName = eSignSdk.Text.constructFromObject({
+    anchorString: "/ogname/",
     anchorUnits: "pixels",
     anchorXOffset: "10",
+    anchorYOffset: "-5",
     anchorIgnoreIfNotPresent: "true",
+    width: "40",
+    value: args.signerName
   });
 
+  // An autofilled spot that uses the user's full name
+  let newSignerName = eSignSdk.Text.constructFromObject({
+    anchorString: "/newname/",
+    anchorUnits: "pixels",
+    anchorXOffset: "10",
+    anchorYOffset: "-5",
+    anchorIgnoreIfNotPresent: "true",
+    width: "40",
+    value: args.recipientName
+  });
 
+  let newPhoneNumber = eSignSdk.Text.constructFromObject({
+    anchorString: "/newphonenumber/",
+    anchorUnits: "pixels",
+    anchorXOffset: "10",
+    anchorYOffset: "-5",
+    anchorIgnoreIfNotPresent: "true",
+    width: "40",
+    value: args.recipientPhone
+  });
+
+  let newEmail = eSignSdk.Text.constructFromObject({
+    anchorString: "/newemail/",
+    anchorUnits: "pixels",
+    anchorXOffset: "10",
+    anchorYOffset: "-5",
+    anchorIgnoreIfNotPresent: "true",
+    width: "100"
+  });
+
+  let newAddress = eSignSdk.Text.constructFromObject({
+    anchorString: "/newaddress/",
+    anchorUnits: "pixels",
+    anchorXOffset: "10",
+    anchorYOffset: "-5",
+    anchorIgnoreIfNotPresent: "true",
+    width: "100"
+  });
+
+  let newCity = eSignSdk.Text.constructFromObject({
+    anchorString: "/newcity/",
+    anchorUnits: "pixels",
+    anchorXOffset: "10",
+    anchorYOffset: "-5",
+    anchorIgnoreIfNotPresent: "true",
+    width: "100"
+  });
+
+  let newState = eSignSdk.Text.constructFromObject({
+    anchorString: "/newstate/",
+    anchorUnits: "pixels",
+    anchorXOffset: "10",
+    anchorYOffset: "-5",
+    anchorIgnoreIfNotPresent: "true",
+    width: "100"
+  });
+
+  let newZip = eSignSdk.Text.constructFromObject({
+    anchorString: "/newzip/",
+    anchorUnits: "pixels",
+    anchorXOffset: "10",
+    anchorYOffset: "-5",
+    anchorIgnoreIfNotPresent: "true",
+    width: "100"
+  });
 
   ////////////////////////////////////////////////////////////////
   ////////////////// TAB CONSTRUCTIONS END ///////////////////////
@@ -87,14 +156,16 @@ function makeEnvelope(args) {
 
   // Tabs are set per recipient / signer
   let signerTabs = eSignSdk.Tabs.constructFromObject({
-    initialHereTabs: [signTerms],
-    signHereTabs: [signBuyer],
-    fullNameTabs: [fullName],
-    textTabs: [
-
-    ]
+    signHereTabs: [signOg],
+    textTabs: [ogName, newPhoneNumber, newSignerName]
   });
   signer.tabs = signerTabs;
+
+  let newPhoneRecipientTabs = eSignSdk.Tabs.constructFromObject({
+    signHereTabs: [newSign],
+    textTabs: [newAddress, newCity, newState, newZip, newEmail]
+  });
+  newPhoneRecipient.tabs = newPhoneRecipientTabs;
 
   // Add the recipient to the envelope object
   let recipients = eSignSdk.Recipients.constructFromObject({
