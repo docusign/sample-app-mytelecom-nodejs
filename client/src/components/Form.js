@@ -237,7 +237,7 @@ function Form({ includePhone, onSubmit, phonePurchase, assumptionLiability }) {
         <label>{text.formLabels.phoneNumber}</label>
       <input
         type="text"
-        {...register("recipientPhoneNumber", {
+        {...register("phoneNumber", {
           required: {
             value: true,
             message: text.formLabels.requiredFieldError,

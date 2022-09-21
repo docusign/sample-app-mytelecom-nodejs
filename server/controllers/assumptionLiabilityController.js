@@ -1,7 +1,7 @@
 const path = require("path");
 const eSignSdk = require("docusign-esign");
 const docsPath = path.resolve(__dirname, "../documents");
-const initialDocFile = "Purchase_New_Device.pdf";
+const initialDocFile = "Assumption_Liability.pdf";
 const text = require("../assets/text.json");
 const { sendEnvelope, makeRecipientViewRequest } = require("../envelopes/sendEnvelope");
 const {

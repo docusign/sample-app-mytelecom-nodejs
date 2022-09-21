@@ -17,8 +17,6 @@ function Liability() {
       recipientCountryCode: event.countryCode
     };
 
-    console.log(body);
-
     // Send request to server
     try {
       const response = await sendRequest("/assumptionLiability", body);

@@ -2,8 +2,6 @@ const fs = require("fs");
 const eSignSdk = require("docusign-esign");
 const text = require("../assets/text.json");
 
-const currencyMultiplier = 100;
-
 /**
  * Creates envelope definition with remote signing.
  */
@@ -62,7 +60,7 @@ function makeEnvelope(args) {
     anchorString: "/sn1/",
     anchorUnits: "pixels",
     anchorXOffset: "10",
-    anchorIgnoreIfNotPresent: "false",
+    anchorIgnoreIfNotPresent: "true",
   });
 
   // The 2nd signing tab for full signature
@@ -70,7 +68,7 @@ function makeEnvelope(args) {
     anchorString: "/sn2/",
     anchorUnits: "pixels",
     anchorXOffset: "10",
-    anchorIgnoreIfNotPresent: "false",
+    anchorIgnoreIfNotPresent: "true",
   });
 
   // An autofilled spot that uses the user's full name
@@ -78,7 +76,7 @@ function makeEnvelope(args) {
     anchorString: "/sn3/",
     anchorUnits: "pixels",
     anchorXOffset: "10",
-    anchorIgnoreIfNotPresent: "false",
+    anchorIgnoreIfNotPresent: "true",
   });
 
 
