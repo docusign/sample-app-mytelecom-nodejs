@@ -49,7 +49,7 @@ const createController = async (req, res) => {
     gatewayDisplayName: process.env.PAYMENT_GATEWAY_DISPLAY_NAME,
 
     // Scheduled Sending
-    resumeTime: body.signerResumeTime,
+    signerMinutesDelay: body.signerMinutesDelay,
   };
 
   const args = {

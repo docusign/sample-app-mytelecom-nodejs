@@ -1,5 +1,5 @@
 import React from "react";
-import Form from "../components/Form";
+import PurchaseDeviceForm from "../components/PurchaseDeviceForm";
 import text from "../assets/Text.json";
 import { useNavigate } from "react-router-dom";
 import { sendRequest } from "../api/apiHelper";
@@ -13,7 +13,7 @@ function PurchaseDevice() {
       signerPhoneSelection: event.phoneSelection,
       signerInsuranceSelection: event.insurance,
       signerDownPayment: event.downPayment,
-      signerResumeTime: event.resumeTime,
+      signerMinutesDelay: event.minutesDelay,
     };
 
     console.table(body);
@@ -32,12 +32,7 @@ function PurchaseDevice() {
   return (
     <div>
       <h1>{text.titles.purchaseTitle}</h1>
-      <Form
-        includePhone={false}
-        onSubmit={handleSubmit}
-        phonePurchase={true}
-        serviceChange={false}
-      />
+      <PurchaseDeviceForm onSubmit={handleSubmit} />
     </div>
   );
 }

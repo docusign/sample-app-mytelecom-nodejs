@@ -20,6 +20,7 @@ function makePurchasedEnvelope(args) {
   // args.gatewayAccountId
   // args.gatewayName
   // args.gatewayDisplayName
+  // args.minutesDelay
 
   // Map all of the phone options and their prices
   switch (args.signerPhoneSelection) {
@@ -366,9 +367,10 @@ function makeScheduledEnvelope(args) {
   });
 
   // Schedule the envelope to send after waiting the amount of time defined by the sender
-  resumeDate = new Date(
-    todaysDate.getTime() + args.resumeTime * 60000
-  ).toISOString();
+  // We use 60000 to convert minutes to milliseconds
+  let resumeDate = new Date();
+  resumeDate.setTime(resumeDate.getTime() + args.signerMinutesDelay * 60000);
+  resumeDate = resumeDate.toISOString();
 
   // Create a workflow model
   // Add the workflow rule that sets the schedule for the envelope to be sent
