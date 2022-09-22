@@ -1,6 +1,6 @@
 import React from "react";
 import text from "../assets/Text.json";
-import Form from "../components/ServiceChangeForm";
+import ServiceChangeForm from "../components/ServiceChangeForm";
 import { useNavigate } from "react-router-dom";
 import { sendRequest } from "../api/apiHelper";
 function ServiceChange() {
@@ -30,7 +30,7 @@ function ServiceChange() {
   return (
     <div>
       <h1>{text.titles.serviceChangeTitle}</h1>
-      <Form onSubmit={handleSubmit} />
+      <ServiceChangeForm onSubmit={handleSubmit} />
     </div>
   );
 }

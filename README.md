@@ -30,7 +30,7 @@ If you are planning on running the Purchase A New Device scenario, you will need
 1. Select the Stripe button on the [**Payments**](https://admindemo.docusign.com/authenticate?goTo=payments) page in your developer account.
 2. For development, you can skip the Stripe account application by using the **Skip this account form** link at the top of the page. An enabled Stripe payment gateway is now associated with your DocuSign developer account and is shown under **Payment Gateway**.
 3. Save the **Gateway Account ID** GUID to your .env file and update the other relevant settings under **Payment configuration**.
-4. 
+
 ### Installation
 After you have configured your DocuSign settings and integration, you can begin installing the dependencies on your local machine.
 1. If you do not already have Node.js installed on your computer, install it from the [Node.js website](https://nodejs.org/en/download/). If you are not sure whether you already have Node.js installed, open up a command-line window and enter:  

@@ -3,7 +3,7 @@ import text from "../assets/Text.json";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
-function Form({ onSubmit }) {
+function ServiceChangeForm({ onSubmit }) {
   // Grab register and handleSubmit from useForm hook
   const {
     register,
@@ -122,4 +122,4 @@ function Form({ onSubmit }) {
   );
 }
 
-export default Form;
+export default ServiceChangeForm;
