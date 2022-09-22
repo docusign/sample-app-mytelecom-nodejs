@@ -22,6 +22,7 @@
         "firstName": "First name:",
         "lastName": "Last name:",
         "fullName": "Name",
+        "newPhoneOwnerInfo": "New phone owner information:",
         "email": "Email:",
         "countryCode": "Country code",
         "phoneNumber": "Phone number",

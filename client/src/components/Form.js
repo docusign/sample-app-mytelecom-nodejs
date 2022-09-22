@@ -3,7 +3,7 @@ import text from "../assets/Text.json";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 
-function Form({ includePhone, onSubmit, phonePurchase }) {
+function Form({ includePhone, onSubmit, phonePurchase, assumptionLiability }) {
   // Grab register and handleSubmit from useForm hook
   const {
     register,
@@ -163,7 +163,9 @@ function Form({ includePhone, onSubmit, phonePurchase }) {
               },
             })}
           />
+
           <p></p>
+
           <label>{text.purchaseDevice.scheduleSend}</label>
           <input
             type="number"
@@ -180,7 +182,88 @@ function Form({ includePhone, onSubmit, phonePurchase }) {
           />
         </>
       )}
+
+      {assumptionLiability && (
+        <>
+          <label>{text.formLabels.newPhoneOwnerInfo}</label>
+          <p></p>
+          <label>{text.formLabels.firstName}</label>
+          <input
+            type="text"
+            {...register("recipientFirstName", {
+              required: {
+                value: true,
+                message: text.formLabels.requiredFieldError,
+              },
+              maxLength: {
+                value: 30,
+                message: text.formLabels.inputTooLongError,
+              },
+            })}
+          />
+          <p></p>
+          <label>{text.formLabels.lastName}</label>
+          <input
+            type="text"
+            {...register("recipientLastName", {
+              required: {
+                value: true,
+                message: text.formLabels.requiredFieldError,
+              },
+              maxLength: {
+                value: 30,
+                message: text.formLabels.inputTooLongError,
+              },
+            })}
+          />
+          <p></p>
+          <label>{text.formLabels.countryCode}</label>
+          <input
+            type="text"
+            placeholder="1"
+            {...register("countryCode", {
+              required: {
+                value: true,
+                message: text.formLabels.requiredFieldError,
+              },
+              pattern: {
+                value: /^([+]?\d+)$/,
+                message: text.formLabels.invalidCountryCodeError,
+              },
+            })}
+          />
+          <ErrorMessage
+            errors={errors}
+            name="countryCode"
+            as={<ErrorMessageContainer />}
+          />
+          <p></p>
+          <label>{text.formLabels.phoneNumber}</label>
+          <input
+            type="text"
+            {...register("phoneNumber", {
+              required: {
+                value: true,
+                message: text.formLabels.requiredFieldError,
+              },
+              pattern: {
+                value: /^(\d+-?)+\d+$/,
+                message: text.formLabels.invalidPhoneNumberError,
+              },
+              maxLength: {
+                value: 11,
+                message: text.formLabels.invalidPhoneNumberError,
+              },
+              minLength: {
+                value: 8,
+                message: text.formLabels.invalidPhoneNumberError,
+              },
+            })}
+          />
+        </>
+      )}
       <p></p>
+
       <input type="submit" value={text.formLabels.buttonName} />
     </form>
   );

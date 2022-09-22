@@ -10,8 +10,9 @@
     "envelope": {
         "envelopeCreated": "Envelope was created. EnvelopeId: ",
         "envelopeSent": "Envelope succesfully sent!",
-        "purchaseDeviceFirstEnvelopeError": "Error sending the first envelope in purchaseDeviceController.",
-        "purchaseDeviceSecondEnvelopeError": "Error sending the second envelope in purchaseDeviceController.",
+        "purchaseDeviceFirstEnvelopeError": "Error sending the first envelope in PurchaseDeviceController.",
+        "purchaseDeviceSecondEnvelopeError": "Error sending the second envelope in PurchaseDeviceController.",
+        "assumptionLiabilityEnvelopeError": "Error sending the envelope in AssumptionLiabilityController.",
         "serviceChangeEnvelopeError": "Error sending envelope in serviceChangeController."
     },
     "purchaseDeviceController": {
@@ -24,6 +25,9 @@
     },
     "serviceChangeController": {
         "emailSubject": "Multi-Line Service Change Request for Business Accounts"
+    },
+    "assumptionLiabilityController": {
+        "emailSubject": "MyTelecom: Assume liability"
     },
     "jwt": {
         "consentError": "Consent required",
