@@ -2,6 +2,11 @@ import React from "react";
 import text from "../assets/Text.json";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import {
+  emailRegExp,
+  formCheckFieldRequired,
+  formCheckNameMaxLength,
+} from "./CommonFormObjects";
 
 function ServiceChangeForm({ onSubmit }) {
   // Grab register and handleSubmit from useForm hook
@@ -23,14 +28,8 @@ function ServiceChangeForm({ onSubmit }) {
       <input
         type="text"
         {...register(firstName, {
-          required: {
-            value: true,
-            message: text.formLabels.requiredFieldError,
-          },
-          maxLength: {
-            value: 30,
-            message: text.formLabels.inputTooLongError,
-          },
+          required: formCheckFieldRequired,
+          maxLength: formCheckNameMaxLength,
         })}
       />
       <ErrorMessage
@@ -43,14 +42,8 @@ function ServiceChangeForm({ onSubmit }) {
       <input
         type="text"
         {...register(lastName, {
-          required: {
-            value: true,
-            message: text.formLabels.requiredFieldError,
-          },
-          maxLength: {
-            value: 50,
-            message: text.formLabels.inputTooLongError,
-          },
+          required: formCheckFieldRequired,
+          maxLength: formCheckNameMaxLength,
         })}
       />
       <ErrorMessage
@@ -63,13 +56,9 @@ function ServiceChangeForm({ onSubmit }) {
       <input
         type="text"
         {...register(signerEmail, {
-          required: {
-            value: true,
-            message: text.formLabels.requiredFieldError,
-          },
+          required: formCheckFieldRequired,
           pattern: {
-            value:
-              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            value: emailRegExp,
             message: text.formLabels.invalidEmailFormatError,
           },
         })}

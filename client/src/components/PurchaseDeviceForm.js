@@ -2,6 +2,11 @@ import React from "react";
 import text from "../assets/Text.json";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import {
+  emailRegExp,
+  formCheckFieldRequired,
+  formCheckNameMaxLength,
+} from "./CommonFormObjects";
 
 function PurchaseDeviceForm({ onSubmit }) {
   // Grab register and handleSubmit from useForm hook
@@ -21,11 +26,8 @@ function PurchaseDeviceForm({ onSubmit }) {
       <input
         type="text"
         {...register("firstName", {
-          required: {
-            value: true,
-            message: text.formLabels.requiredFieldError,
-          },
-          maxLength: { value: 30, message: text.formLabels.inputTooLongError },
+          required: formCheckFieldRequired,
+          maxLength: formCheckNameMaxLength,
         })}
       />
       <ErrorMessage
@@ -38,11 +40,8 @@ function PurchaseDeviceForm({ onSubmit }) {
       <input
         type="text"
         {...register("lastName", {
-          required: {
-            value: true,
-            message: text.formLabels.requiredFieldError,
-          },
-          maxLength: { value: 50, message: text.formLabels.inputTooLongError },
+          required: formCheckFieldRequired,
+          maxLength: formCheckNameMaxLength,
         })}
       />
       <ErrorMessage
@@ -55,13 +54,9 @@ function PurchaseDeviceForm({ onSubmit }) {
       <input
         type="text"
         {...register("signerEmail", {
-          required: {
-            value: true,
-            message: text.formLabels.requiredFieldError,
-          },
+          required: formCheckFieldRequired,
           pattern: {
-            value:
-              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            value: emailRegExp,
             message: text.formLabels.invalidEmailFormatError,
           },
         })}
@@ -99,32 +94,29 @@ function PurchaseDeviceForm({ onSubmit }) {
         <input
           type="number"
           {...register("downPayment", {
-            required: {
-              value: true,
-              message: text.formLabels.requiredFieldError,
-            },
-            maxLength: {
-              value: 4,
-              message: text.formLabels.inputTooLongError,
-            },
+            required: formCheckFieldRequired,
+            maxLength: { ...formCheckNameMaxLength, value: 4 },
           })}
         />
-
+        <ErrorMessage
+          errors={errors}
+          name="downPayment"
+          as={<ErrorMessageContainer />}
+        />
         <p></p>
 
         <label>{text.purchaseDevice.scheduleSend}</label>
         <input
           type="number"
           {...register("minutesDelay", {
-            required: {
-              value: true,
-              message: text.formLabels.requiredFieldError,
-            },
-            maxLength: {
-              value: 4,
-              message: text.formLabels.inputTooLongError,
-            },
+            required: formCheckFieldRequired,
+            maxLength: { ...formCheckNameMaxLength, value: 5 },
           })}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="minutesDelay"
+          as={<ErrorMessageContainer />}
         />
       </>
       <p></p>

@@ -2,6 +2,11 @@ import React from "react";
 import text from "../assets/Text.json";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
+import {
+  emailRegExp,
+  formCheckNameMaxLength,
+  formCheckFieldRequired,
+} from "./CommonFormObjects";
 
 function AssumptionLiabilityForm({ onSubmit }) {
   // Grab register and handleSubmit from useForm hook
@@ -42,14 +47,8 @@ function AssumptionLiabilityForm({ onSubmit }) {
         <input
           type="text"
           {...register("lastName", {
-            required: {
-              value: true,
-              message: text.formLabels.requiredFieldError,
-            },
-            maxLength: {
-              value: 50,
-              message: text.formLabels.inputTooLongError,
-            },
+            required: formCheckFieldRequired,
+            maxLength: formCheckNameMaxLength,
           })}
         />
         <ErrorMessage
@@ -62,13 +61,9 @@ function AssumptionLiabilityForm({ onSubmit }) {
         <input
           type="text"
           {...register("signerEmail", {
-            required: {
-              value: true,
-              message: text.formLabels.requiredFieldError,
-            },
+            required: formCheckFieldRequired,
             pattern: {
-              value:
-                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+              value: emailRegExp,
               message: text.formLabels.invalidEmailFormatError,
             },
           })}
@@ -85,30 +80,28 @@ function AssumptionLiabilityForm({ onSubmit }) {
         <input
           type="text"
           {...register("recipientFirstName", {
-            required: {
-              value: true,
-              message: text.formLabels.requiredFieldError,
-            },
-            maxLength: {
-              value: 30,
-              message: text.formLabels.inputTooLongError,
-            },
+            required: formCheckFieldRequired,
+            maxLength: formCheckNameMaxLength,
           })}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="firstName"
+          as={<ErrorMessageContainer />}
         />
         <p></p>
         <label>{text.formLabels.lastName}</label>
         <input
           type="text"
           {...register("recipientLastName", {
-            required: {
-              value: true,
-              message: text.formLabels.requiredFieldError,
-            },
-            maxLength: {
-              value: 30,
-              message: text.formLabels.inputTooLongError,
-            },
+            required: formCheckFieldRequired,
+            maxLength: formCheckNameMaxLength,
           })}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="lastName"
+          as={<ErrorMessageContainer />}
         />
         <p></p>
         <label>{text.formLabels.countryCode}</label>
@@ -116,10 +109,7 @@ function AssumptionLiabilityForm({ onSubmit }) {
           type="text"
           placeholder="1"
           {...register("countryCode", {
-            required: {
-              value: true,
-              message: text.formLabels.requiredFieldError,
-            },
+            required: formCheckFieldRequired,
             pattern: {
               value: /^([+]?\d+)$/,
               message: text.formLabels.invalidCountryCodeError,
@@ -136,10 +126,7 @@ function AssumptionLiabilityForm({ onSubmit }) {
         <input
           type="text"
           {...register("phoneNumber", {
-            required: {
-              value: true,
-              message: text.formLabels.requiredFieldError,
-            },
+            required: formCheckFieldRequired,
             pattern: {
               value: /^(\d+-?)+\d+$/,
               message: text.formLabels.invalidPhoneNumberError,
@@ -153,6 +140,11 @@ function AssumptionLiabilityForm({ onSubmit }) {
               message: text.formLabels.invalidPhoneNumberError,
             },
           })}
+        />
+        <ErrorMessage
+          errors={errors}
+          name="phoneNumber"
+          as={<ErrorMessageContainer />}
         />
       </>
       <p></p>
