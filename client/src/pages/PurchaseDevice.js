@@ -1,9 +1,8 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-
-import { sendRequest } from "../api/apiHelper";
-import Form from "../components/Form";
+import PurchaseDeviceForm from "../components/PurchaseDeviceForm";
 import text from "../assets/Text.json";
+import { useNavigate } from "react-router-dom";
+import { sendRequest } from "../api/apiHelper";
 function PurchaseDevice() {
   const navigate = useNavigate();
   async function handleSubmit(event) {
@@ -14,17 +13,15 @@ function PurchaseDevice() {
       signerPhoneSelection: event.phoneSelection,
       signerInsuranceSelection: event.insurance,
       signerDownPayment: event.downPayment,
-      signerResumeTime: event.resumeTime,
+      signerMinutesDelay: event.minutesDelay,
     };
 
-    console.log(body);
+    console.table(body);
 
     // Send request to server
     try {
       const response = await sendRequest("/purchaseDevice", body);
-      console.log("Received response:");
-      console.log(response.data);
-
+      console.log(`Received response: ${response.data}`);
       navigate("/submitted");
     } catch (error) {
       console.log("handleSubmit error");
@@ -35,7 +32,7 @@ function PurchaseDevice() {
   return (
     <div>
       <h1>{text.titles.purchaseTitle}</h1>
-      <Form includePhone={false} onSubmit={handleSubmit} phonePurchase={true} />
+      <PurchaseDeviceForm onSubmit={handleSubmit} />
     </div>
   );
 }

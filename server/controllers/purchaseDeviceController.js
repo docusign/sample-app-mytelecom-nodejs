@@ -49,7 +49,7 @@ const createController = async (req, res) => {
     gatewayDisplayName: process.env.PAYMENT_GATEWAY_DISPLAY_NAME,
 
     // Scheduled Sending
-    resumeTime: body.signerResumeTime,
+    signerMinutesDelay: body.signerMinutesDelay,
   };
 
   const args = {
@@ -59,7 +59,8 @@ const createController = async (req, res) => {
     initialEnvelopeArgs: initialEnvelopeArgs,
     monthlyPaymentEnvelopeArgs: monthlyPaymentEnvelopeArgs,
   };
-  let results = null;
+  let firstResults = null;
+  let secondResults = null;
 
   // Before doing anything with envelopes
   // first make sure the .env variables are set up

@@ -1,12 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-
 import { sendRequest } from "../api/apiHelper";
-import Form from "../components/Form";
+import AssumptionLiabilityForm from "../components/AssumptionLiabilityForm";
 import text from "../assets/Text.json";
 
 function Liability() {
-
   async function handleSubmit(event) {
     // Make request body
     const body = {
@@ -14,7 +11,7 @@ function Liability() {
       signerEmail: event.signerEmail,
       recipientName: event.recipientFirstName + " " + event.recipientLastName,
       recipientPhone: event.phoneNumber,
-      recipientCountryCode: event.countryCode
+      recipientCountryCode: event.countryCode,
     };
 
     // Send request to server
@@ -36,7 +33,7 @@ function Liability() {
   return (
     <div>
       <h1>{text.titles.assumptionTitle}</h1>
-      <Form includePhone={false} onSubmit={handleSubmit} assumptionLiability={true} />
+      <AssumptionLiabilityForm onSubmit={handleSubmit} />
     </div>
   );
 }

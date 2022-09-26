@@ -12,15 +12,19 @@
         "envelopeSent": "Envelope succesfully sent!",
         "purchaseDeviceFirstEnvelopeError": "Error sending the first envelope in PurchaseDeviceController.",
         "purchaseDeviceSecondEnvelopeError": "Error sending the second envelope in PurchaseDeviceController.",
-        "assumptionLiabilityEnvelopeError": "Error sending the envelope in AssumptionLiabilityController."
+        "assumptionLiabilityEnvelopeError": "Error sending the envelope in AssumptionLiabilityController.",
+        "serviceChangeEnvelopeError": "Error sending envelope in serviceChangeController."
     },
-    "purchaseDeviceControler": {
+    "purchaseDeviceController": {
         "emailSubject": "myTelecom: Purchase a New Device",
         "iPhone14": "iPhone 14 128GB",
         "iPhone14Pro": "iPhone 14 Pro 128GB",
         "iPhone14ProMax": "iPhone 14 Pro Max 128GB",
         "samsungGalaxy": "Samsung Galaxy S22 Ultra 128GB",
         "googlePixel": "Google Pixel 6 Pro 128GB"
+    },
+    "serviceChangeController": {
+        "emailSubject": "Multi-Line Service Change Request for Business Accounts"
     },
     "assumptionLiabilityController": {
         "emailSubject": "MyTelecom: Assume liability"
