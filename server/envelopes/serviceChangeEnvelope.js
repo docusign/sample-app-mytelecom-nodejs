@@ -7,8 +7,8 @@ const text = require("../assets/text.json");
  */
 function makeEnvelope(args) {
   // Data for this method
-  // args.signerEmail
-  // args.signerName
+  // args.signerEmail1
+  // args.signerName1
   // args.docFile
   // args.status
 
@@ -31,8 +31,8 @@ function makeEnvelope(args) {
 
   // Create a signer recipient to sign the document, identified by name and email
   let signer = eSignSdk.Signer.constructFromObject({
-    email: args.signerEmail,
-    name: args.signerName,
+    email: args.signerEmail1,
+    name: args.signerName1,
     recipientId: "1",
   });
 

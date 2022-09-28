@@ -17,8 +17,8 @@ const createController = async (req, res) => {
   // Construct arguments
   const { body } = req;
   const envelopeArgs = {
-    signerEmail: body.signerEmail,
-    signerName: body.signerName,
+    signerEmail1: body.signerEmail1,
+    signerName1: body.signerName1,
     status: "sent",
     docFile: path.resolve(docsPath, docFile),
   };

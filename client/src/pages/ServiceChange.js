@@ -8,8 +8,8 @@ function ServiceChange() {
   async function handleSubmit(event) {
     // Make request body
     const body = {
-      signerName: event.firstName + " " + event.lastName,
-      signerEmail: event.signerEmail,
+      signerName1: event.firstName1 + " " + event.lastName1,
+      signerEmail1: event.signerEmail1,
     };
 
     console.log(body);
@@ -17,9 +17,7 @@ function ServiceChange() {
     // Send request to server
     try {
       const response = await sendRequest("/serviceChange", body);
-      console.log("Received response:");
-      console.log(response.data);
-
+      console.log(`Received response: ${response.data}`);
       navigate("/submitted");
     } catch (error) {
       console.log("handleSubmit error");
