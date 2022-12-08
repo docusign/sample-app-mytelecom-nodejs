@@ -1,0 +1,33 @@
+{
+  "Header1": {
+    "P1": "Welcome to ",
+    "P2": "MyTelecom"
+  },
+  "Header2": "Header",
+
+  "Card1": {
+    "Title": "Assumption of Liability",
+    "Button": "Get Started",
+    "FeaturesTitle": "DocuSign features:",
+    "FeaturesList": "<li>Embedded Signing</li><li>SMS Delivery</li><li>ID Verification</li>"
+  },
+  "Card2": {
+    "Title": "Purchase New Device",
+    "Button": "Get Started",
+    "FeaturesTitle": "DocuSign features:",
+    "FeaturesList": "<li>Remote Signing</li><li>Scheduled Sending</li><li>Payments</li>"
+  },
+  "Card3": {
+    "Title": "Service Change Request",
+    "Button": "Get Started",
+    "FeaturesTitle": "DocuSign features:",
+    "FeaturesList": "<li>Remote Signing</li><li>Bulk Sending</li><li>Conditional Recipient</li><li>Payments</li>"
+  },
+
+  "PreFooter1": "DocuSign: It's time to agree better",
+  "PreFooter2": "DocuSign helps organizations connect and automate how they prepare, sign, act on, and manage agreements.",
+  "GetFreeLinkName": "Get a free developer account",
+  "GetFreeLink": "https://go.docusign.com/sandbox/productshot?elq=16799",
+  "NodeSDKLinkName": "Node.JS SDK documentation",
+  "NodeSDKLink": "https://developers.docusign.com/docs/esign-rest-api/sdk-tools/node/"
+}

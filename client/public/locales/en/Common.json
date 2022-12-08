@@ -1,0 +1,12 @@
+﻿{
+  "ApplicationName": "MyTelecom",
+
+  "GitHubLinkText": "GitHub Source",
+  "GitHubLink": "https://github.com/docusign/sample-app-mytelecom-nodejs",
+  "AboutLinkText": "About",
+  "LogInText": "Log in",
+  "LogOutText": "Log out",
+
+  "Copyright": "© 2022 DocuSign Inc."
+}
+

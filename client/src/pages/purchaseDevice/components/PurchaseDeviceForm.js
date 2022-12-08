@@ -1,12 +1,12 @@
 import React from "react";
-import text from "../assets/Text.json";
+import text from "../../../assets/Text.json";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import {
   emailRegExp,
   formCheckFieldRequired,
   formCheckNameMaxLength,
-} from "./CommonFormObjects";
+} from "../../../components/CommonFormObjects";
 
 function PurchaseDeviceForm({ onSubmit }) {
   // Grab register and handleSubmit from useForm hook
