@@ -1,10 +1,20 @@
 .content-section {
-    padding-top: 26px;
-    min-height: 89vh;
-    background-color: #f4f9fe;
+  padding-top: 26px;
+  min-height: 89vh;
+  background-color: #f4f9fe;
 }
 @media (min-width: 768px) {
-    .content-section {
-        padding-top: 61px;
-    }
+  .content-section {
+    padding-top: 40px;
+  }
+}
+#rightCaret,
+#downCaret {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+.form-label {
+  white-space: nowrap;
 }
