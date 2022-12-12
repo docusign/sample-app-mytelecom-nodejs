@@ -14,20 +14,9 @@ const Header = () => {
             <Link className="navbar-brand" to="/">
                 <img src={logo} alt="logo" />
             </Link>
-            <button 
-                className="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span className="navbar-toggler-icon"></span>
-            </button>
 
             <div
-                className="navbar-collapse justify-content-end"
+                className="justify-content-end"
             >
                 <Link className="nav-link" to={t("GitHubLink")} rel="noopener noreferrer" target="_blank">
                     <img src={source} alt={t("GitHubLinkText")}/>

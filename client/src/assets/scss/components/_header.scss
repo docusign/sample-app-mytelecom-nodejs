@@ -4,6 +4,7 @@
     color: #0d1b31;
     font-size: 14px;
     font-weight: 600;
+    display: flex;
 }
 .navbar {
     background-color: #F6FAFF !important;
@@ -11,13 +12,15 @@
     max-width: 1120px;
     margin-left: auto;
     margin-right: auto;
+    
+    width: 100%;
+    justify-content: space-between;
 }
 .navbar-name {
     text-transform: uppercase;
 }
 .nav-link {
     margin-top: 4px;
-    margin-left: 24px;
     color: #0d1b31 !important;
 }
 .nav-link:active {

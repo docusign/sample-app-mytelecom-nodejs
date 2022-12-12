@@ -26,8 +26,15 @@
 
   "PreFooter1": "DocuSign: It's time to agree better",
   "PreFooter2": "DocuSign helps organizations connect and automate how they prepare, sign, act on, and manage agreements.",
-  "GetFreeLinkName": "Get a free developer account",
-  "GetFreeLink": "https://go.docusign.com/sandbox/productshot?elq=16799",
-  "NodeSDKLinkName": "Node.JS SDK documentation",
-  "NodeSDKLink": "https://developers.docusign.com/docs/esign-rest-api/sdk-tools/node/"
+  "PreFooter3": "Resources",
+  "CreateDeveloperAccountHeader": "Create Developer Account",
+  "CreateDeveloperAccountHeaderLink": "https://go.docusign.com/sandbox/productshot/?elq=16799",
+  "LearnMore": "Learn More",
+  "LearnMoreLink": "https://developers.docusign.com/",
+  "DocuSignLinkHeader": "DocuSign Link",
+  "DocuSignLink": "https://developers.docusign.com/",
+  "eSignatureSDK": "Node.JS eSignature SDK",
+  "eSignatureSDKLink": "https://developers.docusign.com/docs/esign-rest-api/sdk-tools/node/",
+  "ClickSDK": "Node.JS Click SDK",
+  "ClickSDKLink": "https://developers.docusign.com/docs/click-api/"
 }
