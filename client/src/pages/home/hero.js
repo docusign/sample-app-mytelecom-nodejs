@@ -6,7 +6,7 @@ const Hero = () => {
     return (
         <section className="hero-section bg-prop">
             <div className="container-fluid">
-                <div className="hero-text text-center">
+                <div className="hero-text text-left">
                     <h1 className="h1">
                         {t("Header1.P1")}
                         <div className="w-100 d-block d-md-none"></div>

@@ -44,11 +44,10 @@
     max-width: 350px;
     min-height: 395px;
     margin-bottom: 20px;
-    border: none;
-    border-radius: 0%;
-    background-color: transparent;
-    background: linear-gradient(-45deg, transparent 35px, white 0);
-    filter: drop-shadow(0 9px 20px rgba(51, 76, 207, 0.13));
+
+    background: #FFFFFF;
+    box-shadow: 0px 16px 30px rgba(24, 24, 24, 0.1);
+    border-radius: 8px;
 }
 .h-card:hover{
     filter: drop-shadow(0 9px 44px rgba(51, 76, 207, 0.13));
@@ -113,13 +112,22 @@
 }
 
 .h-card-button {
-    width: 168px;
+    width: 197px;
     height: 44px;
-    border-radius: 0;
-    font-size: 14px;
-    font-weight: bold;
+    border-radius: 4px;
     border: none;
     cursor: pointer;
+    background: linear-gradient(68.71deg, #8A2387 -71.8%, #E94057 33.71%, #F27121 126.8%);
+
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 100%;
+
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
 }
 @media (min-width: 768px) {
     .h-card-button {
