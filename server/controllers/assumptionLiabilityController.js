@@ -12,7 +12,7 @@ const { checkToken } = require("./jwtController");
 /**
  * Controller that creates and sends an envelope to the signer.
  */
-const createController = async (req, res) => {
+const createController = async (req, res, next) => {
   // Check the access token, which will also update the token
   // if it is expired
   await checkToken(req);
@@ -67,14 +67,10 @@ const createController = async (req, res) => {
         req.session.envelopeId = envelopeId;
         res.status(200).send(results.url);
     }
-  
-    //return { envelopeId: envelopeId, redirectUrl: results.url };
-
   } catch (error) {
     console.log(error);
-    throw new Error(text.envelope.assumptionLiabilityEnvelopeError);
+    next(new Error(text.envelope.assumptionLiabilityEnvelopeError));
   }
-
 };
 
 module.exports = { createController };

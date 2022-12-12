@@ -7,6 +7,10 @@
   "LogInText": "Log in",
   "LogOutText": "Log out",
 
-  "Copyright": "© 2022 DocuSign Inc."
-}
+  "Copyright": "© 2022 DocuSign Inc.",
 
+  "RequiredFieldError": "This field is required.",
+  "InputTooLongError": "Your input is too long.",
+  "MainButton": "Continue",
+  "BackButton": "Back"
+}
