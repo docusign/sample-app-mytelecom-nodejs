@@ -9,6 +9,9 @@ const Card = props => {
                 <div className="h-card-top">
                     <img className="h-card-image" src={props.img} alt="" />
                     <h4 className="h-card-title">{props.title}</h4>
+                    <h5 className="h-card-description">
+                        {props.description}
+                    </h5>
                     <Link to={props.linkTo} rel="noopener noreferrer">
                         <button className="h-card-button" type="button">
                             {props.getStarted}

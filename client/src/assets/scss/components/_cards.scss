@@ -56,10 +56,20 @@
 }
 
 .h-card-title {
-  min-height: 60px;
+  min-height: 55px;
   font-size: 22px;
   font-weight: 600;
   margin-top: 21px;
+  margin-bottom: 4px;
+}
+
+.h-card-description {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;  
+  text-align: center;
   margin-bottom: 23px;
 }
 
@@ -89,7 +99,7 @@
   .h-card-title {
     font-size: 22px;
     margin-top: 24px;
-    margin-bottom: 22px;
+    margin-bottom: 4px;
   }
 }
 

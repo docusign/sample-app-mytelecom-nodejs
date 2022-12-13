@@ -57,6 +57,8 @@
   text-transform: uppercase;
   color: #ffffff;
   display: inline;
+
+  margin-right: 10px;
 }
 .second-button {
   width: 197px;
@@ -147,6 +149,9 @@
     text-transform: uppercase;
     color: #ffffff;
     display: inline;
+    
+    margin-top: 8px;
+    margin-bottom: 65px;
   }
   .second-button {
     width: 197px;
@@ -193,6 +198,11 @@
   }
 }
 @media (min-width: 992px) {
+  .first-button {
+    margin-top: 8px;
+    margin-right: 0;
+    margin-bottom: 65px;
+  }
   .cta-title {
     margin-top: 88px;
     font-size: 34px;

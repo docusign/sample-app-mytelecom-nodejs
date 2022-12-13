@@ -21,6 +21,7 @@ const Home = () => {
               additionalClass="card-1"
               img={img1}
               title={t("Card1.Title")}
+              description={t("Card1.Description")}
               linkTo="/assumptionLiability"
               getStarted={t("Card1.Button")}
               featureTitle={t("Card1.FeaturesTitle")}
@@ -31,6 +32,7 @@ const Home = () => {
               additionalClass="card-2"
               img={img2}
               title={t("Card2.Title")}
+              description={t("Card2.Description")}
               linkTo="/purchaseDevice"
               getStarted={t("Card2.Button")}
               featureTitle={t("Card2.FeaturesTitle")}
@@ -41,6 +43,7 @@ const Home = () => {
               additionalClass="card-3"
               img={img3}
               title={t("Card3.Title")}
+              description={t("Card3.Description")}
               linkTo="/serviceChange"
               getStarted={t("Card3.Button")}
               featureTitle={t("Card3.FeaturesTitle")}

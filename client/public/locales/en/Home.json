@@ -7,18 +7,21 @@
 
   "Card1": {
     "Title": "Assumption of Liability",
+    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "Button": "Get Started",
     "FeaturesTitle": "DocuSign features:",
     "FeaturesList": "<li>Embedded Signing</li><li>SMS Delivery</li><li>ID Verification</li>"
   },
   "Card2": {
     "Title": "Purchase New Device",
+    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "Button": "Get Started",
     "FeaturesTitle": "DocuSign features:",
     "FeaturesList": "<li>Remote Signing</li><li>Scheduled Sending</li><li>Payments</li>"
   },
   "Card3": {
     "Title": "Service Change Request",
+    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "Button": "Get Started",
     "FeaturesTitle": "DocuSign features:",
     "FeaturesList": "<li>Remote Signing</li><li>Bulk Sending</li><li>Conditional Recipient</li><li>Payments</li>"
