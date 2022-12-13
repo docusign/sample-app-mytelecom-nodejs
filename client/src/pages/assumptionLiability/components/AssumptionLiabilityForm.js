@@ -1,12 +1,12 @@
 import React from "react";
-import text from "../assets/Text.json";
+import text from "../../../assets/Text.json";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import {
   emailRegExp,
   formCheckNameMaxLength,
   formCheckFieldRequired,
-} from "./CommonFormObjects";
+} from "../../../components/CommonFormObjects";
 
 function AssumptionLiabilityForm({ onSubmit }) {
   // Grab register and handleSubmit from useForm hook

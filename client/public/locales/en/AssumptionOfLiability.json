@@ -1,0 +1,19 @@
+{
+  "Title": "Assumption of Liability",
+  "PhoneOwnerInformationTitle": "New phone owner information:",
+
+  "FirstName": "First name:",
+  "LastName": "Last name:",
+  "Email": "Email:",
+  "CountryCode": "Country code:",
+  "PhoneNumber": "Phone number:",
+
+  "RequiredFieldError": "This field is required.",
+
+  "ButtonName": "Submit",
+
+  "SeeMore": {
+    "Title": "See behind the scenes",
+    "Text": "<p>Text</p>"
+  }
+}

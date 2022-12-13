@@ -1,8 +1,8 @@
 import React from "react";
-import text from "../assets/Text.json";
-import ServiceChangeForm from "../components/ServiceChangeForm";
+import text from "../../assets/Text.json";
+import ServiceChangeForm from "./components/ServiceChangeForm";
 import { useNavigate } from "react-router-dom";
-import { sendRequest } from "../api/apiHelper";
+import { sendRequest } from "../../api/apiHelper";
 function ServiceChange() {
   const navigate = useNavigate();
   async function handleSubmit(event) {

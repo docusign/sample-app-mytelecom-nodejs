@@ -1,8 +1,8 @@
 import React from "react";
-import PurchaseDeviceForm from "../components/PurchaseDeviceForm";
-import text from "../assets/Text.json";
+import PurchaseDeviceForm from "./components/PurchaseDeviceForm";
+import text from "../../assets/Text.json";
 import { useNavigate } from "react-router-dom";
-import { sendRequest } from "../api/apiHelper";
+import { sendRequest } from "../../api/apiHelper";
 function PurchaseDevice() {
   const navigate = useNavigate();
   async function handleSubmit(event) {

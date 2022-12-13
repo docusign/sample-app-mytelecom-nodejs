@@ -1,36 +1,33 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
-import Login from "./pages/Login";
-import AssumptionLiability from "./pages/AssumptionLiability";
-import PurchaseDevice from "./pages/PurchaseDevice";
-import ServiceChange from "./pages/ServiceChange";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { Suspense, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import AppContext from "./context/appContext";
 import Header from "./components/Header";
-import SubmittedPurchaseDevice from "./pages/SubmittedPurchaseDevice";
-import text from "./assets/Text.json";
+import Home from "./pages/home"
+import AssumptionLiability from "./pages/assumptionLiability"
+import PurchaseDevice from "./pages/purchaseDevice";
+import ServiceChange from "./pages/serviceChange";
+import Footer from "./components/footer";
+import "./assets/scss/main.scss";
+
 function App() {
+  const [nextPage, setNextPage] = useState("");
+
   return (
-    <div>
-      <h1>{text.titles.homeTitle}</h1>
-      <Router>
+    <Suspense fallback="">
+      <AppContext.Provider
+        value={{ nextPage, setNextPage }}
+      >
         <Header />
         <Routes>
-          <Route path="login" element={<Login />} />
-          <Route
-            path="assumption-of-liability"
-            element={<AssumptionLiability />}
-          />
-          <Route
-            path="purchase-new-device"
-            element={<PurchaseDevice />}
-          ></Route>
-
-          <Route path="service-change" element={<ServiceChange />} />
-          <Route path="submitted" element={<SubmittedPurchaseDevice />} />
+          <Route path="/" exact element={<Home/>} />
+          <Route path="/assumptionLiability" element={<AssumptionLiability/>} />
+          <Route path="/purchaseDevice" element={<PurchaseDevice/>} />
+          <Route path="/serviceChange" element={<ServiceChange/>} />
         </Routes>
-      </Router>
-    </div>
+
+        <Footer />
+      </AppContext.Provider>
+    </Suspense>
   );
 }
-
 export default App;

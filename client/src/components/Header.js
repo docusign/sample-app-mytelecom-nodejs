@@ -1,21 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import text from "../assets/Text.json";
-// TODO
-// Currently just a bunch of HTML links stacked next to each other
-// Eventually will be a more fleshed out nav bar on top
-// of the page
-function Header() {
-  return (
-    <header className="header" role="banner">
-      <nav className="navbar">
-        <Link to="login">{text.titles.loginTitle}</Link>
-        <Link to="assumption-of-liability">{text.titles.assumptionTitle}</Link>
-        <Link to="purchase-new-device">{text.titles.purchaseTitle}</Link>
-        <Link to="service-change">{text.titles.serviceChangeTitle}</Link>
-      </nav>
-    </header>
-  );
-}
+import { useTranslation } from "react-i18next";
+import logo from "../assets/img/logo.svg"
+import source from "../assets/img/github-source.svg"
 
-export default Header;
+const Header = () => {
+    const { t } = useTranslation("Common")
+
+    return (
+    <header className="header" role="banner">
+        <nav className="navbar navbar-expand-md navbar-light bg-light">
+
+            <Link className="navbar-brand" to="/">
+                <img src={logo} alt="logo" />
+            </Link>
+
+            <div
+                className="justify-content-end"
+            >
+                <Link className="nav-link" to={t("GitHubLink")} rel="noopener noreferrer" target="_blank">
+                    <img src={source} alt={t("GitHubLinkText")}/>
+                </Link>
+            </div>
+        </ nav>
+    </ header>
+    )
+}
+export default Header

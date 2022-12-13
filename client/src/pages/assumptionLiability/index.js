@@ -1,7 +1,7 @@
 import React from "react";
-import { sendRequest } from "../api/apiHelper";
-import AssumptionLiabilityForm from "../components/AssumptionLiabilityForm";
-import text from "../assets/Text.json";
+import { sendRequest } from "../../api/apiHelper";
+import AssumptionLiabilityForm from "./components/AssumptionLiabilityForm";
+import text from "../../assets/Text.json";
 
 function Liability() {
   async function handleSubmit(event) {
