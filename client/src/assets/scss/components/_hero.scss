@@ -1,72 +1,50 @@
-.hero-section {
-    padding-left: 10%;
-    padding-top: 27px;
-    height: 636px;
+.home-container {
+  min-height: 618px;
+  position: relative;
+  padding-left: 0;
+  padding-right: 0;
 }
-
+.hero-section {
+  background: url("../../img/background.png") no-repeat;
+  min-height: 65%;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+.hero-text {
+  margin-top: 12%;
+  min-height: 180px;
+  margin-bottom: 8%;
+  padding-left: 20px;
+}
 .hero-text h1 {
-    font-size: 28px;
-    font-weight: 700;
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  text-align: left;
 }
 .sub-title {
-    margin-top: 10px;
-    font-size: 18px;
-    font-weight: 600;
-    color: #3e495a;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  text-align: left;
+  max-width: 522px;
 }
-@media (min-width: 576px) {
-    .hero-section {
-        padding-top: 37px;
-        height: 336px;
-        background: url("../../img/background.png") no-repeat;
-        -moz-background-size: 100%;
-        -webkit-background-size: 100%;
-        -o-background-size: 100%;
-        background-size: 140%;
-    }
-    .hero-text h1 {
-        font-size: 40px;
-    }
-    .sub-title {
-        margin-top: 19px;
-        font-size: 22px;
-    }
-}
-@media (min-width: 768px) {
-    .hero-section {
-        padding-top: 71px;
-        height: 534px;
-        -moz-background-size: auto auto;
-        -webkit-background-size: auto auto;
-        -o-background-size: auto auto;
-        background-size: auto auto;
-    }
-    .hero-text h1 {
-        font-size: 52px;
-    }
-    .sub-title {
-        margin-top: 19px;
-        font-size: 28px;
-    }
-}
-@media (min-width: 992px) {
-    .hero-text h1 {
-        font-size: 56px;
-    }
-    .hero-section {
-        padding-top: 102px;
-        height: 636px;
-    }
-}
-@media (min-width: 1440px) {
-    .hero-text h1 {
-        font-size: 56px;
-    }
 
-    .hero-section {
-        -moz-background-size: 100%;
-        -webkit-background-size: 100%;
-        -o-background-size: 100%;
-        background-size: 100%;
-    }
+@media (min-width: 576px) {
+  .hero-text h1 {
+    font-size: 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-text h1 {
+    font-size: 54px;
+  }
+  .sub-title {
+    margin-top: 16px;
+    font-size: 18px;
+  }
 }

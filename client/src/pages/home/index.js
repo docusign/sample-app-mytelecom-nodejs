@@ -6,17 +6,17 @@ import PreFooter from "./preFooter";
 import img1 from "../../assets/img/img-assumption.svg";
 import img2 from "../../assets/img/img-purchase.svg";
 import img3 from "../../assets/img/img-service.svg";
+import { Row } from "react-bootstrap";
 
 const Home = () => {
-  const { t } = useTranslation("Home")
+  const { t } = useTranslation("Home");
   return (
     <>
-      <Hero />
-
-      <section className="card-info-holder">
-        <div className="container-fluid">
-          <div className="row justify-content-center text-center d-flex flex-row">
-
+      <div className="container-fluid home-container">
+        <div className="hero-section" />
+        <div className="justify-content-center text-center d-flex">
+          <Row className="cards-container">
+            <Hero />
             <Card
               additionalClass="card-1"
               img={img1}
@@ -26,9 +26,7 @@ const Home = () => {
               featureTitle={t("Card1.FeaturesTitle")}
               featureList={t("Card1.FeaturesList")}
             />
-
-            <div className="w-100 d-block d-md-none"></div>
-
+            <div className="w-100 d-block d-md-none" />
             <Card
               additionalClass="card-2"
               img={img2}
@@ -38,9 +36,7 @@ const Home = () => {
               featureTitle={t("Card2.FeaturesTitle")}
               featureList={t("Card2.FeaturesList")}
             />
-
-            <div className="w-100 d-block d-md-none"></div>
-
+            <div className="w-100 d-block d-md-none" />
             <Card
               additionalClass="card-3"
               img={img3}
@@ -50,13 +46,11 @@ const Home = () => {
               featureTitle={t("Card3.FeaturesTitle")}
               featureList={t("Card3.FeaturesList")}
             />
-
-          </div>
+          </Row>
         </div>
-      </section>
-
+      </div>
       <PreFooter />
     </>
   );
-}
+};
 export default Home;

@@ -1,48 +1,143 @@
 .cta-title {
-    margin-top: 75px;
-    font-size: 28px;
-    font-weight: bold;
-    color: #05003b;
+  margin-top: 75px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #05003b;
 }
 .cta-description {
-    margin-top: 41px;
-    color: #000000;
+  margin-top: 41px;
+  color: #000000;
 }
 .cta-buttons {
-    margin-top: 35px;
-    margin-bottom: 103px;
+  margin-top: 35px;
+  margin-bottom: 103px;
 }
 .cta-buttons a {
-    font-size: 16px;
-    padding-bottom: 2px;
+  font-size: 16px;
+  padding-bottom: 2px;
+  text-decoration: none;
 }
 .cta-buttons a:hover {
-    font-size: 16px;
-    padding-bottom: 2px;
-    text-decoration: none;
+  font-size: 16px;
+  padding-bottom: 2px;
 }
 .cta-links {
-    margin-top: 35px;
-    margin-bottom: 103px;
+  margin-top: 35px;
+  margin-bottom: 103px;
 }
 .cta-links a {
-    font-size: 16px;
-    padding-bottom: 2px;
+  font-size: 16px;
+  padding-bottom: 2px;
 }
 .cta-links a:hover {
-    font-size: 16px;
-    padding-bottom: 2px;
-    text-decoration: none;
+  font-size: 16px;
+  padding-bottom: 2px;
+  text-decoration: none;
 }
 .first-button {
+  width: 304px;
+  height: 44px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(
+    68.71deg,
+    #8a2387 -71.8%,
+    #e94057 33.71%,
+    #f27121 126.8%
+  );
+
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 100%;
+
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+  display: inline;
+}
+.second-button {
+  width: 197px;
+  height: 44px;
+  border-radius: 4px;
+  cursor: pointer;
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(68.71deg, #8a2387 -71.8%, #e94057 33.71%, #f27121 126.8%)
+      border-box;
+  border: 4px solid transparent;
+
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 100%;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  display: inline;
+  box-sizing: border-box;
+  margin-left: 0;
+  margin-top: 33px;
+}
+.resource-links {
+  margin-top: 35px;
+  margin-bottom: 103px;
+}
+.resource-title {
+  margin-top: 75px;
+  margin-bottom: 33px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #05003b;
+}
+.resource-link {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 100%;
+  background: linear-gradient(
+    68.71deg,
+    #8a2387 -71.8%,
+    #e94057 33.71%,
+    #f27121 126.8%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-left: 0;
+  margin-top: 33px;
+}
+
+@media (min-width: 768px) {
+  .cta-title {
+    margin-top: 69px;
+    font-size: 32px;
+  }
+  .cta-description {
+    margin-top: 25px;
+  }
+  .cta-links {
+    margin-top: 8px;
+    margin-bottom: 65px;
+  }
+  .first-button {
     width: 304px;
     height: 44px;
     border-radius: 4px;
     border: none;
     cursor: pointer;
-    background: linear-gradient(68.71deg, #8A2387 -71.8%, #E94057 33.71%, #F27121 126.8%);
+    background: linear-gradient(
+      68.71deg,
+      #8a2387 -71.8%,
+      #e94057 33.71%,
+      #f27121 126.8%
+    );
 
-    font-family: 'Open Sans';
+    font-family: "Open Sans";
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
@@ -50,19 +145,20 @@
 
     text-align: center;
     text-transform: uppercase;
-    color: #FFFFFF;
+    color: #ffffff;
     display: inline;
-}
-.second-button {
+  }
+  .second-button {
     width: 197px;
     height: 44px;
     border-radius: 4px;
     cursor: pointer;
-    background: linear-gradient(white, white) padding-box,
-    linear-gradient(68.71deg, #8A2387 -71.8%, #E94057 33.71%, #F27121 126.8%) border-box;
+    background: white padding-box,
+      linear-gradient(68.71deg, #8a2387 -71.8%, #e94057 33.71%, #f27121 126.8%)
+        border-box;
     border: 4px solid transparent;
 
-    font-family: 'Open Sans';
+    font-family: "Open Sans";
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
@@ -72,110 +168,36 @@
     text-transform: uppercase;
 
     display: inline;
+    margin-left: 20px;
+    margin-top: 0;
     box-sizing: border-box;
-    margin-left: 0;
-    margin-top: 33px;
-}
-.resource-links {
-    margin-top: 35px;
-    margin-bottom: 103px;
-}
-.resource-title {
-    margin-top: 75px;
-    margin-bottom: 33px;
-    font-size: 28px;
-    font-weight: bold;
-    color: #05003b;
-}
-.resource-link {
-    font-family: 'Open Sans';
+  }
+  .resource-link {
+    font-family: "Open Sans";
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
     line-height: 100%;
-    background: linear-gradient(68.71deg, #8A2387 -71.8%, #E94057 33.71%, #F27121 126.8%);
+    background: linear-gradient(
+      68.71deg,
+      #8a2387 -71.8%,
+      #e94057 33.71%,
+      #f27121 126.8%
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-left: 0;
-    margin-top: 33px;
-}
-
-@media (min-width: 768px) {
-    .cta-title {
-        margin-top: 69px;
-        font-size: 32px;
-    }
-    .cta-description {
-        margin-top: 25px;
-    }
-    .cta-links {
-        margin-top: 8px;
-        margin-bottom: 65px;
-    }
-    .first-button {
-        width: 304px;
-        height: 44px;
-        border-radius: 4px;
-        border: none;
-        cursor: pointer;
-        background: linear-gradient(68.71deg, #8A2387 -71.8%, #E94057 33.71%, #F27121 126.8%);
-
-        font-family: 'Open Sans';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 100%;
-
-        text-align: center;
-        text-transform: uppercase;
-        color: #FFFFFF;
-        display: inline;
-    }
-    .second-button {
-        width: 197px;
-        height: 44px;
-        border-radius: 4px;
-        cursor: pointer;
-        background: linear-gradient(none, none) padding-box,
-        linear-gradient(68.71deg, #8A2387 -71.8%, #E94057 33.71%, #F27121 126.8%) border-box;
-        border: 4px solid transparent;
-
-        font-family: 'Open Sans';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 100%;
-
-        text-align: center;
-        text-transform: uppercase;
-
-        display: inline;
-        margin-left: 20px;
-        margin-top: 0;
-        box-sizing: border-box;
-    }
-    .resource-link {
-        font-family: 'Open Sans';
-        font-style: normal;
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 100%;
-        background: linear-gradient(68.71deg, #8A2387 -71.8%, #E94057 33.71%, #F27121 126.8%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        display: inline;
-        margin-left: 20px;
-        margin-top: 0;
-    }
+    display: inline;
+    margin-left: 20px;
+    margin-top: 0;
+  }
 }
 @media (min-width: 992px) {
-    .cta-title {
-        margin-top: 88px;
-        font-size: 34px;
-    }
-    .cta-links {
-        margin-bottom: 150px;
-    }
+  .cta-title {
+    margin-top: 88px;
+    font-size: 34px;
+  }
+  .cta-links {
+    margin-bottom: 150px;
+  }
 }
