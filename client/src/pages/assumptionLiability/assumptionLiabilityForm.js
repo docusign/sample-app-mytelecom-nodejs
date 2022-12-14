@@ -1,9 +1,9 @@
 import React from 'react';
-import text from '../../../assets/Text.json';
 import { useForm } from 'react-hook-form';
-import { emailRegExp, formCheckNameMaxLength, formCheckFieldRequired } from '../../../components/CommonFormObjects';
-import { Button, Row, Col, Form } from 'react-bootstrap';
-import Input from './Input';
+import { Input, ErrorMessageContainer, useValidation } from '../../components';
+import { Button, Form } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
+import { ErrorMessage } from '@hookform/error-message';
 
 const AssumptionLiabilityForm = ({ onSubmit }) => {
   // Grab register and handleSubmit from useForm hook
@@ -13,12 +13,15 @@ const AssumptionLiabilityForm = ({ onSubmit }) => {
     formState: { errors },
   } = useForm();
 
+  const { t } = useTranslation('AssumptionOfLiability');
+  const { emailRegExp, formCheckFieldRequired, formCheckNameMaxLength } = useValidation();
+
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <h6>{text.formLabels.currentAccountOwner}</h6>
+      <h6>{t('CurrentAccountOwner')}</h6>
       <Input
         id="firstName"
-        label={text.formLabels.firstName}
+        label={t('FirstName')}
         labelProps={{ column: true, sm: 4 }}
         validations={{
           required: formCheckFieldRequired,
@@ -29,7 +32,7 @@ const AssumptionLiabilityForm = ({ onSubmit }) => {
       />
       <Input
         id="lastName"
-        label={text.formLabels.lastName}
+        label={t('LastName')}
         labelProps={{ column: true, sm: 4 }}
         validations={{
           required: formCheckFieldRequired,
@@ -40,23 +43,23 @@ const AssumptionLiabilityForm = ({ onSubmit }) => {
       />
       <Input
         id="signerEmail"
-        label={text.formLabels.email}
+        label={t('Email')}
         labelProps={{ column: true, sm: 4 }}
         validations={{
           required: formCheckFieldRequired,
           pattern: {
             value: emailRegExp,
-            message: text.formLabels.invalidEmailFormatError,
+            message: t('InvalidEmailFormatError'),
           },
         }}
         register={register}
         errors={errors}
       />
       <hr />
-      <h6>{text.formLabels.newAccountOwner}</h6>
+      <h6>{t('NewAccountOwner')}</h6>
       <Input
         id="recipientFirstName"
-        label={text.formLabels.firstName}
+        label={t('FirstName')}
         labelProps={{ column: true, sm: 4 }}
         validations={{
           required: formCheckFieldRequired,
@@ -67,7 +70,7 @@ const AssumptionLiabilityForm = ({ onSubmit }) => {
       />
       <Input
         id="recipientLastName"
-        label={text.formLabels.lastName}
+        label={t('LastName')}
         labelProps={{ column: true, sm: 4 }}
         validations={{
           required: formCheckFieldRequired,
@@ -76,48 +79,45 @@ const AssumptionLiabilityForm = ({ onSubmit }) => {
         register={register}
         errors={errors}
       />
-      <Row>
-        <Col sm={4}>
-          <Input
-            id="countryCode"
-            label={text.formLabels.countryCode}
-            validations={{
+      <Form.Group className="phone-number">
+        <Form.Label>{t('PhoneNumber')}</Form.Label>
+        <div>
+          <Form.Control
+            id="CountryCode"
+            placeholder="+1"
+            {...register('countryCode', {
               required: formCheckFieldRequired,
               pattern: {
                 value: /^([+]?\d+)$/,
-                message: text.formLabels.invalidCountryCodeError,
+                message: t('InvalidCountryCodeError'),
               },
-            }}
-            register={register}
-            errors={errors}
+            })}
           />
-        </Col>
-        <Col>
-          <Input
-            id="phoneNumber"
-            label={text.formLabels.phoneNumber}
-            validations={{
+          <Form.Control
+            id="PhoneNumber"
+            placeholder={t('PhonePlaceholder')}
+            {...register('phoneNumber', {
               required: formCheckFieldRequired,
               pattern: {
                 value: /^(\d+-?)+\d+$/,
-                message: text.formLabels.invalidPhoneNumberError,
+                message: t('InvalidPhoneNumberError'),
               },
               maxLength: {
                 value: 11,
-                message: text.formLabels.invalidPhoneNumberError,
+                message: t('InvalidPhoneNumberError'),
               },
               minLength: {
                 value: 8,
-                message: text.formLabels.invalidPhoneNumberError,
+                message: t('InvalidPhoneNumberError'),
               },
-            }}
-            register={register}
-            errors={errors}
+            })}
           />
-        </Col>
-      </Row>
+        </div>
+        <ErrorMessage errors={errors} name={'countryCode'} as={<ErrorMessageContainer />} />
+        {!errors.countryCode && <ErrorMessage errors={errors} name={'phoneNumber'} as={<ErrorMessageContainer />} />}
+      </Form.Group>
       <Button type="submit" className="h-card-button">
-        {text.formLabels.buttonName}
+        {t('ButtonName')}
       </Button>
     </Form>
   );

@@ -1,12 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
-    <g fill="none" fill-rule="evenodd">
-        <g fill-rule="nonzero">
-            <g>
-                <g>
-                    <path fill="#DCEEFF" d="M6 0C2.691 0 0 2.691 0 6s2.691 6 6 6 6-2.691 6-6-2.691-6-6-6z" transform="translate(-594.000000, -714.000000) translate(545.000000, 367.000000) translate(49.000000, 347.000000)"/>
-                    <path fill="#6A89A7" d="M9.085 4.865L5.85 8.16c-.097.099-.224.149-.352.149-.127 0-.254-.05-.352-.149L3.531 6.512c-.195-.198-.195-.518 0-.716.194-.199.508-.199.703 0l1.265 1.288L8.381 4.15c.195-.199.51-.199.704 0 .194.198.194.518 0 .716z" transform="translate(-594.000000, -714.000000) translate(545.000000, 367.000000) translate(49.000000, 347.000000)"/>
-                </g>
-            </g>
-        </g>
-    </g>
+<svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="3" cy="3" r="3" fill="url(#paint0_linear_17_2661)"/>
+<defs>
+<linearGradient id="paint0_linear_17_2661" x1="-5.76316" y1="6.57447" x2="8.6137" y2="0.972143" gradientUnits="userSpaceOnUse">
+<stop stop-color="#8A2387"/>
+<stop offset="0.53125" stop-color="#E94057"/>
+<stop offset="1" stop-color="#F27121"/>
+</linearGradient>
+</defs>
 </svg>

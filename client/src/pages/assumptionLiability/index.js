@@ -1,10 +1,13 @@
 import React from 'react';
 import { sendRequest } from '../../api/apiHelper';
-import AssumptionLiabilityForm from './components/AssumptionLiabilityForm';
-import text from '../../assets/Text.json';
+import AssumptionLiabilityForm from './assumptionLiabilityForm';
 import { Col, Container, Row } from 'react-bootstrap';
+import { SeeMore } from '../../components';
+import { useTranslation } from 'react-i18next';
 
 const Liability = () => {
+  const { t } = useTranslation('AssumptionOfLiability');
+
   const handleSubmit = async (event) => {
     // Make request body
     const body = {
@@ -36,10 +39,10 @@ const Liability = () => {
       <Container>
         <Row className="justify-content-center">
           <Col className="form-holder">
-            <h4>{text.titles.assumptionTitle}</h4>
+            <h4>{t('Title')}</h4>
             <AssumptionLiabilityForm onSubmit={handleSubmit} />
           </Col>
-          <Col className="bs-holder" />
+          <SeeMore title={t('SeeMore.Title')} text={t('SeeMore.Text')} />
         </Row>
       </Container>
     </section>
