@@ -10,5 +10,7 @@
   "Copyright": "© 2022 DocuSign Inc.",
 
   "RequiredFieldError": "This field is required.",
-  "InputTooLongError": "Your input is too long."
+  "InputTooLongError": "Your input is too long.",
+  "MainButton": "Continue",
+  "BackButton": "Back"
 }

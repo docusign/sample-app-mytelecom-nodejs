@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Input, ErrorMessageContainer, useValidation } from '../../components';
-import { Button, Form } from 'react-bootstrap';
+import { Input, ErrorMessageContainer, useValidation, FormButtons } from '../../components';
+import { Form } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { ErrorMessage } from '@hookform/error-message';
 
@@ -18,65 +18,41 @@ const AssumptionLiabilityForm = ({ onSubmit }) => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <h6>{t('CurrentAccountOwner')}</h6>
+      <h4>{t('CurrentAccountOwner')}</h4>
+      <Form.Group className="mb-4">
+        <Input
+          id="signerName"
+          label={t('Name')}
+          autoComplete="name"
+          {...register('signerName', {
+            required: formCheckFieldRequired,
+            maxLength: formCheckNameMaxLength,
+          })}
+          errors={errors}
+        />
+        <Input
+          id="signerEmail"
+          label={t('Email')}
+          autoComplete="email"
+          errors={errors}
+          {...register('signerEmail', {
+            required: formCheckFieldRequired,
+            pattern: {
+              value: emailRegExp,
+              message: t('InvalidEmailFormatError'),
+            },
+          })}
+        />
+      </Form.Group>
+      <h4>{t('NewAccountOwner')}</h4>
       <Input
-        id="firstName"
-        label={t('FirstName')}
-        labelProps={{ column: true, sm: 4 }}
-        validations={{
+        id="recipientName"
+        label={t('Name')}
+        autoComplete="name"
+        {...register('recipientName', {
           required: formCheckFieldRequired,
           maxLength: formCheckNameMaxLength,
-        }}
-        register={register}
-        errors={errors}
-      />
-      <Input
-        id="lastName"
-        label={t('LastName')}
-        labelProps={{ column: true, sm: 4 }}
-        validations={{
-          required: formCheckFieldRequired,
-          maxLength: formCheckNameMaxLength,
-        }}
-        register={register}
-        errors={errors}
-      />
-      <Input
-        id="signerEmail"
-        label={t('Email')}
-        labelProps={{ column: true, sm: 4 }}
-        validations={{
-          required: formCheckFieldRequired,
-          pattern: {
-            value: emailRegExp,
-            message: t('InvalidEmailFormatError'),
-          },
-        }}
-        register={register}
-        errors={errors}
-      />
-      <hr />
-      <h6>{t('NewAccountOwner')}</h6>
-      <Input
-        id="recipientFirstName"
-        label={t('FirstName')}
-        labelProps={{ column: true, sm: 4 }}
-        validations={{
-          required: formCheckFieldRequired,
-          maxLength: formCheckNameMaxLength,
-        }}
-        register={register}
-        errors={errors}
-      />
-      <Input
-        id="recipientLastName"
-        label={t('LastName')}
-        labelProps={{ column: true, sm: 4 }}
-        validations={{
-          required: formCheckFieldRequired,
-          maxLength: formCheckNameMaxLength,
-        }}
-        register={register}
+        })}
         errors={errors}
       />
       <Form.Group className="phone-number">
@@ -85,7 +61,8 @@ const AssumptionLiabilityForm = ({ onSubmit }) => {
           <Form.Control
             id="CountryCode"
             placeholder="+1"
-            {...register('countryCode', {
+            autoComplete="tel-country-code"
+            {...register('recipientCountryCode', {
               required: formCheckFieldRequired,
               pattern: {
                 value: /^([+]?\d+)$/,
@@ -96,7 +73,8 @@ const AssumptionLiabilityForm = ({ onSubmit }) => {
           <Form.Control
             id="PhoneNumber"
             placeholder={t('PhonePlaceholder')}
-            {...register('phoneNumber', {
+            autoComplete="tel"
+            {...register('recipientPhone', {
               required: formCheckFieldRequired,
               pattern: {
                 value: /^(\d+-?)+\d+$/,
@@ -113,12 +91,12 @@ const AssumptionLiabilityForm = ({ onSubmit }) => {
             })}
           />
         </div>
-        <ErrorMessage errors={errors} name={'countryCode'} as={<ErrorMessageContainer />} />
-        {!errors.countryCode && <ErrorMessage errors={errors} name={'phoneNumber'} as={<ErrorMessageContainer />} />}
+        <ErrorMessage errors={errors} name={'recipientCountryCode'} as={<ErrorMessageContainer />} />
+        {!errors.recipientCountryCode && (
+          <ErrorMessage errors={errors} name={'recipientPhone'} as={<ErrorMessageContainer />} />
+        )}
       </Form.Group>
-      <Button type="submit" className="h-card-button">
-        {t('ButtonName')}
-      </Button>
+      <FormButtons />
     </Form>
   );
 };

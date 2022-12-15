@@ -8,13 +8,21 @@
     padding-top: 40px;
   }
 }
-#rightCaret,
-#downCaret {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-  margin-bottom: 5px;
+
+h1 {
+  font-size: 54px;
+  font-weight: bold;
 }
-.form-label {
-  white-space: nowrap;
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+}
+h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+h4 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 16px;
 }

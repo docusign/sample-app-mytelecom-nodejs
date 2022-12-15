@@ -35,7 +35,12 @@ app.use("/assumptionLiability", assumptionLiabilityRouter);
 app.use("/purchaseDevice", purchaseDeviceRouter);
 app.use("/serviceChange", serviceChangeRouter);
 
-// Leting dev know server started
+// Letting dev know server started
 app.listen(port, () => {
   console.log(`Server started and listening on port ${port}`);
 });
+// Error handler
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send({ error: err.message });
+})

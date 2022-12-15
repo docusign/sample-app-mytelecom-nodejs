@@ -17,13 +17,13 @@ export const SeeMore = ({ title, text }) => {
     <Col className="bs-holder">
       <p>
         <a className="bs-link" href="/#" role="button" onClick={handleClick}>
+          {title}
           {!open && <img id="rightCaret" src={right_caret} alt="right caret" />}
           {open && <img id="downCaret" src={down_caret} alt="right caret" />}
-          {title}
         </a>
       </p>
       <Collapse in={open}>
-        <div>{parse(text)}</div>
+        <div className="bs">{parse(text)}</div>
       </Collapse>
     </Col>
   );
