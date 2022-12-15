@@ -1,10 +1,28 @@
 .content-section {
-    padding-top: 26px;
-    min-height: 89vh;
-    background-color: #f4f9fe;
+  padding-top: 26px;
+  min-height: 89vh;
+  background-color: #f4f9fe;
 }
 @media (min-width: 768px) {
-    .content-section {
-        padding-top: 61px;
-    }
+  .content-section {
+    padding-top: 40px;
+  }
+}
+
+h1 {
+  font-size: 54px;
+  font-weight: bold;
+}
+h2 {
+  font-size: 28px;
+  font-weight: bold;
+}
+h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+h4 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 16px;
 }

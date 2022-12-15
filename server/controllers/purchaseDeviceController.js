@@ -13,7 +13,7 @@ const { checkToken } = require("./jwtController");
 /**
  * Controller that creates and sends an envelope to the signer.
  */
-const createController = async (req, res) => {
+const createController = async (req, res, next) => {
   // Check the access token, which will also update the token
   // if it is expired
   await checkToken(req);
@@ -75,7 +75,7 @@ const createController = async (req, res) => {
       throw error;
     }
   } catch (error) {
-    throw new Error(text.apiErrors.paymentConfigsUndefined);
+    next(new Error(text.apiErrors.paymentConfigsUndefined));
   }
 
   // Step 1: Create Envelopes
@@ -91,14 +91,14 @@ const createController = async (req, res) => {
     firstResults = await sendEnvelope(initialEnvelope, args);
   } catch (error) {
     console.log(error);
-    throw new Error(text.envelope.purchaseDeviceFirstEnvelopeError);
+    next(new Error(text.envelope.purchaseDeviceFirstEnvelopeError));
   }
 
   try {
     secondResults = await sendEnvelope(monthlyPaymentEnvelope, args);
   } catch (error) {
     console.log(error);
-    throw new Error(text.envelope.purchaseDeviceSecondEnvelopeError);
+    next(new Error(text.envelope.purchaseDeviceSecondEnvelopeError));
   }
 
   if (firstResults) {

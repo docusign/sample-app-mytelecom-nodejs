@@ -19,10 +19,11 @@
     },
     "backLink": "Back to Home",
     "formLabels":   {
+        "currentAccountOwner": "Current account owner",
         "firstName": "First name:",
         "lastName": "Last name:",
         "fullName": "Name",
-        "newPhoneOwnerInfo": "New phone owner information:",
+        "newAccountOwner": "New account owner",
         "email": "Email:",
         "countryCode": "Country code",
         "phoneNumber": "Phone number",
