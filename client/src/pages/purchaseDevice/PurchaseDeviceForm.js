@@ -91,9 +91,10 @@ function PurchaseDeviceForm({ onSubmit }) {
           errors={errors}
         />
 
-        <NumberInput
+        <Input
           id="signerDownPayment"
           label={t('DownPayment')}
+          type="number"
           autoComplete="signerDownPayment"
           {...register('signerDownPayment', {
             required: formCheckFieldRequired,
@@ -101,9 +102,10 @@ function PurchaseDeviceForm({ onSubmit }) {
           errors={errors}
         />
 
-        <NumberInput
+        <Input
           id="signerMinutesDelay"
           label={t('ScheduleSend')}
+          type="number"
           autoComplete="signerMinutesDelay"
           {...register('signerMinutesDelay', {
             required: formCheckFieldRequired,

@@ -15,9 +15,9 @@ export const Header = () => {
         </Link>
 
         <div className="justify-content-end">
-          <Link className="nav-link" to={t('GitHubLink')} rel="noopener noreferrer" target="_blank">
+          <a className="nav-link" href={t('GitHubLink')} rel="noopener noreferrer" target="_blank">
             <img src={source} alt={t('GitHubLinkText')} />
-          </Link>
+          </a>
         </div>
       </nav>
     </header>

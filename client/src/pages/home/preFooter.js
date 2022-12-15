@@ -12,17 +12,17 @@ const PreFooter = () => {
                 <div className="cta-description">{t("PreFooter2")}</div>
             </div>
             <div className="cta-buttons">
-                <Link to={t("CreateDeveloperAccountHeaderLink")} rel="noopener noreferrer">
+                <a href={t("CreateDeveloperAccountHeaderLink")} rel="noopener noreferrer">
                     <button className="first-button" type="button">
                     {t("CreateDeveloperAccountHeader")}
                     </button>
-                </Link>
+                </a>
 
-                <Link to={t("LearnMoreLink")} rel="noopener noreferrer">
+                <a href={t("LearnMoreLink")} rel="noopener noreferrer">
                     <button className="second-button" type="button">
                     {t("LearnMore")}
                     </button>
-                </Link>
+                </a>
             </div>
             <div className="cta-links">
                 <div className="resource-links">

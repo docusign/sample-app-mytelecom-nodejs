@@ -21,16 +21,9 @@
     border: solid 1px #a8a8a8;
     line-height: 14px;
     text-align: center;
-     
-    -moz-border-radius: 100%;
-    -webkit-border-radius: 100%;
     border-radius: 100%;
      
     background: #f6f6f6;
-    background: -moz-radial-gradient(#f6f6f6, #dfdfdf);
-    background: -webkit-radial-gradient(#f6f6f6, #dfdfdf);
-    background: -ms-radial-gradient(#f6f6f6, #dfdfdf);
-    background: -o-radial-gradient(#f6f6f6, #dfdfdf);
     background: radial-gradient(#f6f6f6, #dfdfdf);
 }
 @media (min-width: 768px) {
@@ -113,8 +106,6 @@
 
   background: url("../../img/select-arrow.svg") no-repeat;
     background-position: calc(100% - 0.75rem) center !important;
-    -moz-appearance:none !important;
-    -webkit-appearance: none !important; 
     appearance: none !important;
     padding-right: 2rem !important;
 }

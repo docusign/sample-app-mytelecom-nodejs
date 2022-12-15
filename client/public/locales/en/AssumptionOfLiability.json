@@ -7,7 +7,7 @@
   "CountryCode": "Country code:",
   "PhoneNumber": "Phone number:",
   "ButtonName": "Submit",
-  "PhonePlaceholder": "000-000-0000",
+  "PhonePlaceholder": "000-000-000",
   "InvalidEmailFormatError": "Invalid email format.",
   "InvalidCountryCodeError": "Invalid country code.",
   "InvalidPhoneNumberError": "Invalid phone number.",
