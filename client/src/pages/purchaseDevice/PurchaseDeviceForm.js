@@ -61,7 +61,7 @@ function PurchaseDeviceForm({ onSubmit }) {
       <Form.Group className="mb-4">
         <SelectInput
           id="signerPhoneSelection"
-          label={t('PhoneSelection')}
+          label={t('SelectPhone')}
           autoComplete="signerPhoneSelection"
           options={[
             t('IPhone14'),
