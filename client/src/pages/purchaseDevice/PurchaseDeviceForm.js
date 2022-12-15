@@ -23,7 +23,7 @@ function PurchaseDeviceForm({ onSubmit }) {
         <Input
           id="firstName"
           label={t('FirstName')}
-          autoComplete="firstName"
+          autoComplete="given-name"
           {...register('firstName', {
             required: formCheckFieldRequired,
             maxLength: formCheckNameMaxLength,
@@ -34,7 +34,7 @@ function PurchaseDeviceForm({ onSubmit }) {
         <Input
           id="lastName"
           label={t('LastName')}
-          autoComplete="lastName"
+          autoComplete="family-name"
           {...register('lastName', {
             required: formCheckFieldRequired,
             maxLength: formCheckNameMaxLength,
@@ -45,7 +45,7 @@ function PurchaseDeviceForm({ onSubmit }) {
         <Input
           id="signerEmail"
           label={t('Email')}
-          autoComplete="signerEmail"
+          autoComplete="email"
           {...register('signerEmail', {
             required: formCheckFieldRequired,
             pattern: {
@@ -62,7 +62,6 @@ function PurchaseDeviceForm({ onSubmit }) {
         <SelectInput
           id="signerPhoneSelection"
           label={t('SelectPhone')}
-          autoComplete="signerPhoneSelection"
           options={[
             t('IPhone14'),
             t('IPhone14Pro'),
@@ -80,7 +79,6 @@ function PurchaseDeviceForm({ onSubmit }) {
           id="signerInsuranceSelection"
           name="signerInsuranceSelection"
           label={t('InsuranceLabel')}
-          autoComplete="signerInsuranceSelection"
           options={[
             { value: 'Yes', text: t('Yes') },
             { value: 'No', text: t('No') },
@@ -95,7 +93,6 @@ function PurchaseDeviceForm({ onSubmit }) {
           id="signerDownPayment"
           label={t('DownPayment')}
           type="number"
-          autoComplete="signerDownPayment"
           {...register('signerDownPayment', {
             required: formCheckFieldRequired,
           })}
@@ -106,7 +103,6 @@ function PurchaseDeviceForm({ onSubmit }) {
           id="signerMinutesDelay"
           label={t('ScheduleSend')}
           type="number"
-          autoComplete="signerMinutesDelay"
           {...register('signerMinutesDelay', {
             required: formCheckFieldRequired,
           })}
