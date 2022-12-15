@@ -1,39 +1,39 @@
 import React from "react";
-import PurchaseDeviceForm from "./components/PurchaseDeviceForm";
-import text from "../../assets/Text.json";
+import PurchaseDeviceForm from "./PurchaseDeviceForm";
 import { useNavigate } from "react-router-dom";
-import { sendRequest } from "../../api/apiHelper";
+import { SeeMore } from '../../components';
+import { Col, Container, Row } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
+import { purchaseDevice } from "../../api";
+
 function PurchaseDevice() {
+  const { t } = useTranslation('PurchaseDevice');
+  
   const navigate = useNavigate();
-  async function handleSubmit(event) {
-    // Make request body
-    const body = {
-      signerName: event.firstName + " " + event.lastName,
-      signerEmail: event.signerEmail,
-      signerPhoneSelection: event.phoneSelection,
-      signerInsuranceSelection: event.insurance,
-      signerDownPayment: event.downPayment,
-      signerMinutesDelay: event.minutesDelay,
-    };
 
-    console.table(body);
-
-    // Send request to server
+  const handleSubmit = async (form) => {
     try {
-      const response = await sendRequest("/purchaseDevice", body);
+      const response = await purchaseDevice(form);
       console.log(`Received response: ${response.data}`);
       navigate("/submitted");
     } catch (error) {
       console.log("handleSubmit error");
       console.log(error);
     }
-  }
+  };
 
   return (
-    <div>
-      <h1>{text.titles.purchaseTitle}</h1>
-      <PurchaseDeviceForm onSubmit={handleSubmit} />
-    </div>
+    <section className="content-section">
+      <Container>
+        <Row className="justify-content-center">
+          <Col className="form-holder">
+            <h2 className="form-title">{t('Title')}</h2>
+            <PurchaseDeviceForm onSubmit={handleSubmit} />
+          </Col>
+          <SeeMore title={t('SeeMore.Title')} text={t('SeeMore.Text')} />
+        </Row>
+      </Container>
+    </section>
   );
 }
 

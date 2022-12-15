@@ -14,6 +14,7 @@ i18n
       "AssumptionOfLiability",
       "PurchaseDevice",
       "ChangeService",
+      "Success",
     ],
     transKeepBasicHtmlNodesFor: ["h3", "h4", "strong", "i", "p"],
     keySeparator: ".",
