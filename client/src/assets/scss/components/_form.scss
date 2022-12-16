@@ -105,9 +105,32 @@
   line-height: 14px;
 
   background: url("../../img/select-arrow.svg") no-repeat;
-    background-position: calc(100% - 0.75rem) center !important;
-    appearance: none !important;
-    padding-right: 2rem !important;
+  background-position: calc(100% - 0.75rem) center !important;
+  appearance: none !important;
+  padding-right: 2rem !important;
+}
+.form-select:focus {
+  border-radius: 4px;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 8px 8px 12px;
+
+  color: #464646;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+
+  background: url("../../img/select-arrow.svg") no-repeat;
+  background-position: calc(100% - 0.75rem) center !important;
+  appearance: none !important;
+  padding-right: 2rem !important;
+
+  box-shadow: none;
+  border: double 1px #e94057;
 }
 .btn-primary {
   width: 140px;
