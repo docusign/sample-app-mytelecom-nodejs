@@ -83,7 +83,7 @@ function PurchaseDeviceForm({ onSubmit }) {
             { value: 'Yes', text: t('Yes') },
             { value: 'No', text: t('No') },
           ]}
-          {...register('phoneSelection', {
+          {...register('signerInsuranceSelection', {
             required: formCheckFieldRequired,
           })}
           errors={errors}
