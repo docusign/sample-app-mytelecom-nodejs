@@ -1,0 +1,73 @@
+/* checkbox -*/
+
+.radio-s label,
+.radio-s input[type="radio"]+span,
+.radio-s input[type="radio"]+span::before {
+  display: inline-block;
+  vertical-align: middle
+}
+
+.radio-s {
+  // position: relative
+}
+
+.radio-s > * {
+  margin: 0 20px 0 0;
+}
+
+.radio-s label * {
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.radio-s input[type="radio"] {
+  // position: absolute;
+  display: none
+}
+
+.radio-s input[type="radio"]+span {
+  color: #333
+}
+
+.radio-s label:hover span {
+  color: #000
+}
+
+.radio-s input[type="radio"]+span::before {
+  margin: 0 10px 0 0;
+  width: 13px;
+  height: 13px;
+  border: solid 2px #C5C5C5;
+  // background-size: 13px;
+  content: "";
+  text-align: center;
+  border-radius: 50%;
+}
+
+.radio-s input[type="radio"]:checked+span::before {
+  width: 13px !important;
+  height: 13px !important;
+  border: 2px solid #E94057;
+  background-color: #FFFFFF;
+  color: #E94057;
+  line-height: 17px;
+
+  background: linear-gradient(white, white) padding-box,
+  linear-gradient(68.71deg, #8a2387 -71.8%, #e94057 33.71%, #f27121 126.8%)
+    border-box;
+  border: 2px solid transparent;
+}
+
+.radio-s input[type="radio"]:disabled+span {
+  opacity: .4;
+  cursor: default
+}
+
+.radio-s input[type="radio"]:checked+span::before {
+  content: "\2022";
+  font-size: 26px
+}
+
+.radio-s input[type="radio"]:checked + span::before {
+  line-height: 10px;
+}

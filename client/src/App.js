@@ -8,6 +8,7 @@ import PurchaseDevice from './pages/purchaseDevice';
 import ServiceChange from './pages/serviceChange';
 import Footer from './components/footer';
 import './assets/scss/main.scss';
+import Success from './pages/success';
 
 function App() {
   const [nextPage, setNextPage] = useState('');
@@ -21,6 +22,7 @@ function App() {
           <Route path="/assumptionLiability" element={<AssumptionLiability />} />
           <Route path="/purchaseDevice" element={<PurchaseDevice />} />
           <Route path="/serviceChange" element={<ServiceChange />} />
+          <Route path="/submitted" element={<Success />} />
         </Routes>
 
         <Footer />

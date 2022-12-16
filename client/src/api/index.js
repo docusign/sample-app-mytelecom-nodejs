@@ -7,6 +7,16 @@ export const assumptionLiability = async (body) => {
   return api.post('/assumptionLiability', body);
 };
 
+export const purchaseDevice = async (form) => {
+  await login();
+
+  const body = {
+    signerName: `${form.firstName} ${form.lastName}`,
+    ...form,
+  }
+  return api.post('/purchaseDevice', body);
+}
+
 export const login = async () => {
   const res = await axios.get('/auth/login');
   console.log(res);

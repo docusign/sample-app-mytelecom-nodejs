@@ -5,3 +5,5 @@ export * from './input';
 export * from './seeMore';
 export * from './errorMessageContainer';
 export * from './formButtons';
+export * from './selectInput';
+export * from './radioInput';
