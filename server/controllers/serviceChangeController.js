@@ -3,7 +3,7 @@ const docsPath = path.resolve(__dirname, "../documents");
 const docFile = "World_Wide_Corp_lorem.pdf";
 const text = require("../assets/text.json");
 const { sendEnvelope } = require("../envelopes/sendEnvelope");
-const { makeEnvelope } = require("../envelopes/serviceChangeEnvelope.js");
+const { serviceChange } = require("../envelopes/serviceChangeEnvelope.js");
 const { checkToken } = require("./jwtController");
 
 /**
@@ -19,7 +19,8 @@ const createController = async (req, res, next) => {
   const envelopeArgs = {
     signerEmail: body.signerEmail,
     signerName: body.signerName,
-    status: "sent",
+    signers: body.signers,
+    status: "created",
     docFile: path.resolve(docsPath, docFile),
   };
 
@@ -31,14 +32,9 @@ const createController = async (req, res, next) => {
   };
   let results = null;
 
-  // Step 1: Create Envelopes
-  // The first envelope in this instance is the initial device purchase envelope
-  // The second envelope is to demonstrate scheduled sending, in this case, for monthly payments
-  let envelope = makeEnvelope(args.envelopeArgs);
-
   // Step 2: Send the envelopes to the signer
   try {
-    results = await sendEnvelope(envelope, args);
+    results = await serviceChange(args);
   } catch (error) {
     console.log(error);
     next(new Error(text.envelope.serviceChangeEnvelopeController));
