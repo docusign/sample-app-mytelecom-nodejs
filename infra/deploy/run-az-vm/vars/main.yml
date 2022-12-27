@@ -1,0 +1,8 @@
+---
+VM_USER: "smappuser"
+PROJECT_FOLDER: "sample-app-myit-php"
+NGINX_CONF_FOLDER: "infra/nginx/conf"
+NGINX_CONF_NAME: "mysimpleapp.conf"
+COMPOSE_FILE_NAME: "docker-compose.yml"
+AZ_REPO_NAME: "mysmapp"
+PHP_CONTAINER_NAME: "myit_php"
