@@ -4,17 +4,19 @@
   "FirstName": "First name:",
   "LastName": "Last name:",
   "Email": "Email:",
+  "Limit": "Limit:",
 
-  "FormTitle": "Input 3 or more emails to bulk send an envelope to. You may use the same email for demo purposes if you do not have at least 3 different emails to use.",
-  "SignerOne": "First Signer",
-  "SignerTwo": "Second Signer",
-  "SignerThree": "Third Signer",
-  "SignerFour": "Fourth Signer",
-  "SignerFive": "Fifth Signer",
+  "LimitChange": "What services would you like to change?",
+  "Increase": "Increase Data Limit",
+  "Decrease": "Decrease Data Limit",
+
+  "RecipientNumber": "How many will be receiving this change?",
+
+  "RecipientData": "Input recipient data to bulk send an envelope to",
+  "SignerHeader": "Signer",
 
   "ErrorText": "This field is required.",
-
-  "ButtonName": "Submit",
+  "InvalidEmailFormatError": "Invalid email format.",
 
   "SeeMore": {
     "Title": "See behind the scenes",

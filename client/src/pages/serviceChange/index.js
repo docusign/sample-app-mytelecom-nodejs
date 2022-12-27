@@ -15,12 +15,12 @@ function ServiceChange() {
       const signers = [];
 
       for (let i = 0; i < form.recipientNumber; i++) {
-        signers.push({ name: form[`name${i}`], email: form[`email${i}`], limit: form[`limit${i}`] });
+        signers.push({ name: `${form[`firstName${i}`]} ${form[`lastName${i}`]}`, email: form[`email${i}`], limit: form[`limit${i}`] });
       }
 
       const response = await serviceChange({signers, limitChange});
       console.log(`Received response: ${response.data}`);
-      navigate("/");
+      navigate("/submitted?1");
     } catch (error) {
       console.log("handleSubmit error");
       console.log(error);
