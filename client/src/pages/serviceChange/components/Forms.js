@@ -71,11 +71,11 @@ export const RecipientDataForm = ({ recipientCount, register, errors }) => {
 
   const { emailRegExp, formCheckFieldRequired } = useValidation();
 
-  const signersData = [];
-
-  for(let i = 0; i < recipientCount; ++i) {
-    signersData.push(
-      <Form.Group key={i}>
+  return (
+    <>
+      <h4>{t('RecipientData')}</h4>
+      {[...Array(recipientCount).keys()].map(i => (
+        <Form.Group key={i}>
         <h4>{`${t('SignerHeader')} ${i + 1}`}</h4>
 
         <Input
@@ -127,13 +127,7 @@ export const RecipientDataForm = ({ recipientCount, register, errors }) => {
         />
       
       </Form.Group>
-    );
-  }
-
-  return (
-    <>
-      <h4>{t('RecipientData')}</h4>
-      {signersData}
+      ))}
     </>
   );
 }

@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
 import { FormButtons } from '../../components';
 import { LimitChangeForm, RecipientDataForm, RecipientNumberForm } from './components/Forms';
 
 
-function ServiceChangeForm({ onSubmit }) {
+const ServiceChangeForm = ({ onSubmit }) => {
   // Grab register and handleSubmit from useForm hook
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const { t } = useTranslation('ChangeService');
 
   const [limitChange, setLimitChange] = useState('increased');
   const [recipientCount, setRecipientCount] = useState(3);
@@ -38,13 +35,11 @@ function ServiceChangeForm({ onSubmit }) {
   }
 
   return (
-    <>
-      <Form onSubmit={handleSubmit((form) => onSubmit(form, limitChange))}>
-        {Forms[currentFormNumber]}
+    <Form onSubmit={handleSubmit((form) => onSubmit(form, limitChange))}>
+      {Forms[currentFormNumber]}
 
-        <FormButtons onBack={!isFirstForm && handleBack} onContinue={!isLastForm && handleContinue}/>
-      </Form>
-    </>
+      <FormButtons onBack={!isFirstForm && handleBack} onContinue={!isLastForm && handleContinue}/>
+    </Form>
   );
 }
 
