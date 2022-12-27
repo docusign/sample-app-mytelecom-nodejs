@@ -39,36 +39,3 @@
   shell:
     cmd: "docker compose stop && docker compose rm -f && docker compose pull && docker compose up -d"
     chdir: "~/{{ PROJECT_FOLDER }}"
-
-#####
-##PHP
-#####
-- name: Setting application key (PHP)
-  community.docker.docker_container_exec:
-    container: "{{ PHP_CONTAINER_NAME }}"
-    command: /bin/bash -c "php artisan key:generate"
-  register: result
-
-- name: Print stdout (Setting application key)
-  debug:
-    var: result.stdout
-
-- name: Install database structure (PHP)
-  community.docker.docker_container_exec:
-    container: "{{ PHP_CONTAINER_NAME }}"
-    command: /bin/bash -c "php artisan migrate --seed"
-  register: result
-
-- name: Print stdout (Install database structure)
-  debug:
-    var: result.stdout
-
-- name: Install database structure (PHP)
-  community.docker.docker_container_exec:
-    container: "{{ PHP_CONTAINER_NAME }}"
-    command: /bin/bash -c "php artisan passport:install"
-  register: result
-
-- name: Print stdout (Install database structure)
-  debug:
-    var: result.stdout
