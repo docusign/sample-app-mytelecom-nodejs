@@ -17,6 +17,12 @@ export const purchaseDevice = async (form) => {
   return api.post('/purchaseDevice', body);
 }
 
+export const serviceChange = async (body) => {
+  await login();
+
+  return api.post('/serviceChange', body);
+}
+
 export const login = async () => {
   const res = await axios.get('/auth/login');
   console.log(res);

@@ -1,26 +1,26 @@
 import React from "react";
-import text from "../../assets/Text.json";
-import ServiceChangeForm from "./components/ServiceChangeForm";
 import { useNavigate } from "react-router-dom";
-import { sendRequest } from "../../api/apiHelper";
+import { Col, Container, Row } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
+import { serviceChange } from "../../api";
+import { SeeMore } from '../../components';
+import ServiceChangeForm from "./ServiceChangeForm";
+
 function ServiceChange() {
+  const { t } = useTranslation('ChangeService');
+
   const navigate = useNavigate();
-  async function handleSubmit(event) {
-    // Make request body
-    const body = {
-      signerName: event.firstName + " " + event.lastName,
-      signerEmail: event.signerEmail,
-    };
-
-    console.log(body);
-
-    // Send request to server
+  const handleSubmit = async(form, limitChange) => {
     try {
-      const response = await sendRequest("/serviceChange", body);
-      console.log("Received response:");
-      console.log(response.data);
+      const signers = [];
 
-      navigate("/submitted");
+      for (let i = 0; i < form.recipientNumber; i++) {
+        signers.push({ name: `${form[`firstName${i}`]} ${form[`lastName${i}`]}`, email: form[`email${i}`], limit: form[`limit${i}`] });
+      }
+
+      const response = await serviceChange({signers, limitChange});
+      console.log(`Received response: ${response.data}`);
+      navigate("/submitted?1");
     } catch (error) {
       console.log("handleSubmit error");
       console.log(error);
@@ -28,10 +28,17 @@ function ServiceChange() {
   }
 
   return (
-    <div>
-      <h1>{text.titles.serviceChangeTitle}</h1>
-      <ServiceChangeForm onSubmit={handleSubmit} />
-    </div>
+    <section className="content-section">
+      <Container>
+        <Row className="justify-content-center">
+          <Col className="form-holder">
+            <h2 className="form-title">{t('Title')}</h2>
+            <ServiceChangeForm onSubmit={handleSubmit} />
+          </Col>
+          <SeeMore title={t('SeeMore.Title')} text={t('SeeMore.Text')} />
+        </Row>
+      </Container>
+    </section>
   );
 }
 
