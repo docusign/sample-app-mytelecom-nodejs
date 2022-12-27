@@ -20,6 +20,10 @@ async function serviceChange(args) {
       {
         tabLabel: "limit",
         initialValue: signer.limit,
+      },
+      {
+        tabLabel: "name",
+        initialValue: signer.name,
       }
     ],
   }));
@@ -82,11 +86,11 @@ function makeEnvelope(args) {
   });
 
   const signHere = eSignSdk.SignHere.constructFromObject({
-    documentId: 1,
-    pageNumber: 1,
+    anchorString: "/signature/",
+    anchorYOffset: "10",
+    anchorUnits: "pixels",
+    anchorXOffset: "20",
     tabLabel: "Sign Here",
-    xPosition: 50,
-    yPosition: 25
   });
 
   const limitLabel = eSignSdk.Text.constructFromObject({
@@ -95,13 +99,31 @@ function makeEnvelope(args) {
     pageNumber: 1,
     name: "limit",
     tabLabel: "limit",
-    xPosition: 50,
-    yPosition: 50,
+    anchorString: "/limit/",
   });
+
+  const limitChangeLabel = eSignSdk.Text.constructFromObject({
+    locked: "true", // mark the field as readonly
+    documentId: 1,
+    pageNumber: 1,
+    name: "limitChange",
+    tabLabel: "limitChange",
+    anchorString: "/limitChange/",
+    value: args.limitChange,
+  });
+
+  const nameLabel = eSignSdk.Text.constructFromObject({
+    locked: "true", // mark the field as readonly
+    documentId: 1,
+    pageNumber: 1,
+    name: "name",
+    tabLabel: "name",
+    anchorString: "/name/",
+  });  
 
   const tabs = eSignSdk.Tabs.constructFromObject({
     signHereTabs: [signHere],
-    textTabs: [limitLabel]
+    textTabs: [limitLabel, limitChangeLabel, nameLabel]
   });
 
   signer.tabs = tabs;

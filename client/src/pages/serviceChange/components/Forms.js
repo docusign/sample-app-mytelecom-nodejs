@@ -1,34 +1,28 @@
-import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
-import { useForm } from 'react-hook-form';
+import React from 'react';
+import { Form, Col, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { Input, useValidation, FormButtons, SelectInput, RadioInput } from '../../../components';
+import { Input, useValidation } from '../../../components';
+import { ErrorMessage } from '@hookform/error-message';
+import { ErrorMessageContainer } from '../../../components/errorMessageContainer';
 
-export const LimitChangeForm = ({ setLimitChange, register, errors }) => {
+export const LimitChangeForm = ({ limitChange, setLimitChange, register, errors }) => {
   const { t } = useTranslation('ChangeService');
-
-  const { formCheckFieldRequired } = useValidation();
 
   const handleLimitChangeSelect = (evt) => {
     setLimitChange(evt.target.value);
   }
 
   return (
-    <Form.Group>
-      <RadioInput
-        id="limitChange"
-        name="limitChange"
-        label={t('LimitChange')}
-        options={[
-          { value: 'increase', text: t('Increase') },
-          { value: 'decrease', text: t('Decrease') },
-        ]}
-        {...register('limitChange', {
-          required: formCheckFieldRequired,
-        })}
-        onChange={handleLimitChangeSelect}
-        errors={errors}
-      />
+    <Form.Group as={Row} className="mb-3" controlId="limitChange">
+      <Form.Label>LimitChange</Form.Label>
+      <Col>
+        <div className="radio-s">
+          <div><label key="increased"><input onChange={handleLimitChangeSelect} checked={limitChange === 'increased'} type="radio" name="limitChange" value="increased" /><span>Increase</span></label></div>
+          <div><label key="decreased"><input onChange={handleLimitChangeSelect} checked={limitChange === 'decreased'} type="radio" name="limitChange" value="decreased" /><span>Decrease</span></label></div>
+        </div>
+        
+        <ErrorMessage errors={errors} name="limitChange" as={<ErrorMessageContainer />} />
+      </Col>
     </Form.Group>
   );
 }

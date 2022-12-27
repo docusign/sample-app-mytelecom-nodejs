@@ -1,6 +1,6 @@
 const path = require("path");
 const docsPath = path.resolve(__dirname, "../documents");
-const docFile = "World_Wide_Corp_lorem.pdf";
+const docFile = "Service_Change.pdf";
 const text = require("../assets/text.json");
 const { sendEnvelope } = require("../envelopes/sendEnvelope");
 const { serviceChange } = require("../envelopes/serviceChangeEnvelope.js");
@@ -17,8 +17,7 @@ const createController = async (req, res, next) => {
   // Construct arguments
   const { body } = req;
   const envelopeArgs = {
-    signerEmail: body.signerEmail,
-    signerName: body.signerName,
+    limitChange: body.limitChange,
     signers: body.signers,
     status: "created",
     docFile: path.resolve(docsPath, docFile),

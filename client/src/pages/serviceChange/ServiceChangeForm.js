@@ -16,13 +16,12 @@ function ServiceChangeForm({ onSubmit }) {
 
   const { t } = useTranslation('ChangeService');
 
-  const [recipients, setRecipients] = useState([]);
-  const [limitChange, setLimitChange] = useState();
+  const [limitChange, setLimitChange] = useState('increased');
   const [recipientCount, setRecipientCount] = useState(3);
   const [currentFormNumber, setCurrentFormNumber] = useState(0);
 
   const Forms = [
-    <LimitChangeForm setLimitChange={setLimitChange} register={register} errors={errors}/>,
+    <LimitChangeForm limitChange={limitChange} setLimitChange={setLimitChange} register={register} errors={errors}/>,
     <RecipientNumberForm recipientCount={recipientCount} setRecipientCount={setRecipientCount} register={register} errors={errors}/>,
     <RecipientDataForm recipientCount={recipientCount} register={register} errors={errors}/>
   ];
@@ -40,7 +39,7 @@ function ServiceChangeForm({ onSubmit }) {
 
   return (
     <>
-      <Form onSubmit={handleSubmit((form) => onSubmit(form, recipients))}>
+      <Form onSubmit={handleSubmit((form) => onSubmit(form, limitChange))}>
         {Forms[currentFormNumber]}
 
         <FormButtons onBack={!isFirstForm && handleBack} onContinue={!isLastForm && handleContinue}/>

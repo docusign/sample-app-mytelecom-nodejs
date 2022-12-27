@@ -10,7 +10,7 @@ function ServiceChange() {
   const { t } = useTranslation('ChangeService');
 
   const navigate = useNavigate();
-  const handleSubmit = async(form) => {
+  const handleSubmit = async(form, limitChange) => {
     try {
       const signers = [];
 
@@ -18,7 +18,7 @@ function ServiceChange() {
         signers.push({ name: form[`name${i}`], email: form[`email${i}`], limit: form[`limit${i}`] });
       }
 
-      const response = await serviceChange({signers, limitChange: form.limitChange});
+      const response = await serviceChange({signers, limitChange});
       console.log(`Received response: ${response.data}`);
       navigate("/");
     } catch (error) {
