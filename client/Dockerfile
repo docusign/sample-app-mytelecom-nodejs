@@ -1,11 +1,14 @@
-FROM node:19-buster-slim
+FROM --platform=linux/amd64 node:19-alpine AS development
 
 WORKDIR /usr/src/app
-COPY . /usr/src/app
-COPY .env_example /usr/src/app/.env
+
+COPY package.json package.json
+COPY package-lock.json package-lock.json
 
 RUN npm install
+COPY . .
+RUN npm run build
 
-EXPOSE 3000
+FROM --platform=linux/amd64 nginx:1.23.2-alpine
 
-CMD [ "npm run dev" ]
+COPY --from=development /usr/src/app/build /usr/share/nginx/html
