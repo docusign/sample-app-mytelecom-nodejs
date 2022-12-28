@@ -1,0 +1,41 @@
+---
+- name: "Check directory"
+  stat:
+    path: "~/{{ PROJECT_FOLDER }}/{{ NGINX_CONF_FOLDER }}"
+  register: my_folder
+
+- name: "echo if directory already existed"
+  debug:
+    msg: "the jboss directory is already existed"
+  when: my_folder.stat.exists
+
+- name: "Ansible Create directory if not exists"
+  file:
+    path: "~/{{ PROJECT_FOLDER }}/{{ NGINX_CONF_FOLDER }}"
+    state: directory
+    mode: 0755
+    group: "{{ VM_USER }}"
+    owner: "{{ VM_USER }}"
+  when: my_folder.stat.exists == false
+
+- name: "Copy Nginx conf file"
+  ansible.builtin.copy:
+    src: "../nginx/conf/{{ NGINX_CONF_NAME }}"
+    dest: "~/{{ PROJECT_FOLDER }}/{{ NGINX_CONF_FOLDER }}/"
+    force: true
+
+- name: "Copy Docker Compose file"
+  ansible.builtin.copy:
+    src: "../../{{ COMPOSE_FILE_NAME }}"
+    dest: "~/{{ PROJECT_FOLDER }}"
+    force: true
+
+- name: "AZ login"
+  shell:
+    cmd: "az login --identity && az acr login --name {{ AZ_REPO_NAME }}"
+    chdir: "~/{{ PROJECT_FOLDER }}"
+
+- name: "Reatart containers"
+  shell:
+    cmd: "docker compose stop && docker compose rm -f && docker compose pull && docker compose up -d"
+    chdir: "~/{{ PROJECT_FOLDER }}"
