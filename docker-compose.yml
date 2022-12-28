@@ -17,8 +17,5 @@ services:
       - ./infra/nginx/certbot/www:/var/www/certbot:rw
       - ./infra/nginx/certbot/conf/:/etc/letsencrypt/:rw
 
-  front:
-    image: 
-    # volumes:
-    #   - ./infra/nginx/certbot/www:/var/www/certbot:rw
-    #   - ./infra/nginx/certbot/conf/:/etc/letsencrypt/:rw
+  frontend:
+    image: mytelecom.azurecr.io/mytelecom-front:latest
