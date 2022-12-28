@@ -6,6 +6,8 @@ COPY .env_example /usr/src/app/.env
 
 RUN npm install
 
+COPY private.key /usr/src/private.key
+
 EXPOSE 3000
 
-CMD [ "npm run dev" ]
+CMD [ "npm run server" ]

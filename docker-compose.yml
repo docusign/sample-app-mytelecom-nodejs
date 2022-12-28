@@ -6,7 +6,6 @@ services:
     ports:
       - 80:80
       - 443:443
-    restart: always
     volumes:
       - ./infra/nginx/conf/:/etc/nginx/conf.d/:ro
       - ./infra/nginx/certbot/www:/var/www/certbot:ro
@@ -16,6 +15,5 @@ services:
     volumes:
       - ./infra/nginx/certbot/www:/var/www/certbot:rw
       - ./infra/nginx/certbot/conf/:/etc/letsencrypt/:rw
-
   frontend:
     image: mytelecom.azurecr.io/mytelecom-front:latest

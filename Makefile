@@ -5,23 +5,35 @@ storage_account_container_name = mytelecomtfstate
 
 .PHONY: help
 help:
-	@echo "make build			# build frontend docker image"
-	@echo "make push			# push frontend docker image"
+	@echo "make push-frontend          # push frontend docker image"
+	@echo "make build-frontend         # build frontend docker image"
+	@echo "make build-backend          # build backend docker image"
+	@echo "make push-backend           # push backend docker image"
 	@echo "make login			# get Azure login"
 	@echo "make acr-login		# get Azure repo login"
 	@echo "make deploy			# deploy the stack to the server"
 	@echo "make full-scope		# buld && push && deploy"
 	@echo "make help			# show this help"
 
-.PHONY: build
-build:
-	docker build -t mytelecom-front:latest .
+.PHONY: build-frontend 
+build-frontend :
+	docker build -t mytelecom-front:latest client/
 	docker tag mytelecom-front:latest $(repo_name).azurecr.io/mytelecom-front:$(version)
 
-.PHONY: push
-push:
+.PHONY: push-frontend
+push-frontend:
 	$(MAKE) acr-login
 	docker push $(repo_name).azurecr.io/mytelecom-front:$(version)
+
+.PHONY: build-backend
+build-backend:
+	docker build -t mytelecom-backend:latest server/
+	docker tag mytelecom-backend:latest $(repo_name).azurecr.io/mytelecom-backend:$(version)
+	
+.PHONY: push-backend
+push-backend:
+	$(MAKE) acr-login
+	docker tag mytelecom-backend:latest $(repo_name).azurecr.io/mytelecom-backend:$(version)
 
 .PHONY: login
 login:
