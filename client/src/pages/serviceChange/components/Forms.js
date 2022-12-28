@@ -74,7 +74,7 @@ export const RecipientDataForm = ({ recipientCount, register, errors }) => {
   return (
     <>
       <h4>{t('RecipientData')}</h4>
-      {[...Array(recipientCount).keys()].map(i => (
+      {Array.from({ length: recipientCount }).map((_, i) => (
         <Form.Group key={i}>
         <h4>{`${t('SignerHeader')} ${i + 1}`}</h4>
 
