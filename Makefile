@@ -1,7 +1,7 @@
-repo_name    = mysmapp
+repo_name    = mytelecom
 version      = latest
-storage_account_name = myitstate
-storage_account_container_name = myittfstate
+storage_account_name = mytelecomstate
+storage_account_container_name = mytelecomtfstate
 
 .PHONY: help
 help:

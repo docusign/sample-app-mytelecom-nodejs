@@ -16,3 +16,9 @@ services:
     volumes:
       - ./infra/nginx/certbot/www:/var/www/certbot:rw
       - ./infra/nginx/certbot/conf/:/etc/letsencrypt/:rw
+
+  front:
+    image: 
+    # volumes:
+    #   - ./infra/nginx/certbot/www:/var/www/certbot:rw
+    #   - ./infra/nginx/certbot/conf/:/etc/letsencrypt/:rw
