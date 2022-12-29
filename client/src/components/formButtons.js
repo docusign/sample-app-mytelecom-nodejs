@@ -3,7 +3,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-export const FormButtons = ({onBack, onContinue}) => {
+export const FormButtons = ({ onBack, onContinue }) => {
   const { t } = useTranslation('Common');
   const navigate = useNavigate();
 
@@ -13,10 +13,10 @@ export const FormButtons = ({onBack, onContinue}) => {
     }
 
     onBack();
-  }
+  };
 
   return (
-    <div className="float-end">
+    <div className="d-flex justify-content-end">
       <Button variant="link" onClick={handleBack}>
         {t('BackButton')}
       </Button>

@@ -20,9 +20,11 @@ const Liability = () => {
     <section className="content-section">
       <Container>
         <Row className="justify-content-center">
-          <Col className="form-holder">
-            <h2 className="form-title">{t('Title')}</h2>
-            <AssumptionLiabilityForm onSubmit={handleSubmit} />
+          <Col>
+            <div className="form-holder">
+              <h2 className="form-title">{t('Title')}</h2>
+              <AssumptionLiabilityForm onSubmit={handleSubmit} />
+            </div>
           </Col>
           <SeeMore title={t('SeeMore.Title')} text={t('SeeMore.Text')} />
         </Row>
