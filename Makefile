@@ -27,13 +27,25 @@ push-frontend:
 
 .PHONY: build-backend
 build-backend:
+	$(MAKE) acr-login
+	az storage blob download \
+		--account-name $(storage_account_name) \
+		--container-name $(storage_account_container_name) \
+		--name .env \
+		--file ./server/.env
+	az storage blob download \
+		--account-name $(storage_account_name) \
+		--container-name $(storage_account_container_name) \
+		--name private.key \
+		--file ./server/private.key
+
 	docker build -t mytelecom-backend:latest server/
 	docker tag mytelecom-backend:latest $(repo_name).azurecr.io/mytelecom-backend:$(version)
 	
 .PHONY: push-backend
 push-backend:
 	$(MAKE) acr-login
-	docker tag mytelecom-backend:latest $(repo_name).azurecr.io/mytelecom-backend:$(version)
+	docker push $(repo_name).azurecr.io/mytelecom-backend:$(version)
 
 .PHONY: login
 login:
