@@ -31,9 +31,11 @@ function ServiceChange() {
     <section className="content-section">
       <Container>
         <Row className="justify-content-center">
-          <Col className="form-holder">
-            <h2 className="form-title">{t('Title')}</h2>
-            <ServiceChangeForm onSubmit={handleSubmit} />
+          <Col className="form-col">
+            <div className="form-holder">
+              <h2 className="form-title">{t('Title')}</h2>
+              <ServiceChangeForm onSubmit={handleSubmit} />
+            </div>
           </Col>
           <SeeMore title={t('SeeMore.Title')} text={t('SeeMore.Text')} />
         </Row>

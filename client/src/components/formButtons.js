@@ -16,7 +16,7 @@ export const FormButtons = ({onBack, onContinue}) => {
   }
 
   return (
-    <div className="float-end">
+    <div className="d-flex justify-content-end">
       <Button variant="link" onClick={handleBack}>
         {t('BackButton')}
       </Button>
