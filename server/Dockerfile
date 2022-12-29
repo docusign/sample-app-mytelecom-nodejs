@@ -2,12 +2,12 @@ FROM node:19-buster-slim
 
 WORKDIR /usr/src/app
 COPY . /usr/src/app
-COPY .env_example /usr/src/app/.env
 
 RUN npm install
 
 COPY private.key /usr/src/private.key
+COPY .env /usr/src/.env
 
-EXPOSE 3000
+EXPOSE 8000
 
-CMD [ "npm run server" ]
+CMD npm run start

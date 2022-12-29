@@ -20,6 +20,7 @@
 .env.test.local
 .env.production.local
 private.key
+public.key
 /.vscode
 .idea
 
