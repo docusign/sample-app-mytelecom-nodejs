@@ -8,11 +8,12 @@
 }
 
 .radio-s {
-  // position: relative
+  position: relative
 }
 
 .radio-s > * {
-  margin: 0 20px 0 0;
+  margin: 0 24px 0 0;
+  height: 24px;
 }
 
 .radio-s label * {
@@ -34,19 +35,19 @@
 }
 
 .radio-s input[type="radio"]+span::before {
-  margin: 0 10px 0 0;
-  width: 13px;
-  height: 13px;
+  margin: -2px 10px 0 0;
+  width: 12px;
+  height: 12px;
   border: solid 2px #C5C5C5;
-  // background-size: 13px;
+  background-size: 13px;
   content: "";
   text-align: center;
   border-radius: 50%;
 }
 
 .radio-s input[type="radio"]:checked+span::before {
-  width: 13px !important;
-  height: 13px !important;
+  width: 12px !important;
+  height: 12px !important;
   border: 2px solid #E94057;
   background-color: #FFFFFF;
   color: #E94057;
@@ -65,9 +66,9 @@
 
 .radio-s input[type="radio"]:checked+span::before {
   content: "\2022";
-  font-size: 26px
+  font-size: 22px;
 }
 
 .radio-s input[type="radio"]:checked + span::before {
-  line-height: 10px;
+  line-height: 9px;
 }

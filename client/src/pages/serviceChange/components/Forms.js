@@ -16,14 +16,14 @@ export const LimitChangeForm = ({ limitChange, setLimitChange, register, errors 
     <Form.Group as={Row} className="mb-3" controlId="limitChange">
       <h4>{t('LimitChange')}</h4>
       <Col>
-        <div className="radio-s">
-          <div>
+        <div>
+          <div className="radio-s">
             <label key="increased">
               <input onChange={handleLimitChangeSelect} checked={limitChange === 'increased'} type="radio" name="limitChange" value="increased" />
               <span>{t('Increase')}</span>
             </label>
           </div>
-          <div>
+          <div className="radio-s">
             <label key="decreased">
               <input onChange={handleLimitChangeSelect} checked={limitChange === 'decreased'} type="radio" name="limitChange" value="decreased" />
               <span>{t('Decrease')}</span>
