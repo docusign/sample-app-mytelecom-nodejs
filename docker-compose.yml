@@ -20,3 +20,5 @@ services:
 
   backend:
     image: mytelecom.azurecr.io/mytelecom-backend:latest
+    ports:
+      - 8000:8000
