@@ -30,10 +30,10 @@ const app = express()
   );
 
 // Routing
-app.use("/auth", authRouter);
-app.use("/assumptionLiability", assumptionLiabilityRouter);
-app.use("/purchaseDevice", purchaseDeviceRouter);
-app.use("/serviceChange", serviceChangeRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/assumptionLiability", assumptionLiabilityRouter);
+app.use("/api/purchaseDevice", purchaseDeviceRouter);
+app.use("/api/serviceChange", serviceChangeRouter);
 
 // Letting dev know server started
 app.listen(port, () => {

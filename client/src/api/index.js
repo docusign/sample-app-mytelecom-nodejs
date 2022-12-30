@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const api = axios.create();
+const api = axios.create({
+  baseURL: '/api'
+});
 
 export const assumptionLiability = async (body) => {
   await login();
@@ -24,8 +26,7 @@ export const serviceChange = async (body) => {
 }
 
 export const login = async () => {
-  const res = await axios.get('/auth/login');
-  console.log(res);
+  const res = await api.get('/auth/login');
 
   // If user has never logged in before, redirect to consent screen
   if (res.status === 210) {
