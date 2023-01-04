@@ -7,6 +7,10 @@
     "Title": "Signing Complete!",
     "Description": "You have successfully submitted an account change!"
   },
+  "Option3": {
+    "Title": "Signing Complete!",
+    "Description": "You have successfully submitted an account change!"
+  },
   "BackLink": "Back to Home",
   "SandboxText": "Get Started with the DocuSign APIs Today",
   "SandboxButton": "Get Your Developer Account",

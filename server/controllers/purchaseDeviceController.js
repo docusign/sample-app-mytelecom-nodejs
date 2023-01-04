@@ -1,14 +1,11 @@
-const path = require("path");
-const docsPath = path.resolve(__dirname, "../documents");
-const initialDocFile = "Purchase_New_Device.pdf";
-const monthlyPaymentDocFile = "Purchase_New_Device_Monthly_Payment.pdf";
-const text = require("../assets/text.json");
-const { sendEnvelope } = require("../envelopes/sendEnvelope");
-const {
-  makePurchasedEnvelope,
-  makeScheduledEnvelope,
-} = require("../envelopes/purchaseDeviceEnvelope");
-const { checkToken } = require("./jwtController");
+const path = require('path');
+const docsPath = path.resolve(__dirname, '../documents');
+const initialDocFile = 'Purchase_New_Device.pdf';
+const monthlyPaymentDocFile = 'Purchase_New_Device_Monthly_Payment.pdf';
+const text = require('../assets/text.json');
+const { sendEnvelope } = require('../envelopes/sendEnvelope');
+const { makePurchasedEnvelope, makeScheduledEnvelope } = require('../envelopes/purchaseDeviceEnvelope');
+const { checkToken } = require('./jwtController');
 
 /**
  * Controller that creates and sends an envelope to the signer.
@@ -23,7 +20,7 @@ const createController = async (req, res, next) => {
   const initialEnvelopeArgs = {
     signerEmail: body.signerEmail,
     signerName: body.signerName,
-    status: "sent",
+    status: 'sent',
     docFile: path.resolve(docsPath, initialDocFile),
 
     // Payments
@@ -40,7 +37,7 @@ const createController = async (req, res, next) => {
   const monthlyPaymentEnvelopeArgs = {
     signerEmail: body.signerEmail,
     signerName: body.signerName,
-    status: "sent",
+    status: 'sent',
     docFile: path.resolve(docsPath, monthlyPaymentDocFile),
 
     // Payments
@@ -67,8 +64,7 @@ const createController = async (req, res, next) => {
   try {
     if (
       !process.env.PAYMENT_GATEWAY_ACCOUNT_ID ||
-      process.env.PAYMENT_GATEWAY_ACCOUNT_ID ==
-        "{YOUR_PAYMENT_GATEWAY_ACCOUNT_ID}" ||
+      process.env.PAYMENT_GATEWAY_ACCOUNT_ID == '{YOUR_PAYMENT_GATEWAY_ACCOUNT_ID}' ||
       !process.env.PAYMENT_GATEWAY_NAME ||
       !process.env.PAYMENT_GATEWAY_DISPLAY_NAME
     ) {
@@ -82,9 +78,7 @@ const createController = async (req, res, next) => {
   // The first envelope in this instance is the initial device purchase envelope
   // The second envelope is to demonstrate scheduled sending, in this case, for monthly payments
   let initialEnvelope = makePurchasedEnvelope(args.initialEnvelopeArgs);
-  let monthlyPaymentEnvelope = makeScheduledEnvelope(
-    args.monthlyPaymentEnvelopeArgs
-  );
+  let monthlyPaymentEnvelope = makeScheduledEnvelope(args.monthlyPaymentEnvelopeArgs);
 
   // Step 2: Send the envelopes to the signer
   try {

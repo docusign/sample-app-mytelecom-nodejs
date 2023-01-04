@@ -10,7 +10,7 @@ export const LimitChangeForm = ({ limitChange, setLimitChange, register, errors 
 
   const handleLimitChangeSelect = (evt) => {
     setLimitChange(evt.target.value);
-  }
+  };
 
   return (
     <Form.Group as={Row} className="mb-3" controlId="limitChange">
@@ -19,23 +19,35 @@ export const LimitChangeForm = ({ limitChange, setLimitChange, register, errors 
         <div>
           <div className="radio-s">
             <label key="increased">
-              <input onChange={handleLimitChangeSelect} checked={limitChange === 'increased'} type="radio" name="limitChange" value="increased" />
+              <input
+                onChange={handleLimitChangeSelect}
+                checked={limitChange === 'increased'}
+                type="radio"
+                name="limitChange"
+                value="increased"
+              />
               <span>{t('Increase')}</span>
             </label>
           </div>
           <div className="radio-s">
             <label key="decreased">
-              <input onChange={handleLimitChangeSelect} checked={limitChange === 'decreased'} type="radio" name="limitChange" value="decreased" />
+              <input
+                onChange={handleLimitChangeSelect}
+                checked={limitChange === 'decreased'}
+                type="radio"
+                name="limitChange"
+                value="decreased"
+              />
               <span>{t('Decrease')}</span>
             </label>
           </div>
         </div>
-        
+
         <ErrorMessage errors={errors} name="limitChange" as={<ErrorMessageContainer />} />
       </Col>
     </Form.Group>
   );
-}
+};
 
 export const RecipientNumberForm = ({ recipientCount, setRecipientCount, register, errors }) => {
   const { t } = useTranslation('ChangeService');
@@ -44,7 +56,7 @@ export const RecipientNumberForm = ({ recipientCount, setRecipientCount, registe
 
   const handleRecipientNumberSelect = (evt) => {
     setRecipientCount(evt.target.value);
-  }
+  };
 
   return (
     <Form.Group>
@@ -64,7 +76,7 @@ export const RecipientNumberForm = ({ recipientCount, setRecipientCount, registe
       />
     </Form.Group>
   );
-}
+};
 
 export const RecipientDataForm = ({ recipientCount, register, errors }) => {
   const { t } = useTranslation('ChangeService');
@@ -76,58 +88,57 @@ export const RecipientDataForm = ({ recipientCount, register, errors }) => {
       <h4>{t('RecipientData')}</h4>
       {Array.from({ length: recipientCount }).map((_, i) => (
         <Form.Group key={i}>
-        <h4>{`${t('SignerHeader')} ${i + 1}`}</h4>
+          <h4>{`${t('SignerHeader')} ${i + 1}`}</h4>
 
-        <Input
-          id={`firstName${i}`}
-          name={`firstName${i}`}
-          label={t('FirstName')}
-          autoComplete="given-name"
-          {...register(`firstName${i}`, {
-            required: formCheckFieldRequired,
-          })}
-          errors={errors}
-        />
+          <Input
+            id={`firstName${i}`}
+            name={`firstName${i}`}
+            label={t('FirstName')}
+            autoComplete="given-name"
+            {...register(`firstName${i}`, {
+              required: formCheckFieldRequired,
+            })}
+            errors={errors}
+          />
 
-        <Input
-          id={`lastName${i}`}
-          name={`lastName${i}`}
-          label={t('LastName')}
-          autoComplete="family-name"
-          {...register(`lastName${i}`, {
-            required: formCheckFieldRequired,
-          })}
-          errors={errors}
-        />
+          <Input
+            id={`lastName${i}`}
+            name={`lastName${i}`}
+            label={t('LastName')}
+            autoComplete="family-name"
+            {...register(`lastName${i}`, {
+              required: formCheckFieldRequired,
+            })}
+            errors={errors}
+          />
 
-        <Input
-          id={`email${i}`}
-          name={`email${i}`}
-          label={t('Email')}
-          {...register(`email${i}`, {
-            required: formCheckFieldRequired,
-            pattern: {
-              value: emailRegExp,
-              message: t('InvalidEmailFormatError'),
-            },
-          })}
-          errors={errors}
-        />
+          <Input
+            id={`email${i}`}
+            name={`email${i}`}
+            label={t('Email')}
+            {...register(`email${i}`, {
+              required: formCheckFieldRequired,
+              pattern: {
+                value: emailRegExp,
+                message: t('InvalidEmailFormatError'),
+              },
+            })}
+            errors={errors}
+          />
 
-        <Input
-          id={`limit${i}`}
-          name={`limit${i}`}
-          label={t('Limit')}
-          type="number"
-          min="1"
-          {...register(`limit${i}`, {
-            required: formCheckFieldRequired,
-          })}
-          errors={errors}
-        />
-      
-      </Form.Group>
+          <Input
+            id={`limit${i}`}
+            name={`limit${i}`}
+            label={t('Limit')}
+            type="number"
+            min="1"
+            {...register(`limit${i}`, {
+              required: formCheckFieldRequired,
+            })}
+            errors={errors}
+          />
+        </Form.Group>
       ))}
     </>
   );
-}
+};

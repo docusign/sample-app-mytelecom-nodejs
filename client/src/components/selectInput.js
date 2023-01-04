@@ -9,11 +9,12 @@ export const SelectInput = React.forwardRef(({ id, label, labelProps, errors, op
       <Form.Label {...labelProps}>{label}</Form.Label>
       <Col>
         <Form.Select>
-          {options.map((option, index) => {
-            return <option key={index} value={index} ref={ref} {...props}>{option}</option>
-          })}
+          {options.map((option, index) => (
+            <option key={index} value={index} ref={ref} {...props}>
+              {option}
+            </option>
+          ))}
         </Form.Select>
-          
         <ErrorMessage errors={errors} name={id} as={<ErrorMessageContainer />} />
       </Col>
     </Form.Group>

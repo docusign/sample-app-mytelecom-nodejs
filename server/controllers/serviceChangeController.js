@@ -1,10 +1,10 @@
-const path = require("path");
-const docsPath = path.resolve(__dirname, "../documents");
-const docFile = "Service_Change.pdf";
-const text = require("../assets/text.json");
-const { sendEnvelope } = require("../envelopes/sendEnvelope");
-const { serviceChange } = require("../envelopes/serviceChangeEnvelope.js");
-const { checkToken } = require("./jwtController");
+const path = require('path');
+const docsPath = path.resolve(__dirname, '../documents');
+const docFile = 'Service_Change.pdf';
+const text = require('../assets/text.json');
+const { sendEnvelope } = require('../envelopes/sendEnvelope');
+const { serviceChange } = require('../envelopes/serviceChangeEnvelope.js');
+const { checkToken } = require('./jwtController');
 
 /**
  * Controller that creates and sends an envelope to the signer.
@@ -19,7 +19,7 @@ const createController = async (req, res, next) => {
   const envelopeArgs = {
     limitChange: body.limitChange,
     signers: body.signers,
-    status: "created",
+    status: 'created',
     docFile: path.resolve(docsPath, docFile),
   };
 
