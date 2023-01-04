@@ -5,18 +5,18 @@
 // 4. Using the access token, send a POST to get the user's base URI (account_id + base_uri).
 // 5. Now you can use the access token and base URI to make API calls.
 // When the access token expires, create a new JWT and request a new access token.
-const path = require("path");
-require("dotenv").config({ path: path.resolve(__dirname, "../../.env") });
-const eSignSDK = require("docusign-esign");
-const fs = require("fs"); // Used to parse RSA key
-const dayjs = require("dayjs"); // Used to set and determine a token's expiration date
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
+const eSignSDK = require('docusign-esign');
+const fs = require('fs'); // Used to parse RSA key
+const dayjs = require('dayjs'); // Used to set and determine a token's expiration date
 const oAuth = eSignSDK.ApiClient.OAuth;
 const restApi = eSignSDK.ApiClient.RestApi;
-const text = require("../assets/text.json");
+const text = require('../assets/text.json');
 // Constants
-const rsaKey = fs.readFileSync(path.resolve(__dirname, "../../private.key"));
+const rsaKey = fs.readFileSync(path.resolve(__dirname, '../../private.key'));
 const jwtLifeSec = 60 * 60; // Request lifetime of JWT token is 60 minutes
-const scopes = ["signature", "impersonation"];
+const scopes = ['signature', 'impersonation'];
 
 // For production environment, change "DEMO" to "PRODUCTION"
 const basePath = restApi.BasePath.DEMO; // https://demo.docusign.net/restapi
@@ -44,7 +44,7 @@ const getToken = async (req) => {
       jwtLifeSec
     );
   } catch (error) {
-    if (error.response.body.error === "consent_required") {
+    if (error.response.body.error === 'consent_required') {
       throw new Error(text.jwt.consentError);
     } else {
       throw error;
@@ -52,7 +52,7 @@ const getToken = async (req) => {
   }
 
   // Save the access token and the expiration
-  const expiresAt = dayjs().add(results.body.expires_in, "s");
+  const expiresAt = dayjs().add(results.body.expires_in, 's');
   req.session.accessToken = results.body.access_token;
   req.session.tokenExpirationTimestamp = expiresAt;
 };
@@ -63,17 +63,13 @@ const getToken = async (req) => {
  * Must be called before every DocuSign API call.
  */
 const checkToken = async (req) => {
-  const noToken =
-      !req.session.accessToken || !req.session.tokenExpirationTimestamp,
+  const noToken = !req.session.accessToken || !req.session.tokenExpirationTimestamp,
     currentTime = dayjs(),
     bufferTime = 1; // One minute buffer time
 
   // Check to see if we have a token or if the token is expired
   let needToken =
-    noToken ||
-    dayjs(req.session.tokenExpirationTimestamp)
-      .subtract(bufferTime, "m")
-      .isBefore(currentTime);
+    noToken || dayjs(req.session.tokenExpirationTimestamp).subtract(bufferTime, 'm').isBefore(currentTime);
 
   // Update the token if needed
   if (needToken) {
@@ -88,7 +84,7 @@ const getUserInfo = async (req) => {
   // Get API client
   const eSignApi = new eSignSDK.ApiClient(),
     targetAccountId = process.env.targetAccountId,
-    baseUriSuffix = "/restapi";
+    baseUriSuffix = '/restapi';
   eSignApi.setOAuthBasePath(oAuthBasePath);
 
   // Get user info using access token
@@ -97,16 +93,12 @@ const getUserInfo = async (req) => {
   let accountInfo;
   if (!Boolean(targetAccountId)) {
     // Find the default account
-    accountInfo = results.accounts.find(
-      (account) => account.isDefault === "true"
-    );
+    accountInfo = results.accounts.find((account) => account.isDefault === 'true');
   } else {
     // Find the matching account
-    accountInfo = results.accounts.find(
-      (account) => account.accountId == targetAccountId
-    );
+    accountInfo = results.accounts.find((account) => account.accountId == targetAccountId);
   }
-  if (typeof accountInfo === "undefined") {
+  if (typeof accountInfo === 'undefined') {
     throw new Error(`Target account ${targetAccountId} not found!`);
   }
 
@@ -128,7 +120,7 @@ login = async (req, res) => {
   } catch (error) {
     // User has not provided consent yet, send the redirect URL to user.
     if (error.message === text.jwt.consentError) {
-      let consent_scopes = scopes.join("%20");
+      let consent_scopes = scopes.join('%20');
       consent_url =
         `${process.env.DS_OAUTH_SERVER}/oauth/auth?response_type=code&` +
         `scope=${consent_scopes}&client_id=${process.env.INTEGRATION_KEY}&` +

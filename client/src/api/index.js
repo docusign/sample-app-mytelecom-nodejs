@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/api'
+  baseURL: '/api',
 });
 
 export const assumptionLiability = async (body) => {
@@ -15,15 +15,15 @@ export const purchaseDevice = async (form) => {
   const body = {
     signerName: `${form.firstName} ${form.lastName}`,
     ...form,
-  }
+  };
   return api.post('/purchaseDevice', body);
-}
+};
 
 export const serviceChange = async (body) => {
   await login();
 
   return api.post('/serviceChange', body);
-}
+};
 
 export const login = async () => {
   const res = await api.get('/auth/login');

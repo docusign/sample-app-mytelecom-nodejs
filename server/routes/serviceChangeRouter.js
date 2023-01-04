@@ -1,9 +1,7 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const {
-  createController,
-} = require("../controllers/serviceChangeController.js");
+const { createController } = require('../controllers/serviceChangeController.js');
 
-router.post("/", createController);
+router.post('/', createController);
 
 module.exports = router;

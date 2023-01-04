@@ -10,10 +10,17 @@ export const RadioInput = React.forwardRef(({ id, name, label, labelProps, error
       <Col>
         <div className="radio-s">
           {options.map((option, index) => {
-            return <div><label key={index}><input type="radio" name={name} value={option.value} ref={ref} {...props} /><span>{option.text}</span></label></div>
+            return (
+              <div key={index}>
+                <label>
+                  <input type="radio" name={name} value={option.value} ref={ref} {...props} />
+                  <span>{option.text}</span>
+                </label>
+              </div>
+            );
           })}
         </div>
-        
+
         <ErrorMessage errors={errors} name={id} as={<ErrorMessageContainer />} />
       </Col>
     </Form.Group>

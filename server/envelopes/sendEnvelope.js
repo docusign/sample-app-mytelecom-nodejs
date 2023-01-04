@@ -1,7 +1,6 @@
-const eSignSdk = require("docusign-esign");
-const text = require("../assets/text.json");
-const dsReturnUrl =
-  process.env.REDIRECT_URI + "/submitted";
+const eSignSdk = require('docusign-esign');
+const text = require('../assets/text.json');
+const dsReturnUrl = process.env.REDIRECT_URI + '/submitted';
 const sendEnvelope = async (envelope, args) => {
   // Data for this method
   // args.basePath
@@ -10,7 +9,7 @@ const sendEnvelope = async (envelope, args) => {
 
   let eSignApi = new eSignSdk.ApiClient();
   eSignApi.setBasePath(args.basePath);
-  eSignApi.addDefaultHeader("Authorization", "Bearer " + args.accessToken);
+  eSignApi.addDefaultHeader('Authorization', 'Bearer ' + args.accessToken);
   let envelopesApi = new eSignSdk.EnvelopesApi(eSignApi),
     results = null;
 
@@ -36,14 +35,14 @@ function makeRecipientViewRequest(args) {
 
   // Create the recipient view request object
   const viewRequest = new eSignSdk.RecipientViewRequest.constructFromObject({
-    authenticationMethod: "none",
-    clientUserId: "1",
-    recipientId: "1",
+    authenticationMethod: 'none',
+    clientUserId: '1',
+    recipientId: '1',
     returnUrl: dsReturnUrl, // TODO: After finish signing, how to get back to this URL?
     userName: args.signerName,
-    email: args.signerEmail
+    email: args.signerEmail,
   });
   return viewRequest;
-};
+}
 
 module.exports = { sendEnvelope, makeRecipientViewRequest };

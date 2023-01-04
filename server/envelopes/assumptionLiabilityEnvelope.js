@@ -1,6 +1,6 @@
-const fs = require("fs");
-const eSignSdk = require("docusign-esign");
-const text = require("../assets/text.json");
+const fs = require('fs');
+const eSignSdk = require('docusign-esign');
+const text = require('../assets/text.json');
 
 /**
  * Creates envelope definition with remote signing.
@@ -14,12 +14,12 @@ function makeEnvelope(args) {
 
   // Read and create document from file in the local directory
   let docPdfBytes = fs.readFileSync(args.docFile);
-  let docb64 = Buffer.from(docPdfBytes).toString("base64");
+  let docb64 = Buffer.from(docPdfBytes).toString('base64');
   let doc = new eSignSdk.Document.constructFromObject({
     documentBase64: docb64,
-    name: "Assumption of liability doc", // Can be different from actual file name
-    fileExtension: "pdf",
-    documentId: "1",
+    name: 'Assumption of liability doc', // Can be different from actual file name
+    fileExtension: 'pdf',
+    documentId: '1',
   });
 
   // Create the envelope definition
@@ -33,8 +33,8 @@ function makeEnvelope(args) {
   let signer = eSignSdk.Signer.constructFromObject({
     email: args.signerEmail,
     name: args.signerName,
-    recipientId: "1",
-    clientUserId: "1"
+    recipientId: '1',
+    clientUserId: '1',
   });
 
   let signerPhoneNumber = eSignSdk.RecipientPhoneNumber.constructFromObject({
@@ -45,7 +45,7 @@ function makeEnvelope(args) {
   let newPhoneRecipient = eSignSdk.Signer.constructFromObject({
     phoneNumber: signerPhoneNumber,
     name: args.recipientName,
-    recipientId: "2"
+    recipientId: '2',
   });
 
   ////////////////////////////////////////////////////////////////
@@ -56,98 +56,98 @@ function makeEnvelope(args) {
   // We're using anchor (autoPlace) positioning
 
   let signOg = eSignSdk.SignHere.constructFromObject({
-    anchorString: "/ogsign/",
-    anchorUnits: "pixels",
-    anchorXOffset: "10",
-    anchorYOffset: "19",
-    scaleValue: "0.65",
-    anchorIgnoreIfNotPresent: "true",
+    anchorString: '/ogsign/',
+    anchorUnits: 'pixels',
+    anchorXOffset: '10',
+    anchorYOffset: '19',
+    scaleValue: '0.65',
+    anchorIgnoreIfNotPresent: 'true',
   });
 
   let newSign = eSignSdk.SignHere.constructFromObject({
-    anchorString: "/newsigner/",
-    anchorUnits: "pixels",
-    anchorXOffset: "10",
-    anchorYOffset: "19",
-    scaleValue: "0.65",
-    anchorIgnoreIfNotPresent: "true",
+    anchorString: '/newsigner/',
+    anchorUnits: 'pixels',
+    anchorXOffset: '10',
+    anchorYOffset: '19',
+    scaleValue: '0.65',
+    anchorIgnoreIfNotPresent: 'true',
   });
 
   // An autofilled spot that uses the user's full name
   let ogName = eSignSdk.Text.constructFromObject({
-    anchorString: "/ogname/",
-    anchorUnits: "pixels",
-    anchorXOffset: "10",
-    anchorYOffset: "-5",
-    anchorIgnoreIfNotPresent: "true",
-    width: "40",
-    value: args.signerName
+    anchorString: '/ogname/',
+    anchorUnits: 'pixels',
+    anchorXOffset: '10',
+    anchorYOffset: '-5',
+    anchorIgnoreIfNotPresent: 'true',
+    width: '40',
+    value: args.signerName,
   });
 
   // An autofilled spot that uses the user's full name
   let newSignerName = eSignSdk.Text.constructFromObject({
-    anchorString: "/newname/",
-    anchorUnits: "pixels",
-    anchorXOffset: "10",
-    anchorYOffset: "-5",
-    anchorIgnoreIfNotPresent: "true",
-    width: "40",
-    value: args.recipientName
+    anchorString: '/newname/',
+    anchorUnits: 'pixels',
+    anchorXOffset: '10',
+    anchorYOffset: '-5',
+    anchorIgnoreIfNotPresent: 'true',
+    width: '40',
+    value: args.recipientName,
   });
 
   let newPhoneNumber = eSignSdk.Text.constructFromObject({
-    anchorString: "/newphonenumber/",
-    anchorUnits: "pixels",
-    anchorXOffset: "10",
-    anchorYOffset: "-5",
-    anchorIgnoreIfNotPresent: "true",
-    width: "40",
-    value: args.recipientPhone
+    anchorString: '/newphonenumber/',
+    anchorUnits: 'pixels',
+    anchorXOffset: '10',
+    anchorYOffset: '-5',
+    anchorIgnoreIfNotPresent: 'true',
+    width: '40',
+    value: args.recipientPhone,
   });
 
   let newEmail = eSignSdk.Text.constructFromObject({
-    anchorString: "/newemail/",
-    anchorUnits: "pixels",
-    anchorXOffset: "10",
-    anchorYOffset: "-5",
-    anchorIgnoreIfNotPresent: "true",
-    width: "100"
+    anchorString: '/newemail/',
+    anchorUnits: 'pixels',
+    anchorXOffset: '10',
+    anchorYOffset: '-5',
+    anchorIgnoreIfNotPresent: 'true',
+    width: '100',
   });
 
   let newAddress = eSignSdk.Text.constructFromObject({
-    anchorString: "/newaddress/",
-    anchorUnits: "pixels",
-    anchorXOffset: "10",
-    anchorYOffset: "-5",
-    anchorIgnoreIfNotPresent: "true",
-    width: "100"
+    anchorString: '/newaddress/',
+    anchorUnits: 'pixels',
+    anchorXOffset: '10',
+    anchorYOffset: '-5',
+    anchorIgnoreIfNotPresent: 'true',
+    width: '100',
   });
 
   let newCity = eSignSdk.Text.constructFromObject({
-    anchorString: "/newcity/",
-    anchorUnits: "pixels",
-    anchorXOffset: "10",
-    anchorYOffset: "-5",
-    anchorIgnoreIfNotPresent: "true",
-    width: "100"
+    anchorString: '/newcity/',
+    anchorUnits: 'pixels',
+    anchorXOffset: '10',
+    anchorYOffset: '-5',
+    anchorIgnoreIfNotPresent: 'true',
+    width: '100',
   });
 
   let newState = eSignSdk.Text.constructFromObject({
-    anchorString: "/newstate/",
-    anchorUnits: "pixels",
-    anchorXOffset: "10",
-    anchorYOffset: "-5",
-    anchorIgnoreIfNotPresent: "true",
-    width: "100"
+    anchorString: '/newstate/',
+    anchorUnits: 'pixels',
+    anchorXOffset: '10',
+    anchorYOffset: '-5',
+    anchorIgnoreIfNotPresent: 'true',
+    width: '100',
   });
 
   let newZip = eSignSdk.Text.constructFromObject({
-    anchorString: "/newzip/",
-    anchorUnits: "pixels",
-    anchorXOffset: "10",
-    anchorYOffset: "-5",
-    anchorIgnoreIfNotPresent: "true",
-    width: "100"
+    anchorString: '/newzip/',
+    anchorUnits: 'pixels',
+    anchorXOffset: '10',
+    anchorYOffset: '-5',
+    anchorIgnoreIfNotPresent: 'true',
+    width: '100',
   });
 
   ////////////////////////////////////////////////////////////////
@@ -157,13 +157,13 @@ function makeEnvelope(args) {
   // Tabs are set per recipient / signer
   let signerTabs = eSignSdk.Tabs.constructFromObject({
     signHereTabs: [signOg],
-    textTabs: [ogName, newPhoneNumber, newSignerName]
+    textTabs: [ogName, newPhoneNumber, newSignerName],
   });
   signer.tabs = signerTabs;
 
   let newPhoneRecipientTabs = eSignSdk.Tabs.constructFromObject({
     signHereTabs: [newSign],
-    textTabs: [newAddress, newCity, newState, newZip, newEmail]
+    textTabs: [newAddress, newCity, newState, newZip, newEmail],
   });
   newPhoneRecipient.tabs = newPhoneRecipientTabs;
 
