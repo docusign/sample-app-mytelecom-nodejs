@@ -11,17 +11,13 @@ terraform {
 
   #Configure Remote State - Backend - on Azure Storage Account
   backend "azurerm" {
-    resource_group_name  = "mytelecom-simple-app-rg"
-    storage_account_name = "mytelecomstate"
-    container_name       = "mytelecomtfstate"
+    resource_group_name  = "exampletel"
+    storage_account_name = "exampletel"
+    container_name       = "exampletel"
     key                  = "terraform.tfstate"
   }
 }
 
 provider "azurerm" {
   features {}
-  subscription_id = var.subscription_id
-  tenant_id       = var.tenant_id
-  client_id       = var.client_id
-  client_secret   = var.client_secret
 }

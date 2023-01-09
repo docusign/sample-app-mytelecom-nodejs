@@ -1,0 +1,6 @@
+---
+- name: "Request certs"
+  shell:
+    cmd: "docker compose run --rm certbot renew"
+    chdir: "~/{{ PROJECT_FOLDER }}"
+

@@ -15,10 +15,3 @@ services:
     volumes:
       - ./infra/nginx/certbot/www:/var/www/certbot:rw
       - ./infra/nginx/certbot/conf/:/etc/letsencrypt/:rw
-  frontend:
-    image: exampletel.azurecr.io/mytelecom-front:latest
-
-  backend:
-    image: exampletel.azurecr.io/mytelecom-backend:latest
-    ports:
-      - 8000:8000

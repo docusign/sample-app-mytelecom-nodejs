@@ -29,14 +29,18 @@ resource "azurerm_linux_virtual_machine" "sm-app-linux-vm" {
   }
   custom_data = base64encode(file("scripts/init.sh"))
 
-  lifecycle {
-    ignore_changes = [
-      identity,
-    ]
+  identity {
+    type  = "SystemAssigned"
   }
 
   tags = {
     Name = "${var.app_name}-vm",
-    Env = "simple-app"
+    Env  = "simple-app"
   }
+}
+
+resource "azurerm_role_assignment" "sm-app-linux-vm-role-assignment" {
+  scope                = data.azurerm_resource_group.rg.id
+  role_definition_name = "AcrPull"
+  principal_id         = azurerm_linux_virtual_machine.sm-app-linux-vm.identity.0.principal_id
 }
