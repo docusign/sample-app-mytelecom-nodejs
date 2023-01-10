@@ -8,7 +8,7 @@ export const SelectInput = React.forwardRef(({ id, label, labelProps, errors, op
     <Form.Group as={Row} className="mb-3" controlId={id}>
       <Form.Label {...labelProps}>{label}</Form.Label>
       <Col>
-        <Form.Select>
+        <Form.Select {...props}>
           {options.map((option, index) => (
             <option key={index} value={index} ref={ref} {...props}>
               {option}

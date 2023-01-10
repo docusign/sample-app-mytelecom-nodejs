@@ -24,30 +24,30 @@ function makePurchasedEnvelope(args) {
 
   // Map all of the phone options and their prices
   switch (args.signerPhoneSelection) {
-    case '0':
+    case 0:
       signerPhoneSelection = {
         name: text.purchaseDeviceController.iPhone14,
         price: 799,
       };
       break;
-    case '1':
+    case 1:
       signerPhoneSelection = {
         name: text.purchaseDeviceController.iPhone14Pro,
         price: 999,
       };
-    case '2':
+    case 2:
       signerPhoneSelection = {
         name: text.purchaseDeviceController.iPhone14ProMax,
         price: 1099,
       };
       break;
-    case '3':
+    case 3:
       signerPhoneSelection = {
         name: text.purchaseDeviceController.samsungGalaxy,
         price: 1199,
       };
       break;
-    case '4':
+    case 4:
       signerPhoneSelection = {
         name: text.purchaseDeviceController.googlePixel,
         price: 899,
