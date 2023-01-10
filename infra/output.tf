@@ -11,44 +11,17 @@ output "lb_id" {
   value       = azurerm_lb.lb.id
 }
 
-output "lb_private_ip_address" {
-  description = "Private IP address of the Load Balancer"
-  value       = azurerm_lb.lb.private_ip_address
-}
-
-output "lb_private_ip_addresses" {
-  description = "Private IP addresses of the Load Balancer"
-  value       = azurerm_lb.lb.private_ip_addresses
-}
-
 output "lb_public_ip_addresses" {
   description = "Public IP addresses of the Load Balancer"
   value       = azurerm_public_ip.lb.ip_address
 }
 
-output "backend_address_pool_id" {
-  description = "ID of the associated default backend address pool."
-  value       = azurerm_lb_backend_address_pool.default_pool.id
-}
-
-output "backend_address_pool_name" {
-  description = "Name of the associated default backend address pool."
-  value       = azurerm_lb_backend_address_pool.default_pool.name
-}
-
-output "backend_address_pool_ip_configurations" {
-  description = "IP configurations of the associated default backend address pool."
-  value       = azurerm_lb_backend_address_pool.default_pool.backend_ip_configurations
-}
-
-output "backend_address_pool_load_balancing_rules" {
-  description = "Load balancing rules of the associated default backend address pool."
-  value       = azurerm_lb_backend_address_pool.default_pool.load_balancing_rules
-}
-
-output "frontend_ip_configuration" {
-  description = "Load Balancer's frontend IP configuration as described here https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/lb#frontend_ip_configuration."
-  value       = azurerm_lb.lb.frontend_ip_configuration
+###
+#VM
+###
+output "vm_identity" {
+  description = "azurerm_linux_virtual_machine"
+  value       = azurerm_linux_virtual_machine.sm-app-linux-vm.identity
 }
 ###
 #REGISTRY

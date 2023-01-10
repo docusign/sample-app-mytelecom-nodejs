@@ -6,4 +6,5 @@
   vars_files:
     - vars.yaml
   roles: 
-    - run-az-vm
+    - get-cerbot-certificate
+
