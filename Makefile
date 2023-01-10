@@ -1,7 +1,7 @@
-repo_name    = exampletel
-version      = latest
-storage_account_name = exampletel
-storage_account_container_name = exampletel
+repo_name    					= mytelecom
+version      					= latest
+storage_account_name 			= mytelecomstate
+storage_account_container_name 	= mytelecomtfstate
 
 .PHONY: help
 help:
