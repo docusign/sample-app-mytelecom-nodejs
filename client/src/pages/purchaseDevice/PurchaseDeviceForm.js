@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Input, useValidation, FormButtons, NumberInput, SelectInput, RadioInput } from '../../components';
 import { Form } from 'react-bootstrap';
@@ -15,9 +15,15 @@ function PurchaseDeviceForm({ onSubmit }) {
   const { t } = useTranslation('PurchaseDevice');
   const { emailRegExp, formCheckFieldRequired, formCheckNameMaxLength } = useValidation();
 
+  const [signerPhoneSelection, setSignerPhoneSelection] = useState(0);
+
+  const handlePhoneChange = (evt) => {
+    setSignerPhoneSelection(evt.target.selectedIndex);
+  };
+
   return (
     <>
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit((form) => onSubmit({ ...form, signerPhoneSelection }))}>
         <h4>{t('AccountInfo')}</h4>
         <Form.Group className="mb-4">
           <Input
@@ -67,6 +73,7 @@ function PurchaseDeviceForm({ onSubmit }) {
               required: formCheckFieldRequired,
             })}
             errors={errors}
+            onChange={handlePhoneChange}
           />
 
           <RadioInput
