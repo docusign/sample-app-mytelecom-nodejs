@@ -75,6 +75,7 @@ function makeEnvelope(args) {
 
   // An autofilled spot that uses the user's full name
   let ogName = eSignSdk.Text.constructFromObject({
+    tabLabel: 'ogName',
     anchorString: '/ogname/',
     anchorUnits: 'pixels',
     anchorXOffset: '10',
@@ -86,6 +87,7 @@ function makeEnvelope(args) {
 
   // An autofilled spot that uses the user's full name
   let newSignerName = eSignSdk.Text.constructFromObject({
+    tabLabel: 'newSignerName',
     anchorString: '/newname/',
     anchorUnits: 'pixels',
     anchorXOffset: '10',
@@ -96,6 +98,7 @@ function makeEnvelope(args) {
   });
 
   let newPhoneNumber = eSignSdk.Text.constructFromObject({
+    tabLabel: 'newPhoneNumber',
     anchorString: '/newphonenumber/',
     anchorUnits: 'pixels',
     anchorXOffset: '10',
@@ -106,6 +109,7 @@ function makeEnvelope(args) {
   });
 
   let newEmail = eSignSdk.Text.constructFromObject({
+    tabLabel: 'newEmail',
     anchorString: '/newemail/',
     anchorUnits: 'pixels',
     anchorXOffset: '10',
@@ -115,6 +119,7 @@ function makeEnvelope(args) {
   });
 
   let newAddress = eSignSdk.Text.constructFromObject({
+    tabLabel: 'newAddress',
     anchorString: '/newaddress/',
     anchorUnits: 'pixels',
     anchorXOffset: '10',
@@ -124,6 +129,7 @@ function makeEnvelope(args) {
   });
 
   let newCity = eSignSdk.Text.constructFromObject({
+    tabLabel: 'newCity',
     anchorString: '/newcity/',
     anchorUnits: 'pixels',
     anchorXOffset: '10',
@@ -133,6 +139,7 @@ function makeEnvelope(args) {
   });
 
   let newState = eSignSdk.Text.constructFromObject({
+    tabLabel: 'newState',
     anchorString: '/newstate/',
     anchorUnits: 'pixels',
     anchorXOffset: '10',
@@ -142,6 +149,7 @@ function makeEnvelope(args) {
   });
 
   let newZip = eSignSdk.Text.constructFromObject({
+    tabLabel: 'newZip',
     anchorString: '/newzip/',
     anchorUnits: 'pixels',
     anchorXOffset: '10',
