@@ -10,12 +10,12 @@
         "notFound": "404: Page not found."
     },
     "requestSigningSucess": {
-        "title": "Successfully sent request!",
+        "title": "Successfully sent request",
         "description": "Your request for signing a document has been sent to the specified email."
     },
     "signingComplete": {
-        "title": "Signing Complete!",
-        "description": "You have signed the document. The document will be securely stored on the DocuSign, Inc. servers."
+        "title": "Signing Complete",
+        "description": "You have signed the document."
     },
     "backLink": "Back to Home",
     "formLabels":   {
@@ -43,11 +43,11 @@
         "homeTitle": "Home"
     },
     "purchaseDevice": {
-        "iPhone14": "iPhone 14 128GB ($799)",
-        "iPhone14Pro": "iPhone 14 Pro 128GB ($999)",
-        "iPhone14ProMax": "iPhone 14 Pro Max 128GB ($1099)",
-        "samsungGalaxy": "Samsung Galaxy S22 Ultra 128GB ($1199)",
-        "googlePixel": "Google Pixel 6 Pro 128GB ($899)",
+        "iPhone14": "iPhone 14 128GB",
+        "iPhone14Pro": "iPhone 14 Pro 128GB",
+        "iPhone14ProMax": "iPhone 14 Pro Max 128GB",
+        "samsungGalaxy": "Samsung Galaxy S22 Ultra 128GB",
+        "googlePixel": "Google Pixel 6 Pro 128GB",
         "selectPhone": "Select a phone",
         "insuranceLabel": "Would you like to include device insurance at $5/month for 2 years?",
         "downPayment": "How much would you like to put down for a down payment?",
@@ -57,10 +57,10 @@
     },
     "serviceChange": {
         "formTitle": "Input 3 or more emails to bulk send an envelope to. You may use the same email for demo purposes if you do not have at least 3 different emails to use.",
-        "signerOne": "First Signer",
-        "signerTwo": "Second Signer",
-        "signerThree": "Third Signer",
-        "signerFour": "Fourth Signer",
-        "signerFive": "Fifth Signer"
+        "signerOne": "First signer",
+        "signerTwo": "Second signer",
+        "signerThree": "Third signer",
+        "signerFour": "Fourth signer",
+        "signerFive": "Fifth signer"
     }
 }

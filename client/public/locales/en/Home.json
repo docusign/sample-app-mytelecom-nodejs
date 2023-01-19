@@ -7,24 +7,24 @@
 
   "Card1": {
     "Title": "Assumption of Liability",
-    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "Description": "Change the ownership of your account.",
     "Button": "Get Started",
     "FeaturesTitle": "DocuSign features:",
-    "FeaturesList": "<li>Embedded Signing</li><li>SMS Delivery</li><li>ID Verification</li>"
+    "FeaturesList": "<li>Embedded Signing</li><li>SMS Delivery</li>"
   },
   "Card2": {
     "Title": "Purchase New Device",
-    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "Description": "Purchase a new device.",
     "Button": "Get Started",
     "FeaturesTitle": "DocuSign features:",
     "FeaturesList": "<li>Remote Signing</li><li>Scheduled Sending</li><li>Payments</li>"
   },
   "Card3": {
     "Title": "Service Change Request",
-    "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "Description": "Change the data limit for multiple accounts.",
     "Button": "Get Started",
     "FeaturesTitle": "DocuSign features:",
-    "FeaturesList": "<li>Remote Signing</li><li>Bulk Sending</li><li>Conditional Recipient</li><li>Payments</li>"
+    "FeaturesList": "<li>Remote Signing</li><li>Bulk Sending</li>"
   },
 
   "PreFooter1": "DocuSign: It's time to agree better",
