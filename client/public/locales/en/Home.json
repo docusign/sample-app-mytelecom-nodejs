@@ -3,7 +3,7 @@
     "P1": "Welcome to ",
     "P2": "MyTelecom"
   },
-  "Header2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+  "Header2": "Discover the power of DocuSign APIs and how they can be used in the telecom industry.",
 
   "Card1": {
     "Title": "Assumption of Liability",
@@ -29,15 +29,8 @@
 
   "PreFooter1": "DocuSign: It's time to agree better",
   "PreFooter2": "DocuSign helps organizations connect and automate how they prepare, sign, act on, and manage agreements.",
-  "PreFooter3": "Resources",
   "CreateDeveloperAccountHeader": "Create Developer Account",
   "CreateDeveloperAccountHeaderLink": "https://go.docusign.com/o/sandbox/",
   "LearnMore": "Learn More",
-  "LearnMoreLink": "https://developers.docusign.com/",
-  "DocuSignLinkHeader": "DocuSign Link",
-  "DocuSignLink": "https://developers.docusign.com/",
-  "eSignatureSDK": "Node.JS eSignature SDK",
-  "eSignatureSDKLink": "https://developers.docusign.com/docs/esign-rest-api/sdk-tools/node/",
-  "ClickSDK": "Node.JS Click SDK",
-  "ClickSDKLink": "https://developers.docusign.com/docs/click-api/"
+  "LearnMoreLink": "https://developers.docusign.com/"
 }
