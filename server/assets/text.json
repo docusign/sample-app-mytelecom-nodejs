@@ -3,13 +3,13 @@
         "certifiedDeliveryNotEnabled": "Send to CertifiedDelivery recipients is not enabled on your account. Please refer to the README to enable this setting.",
         "conditionalRoutingNotEnabled": "Conditional routing is not enabled on your account. Please refer to the README to enable this setting.",
         "docusignApiError": "DocuSign API error occurred",
-        "paymentConfigsUndefined": "Payment gateway configurations missing. Please refer to the README to set up a payment gateway and update the .env file accordingly.",
-        "smsNotEnabled": "SMS Delivery is not enabled on your account. Please contact Support to enable this feature.",
+        "paymentConfigsUndefined": "Payment gateway configurations missing. Please refer to the README for instructions on how to set up a payment gateway and update the .env file accordingly.",
+        "smsNotEnabled": "SMS Delivery is not enabled on your account. Please contact DocuSign Support to enable this feature.",
         "unknownError": "An unknown error occurred. Check the server console for the stack trace."
     },
     "envelope": {
         "envelopeCreated": "Envelope was created. EnvelopeId: ",
-        "envelopeSent": "Envelope succesfully sent!",
+        "envelopeSent": "Envelope succesfully sent",
         "purchaseDeviceFirstEnvelopeError": "Error sending the first envelope in PurchaseDeviceController.",
         "purchaseDeviceSecondEnvelopeError": "Error sending the second envelope in PurchaseDeviceController.",
         "assumptionLiabilityEnvelopeError": "Error sending the envelope in AssumptionLiabilityController.",
@@ -32,8 +32,8 @@
     "jwt": {
         "consentError": "Consent required",
         "jwtError": "JWT error logging: \n",
-        "successfulLogin": "Successfully logged in!",
-        "successfulLogout": "Successfully logged out!"
+        "successfulLogin": "Successfully logged in",
+        "successfulLogout": "Successfully logged out"
     }
 
 }
