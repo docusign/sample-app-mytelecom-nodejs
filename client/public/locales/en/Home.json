@@ -1,7 +1,7 @@
 {
   "Header1": {
-    "P1": "Welcome to ",
-    "P2": "MyTelecom"
+    "P1": "My Telecom ",
+    "P2": "Sample Application"
   },
   "Header2": "Discover the power of DocuSign APIs and how they can be used in the telecom industry.",
 
@@ -10,21 +10,21 @@
     "Description": "Change the ownership of your account.",
     "Button": "Get Started",
     "FeaturesTitle": "DocuSign features:",
-    "FeaturesList": "<li>Embedded Signing</li><li>SMS Delivery</li>"
+    "FeaturesList": "<li>SMS delivery</li><li>Data entry tabs</li><li>Anchor positioning</li><li>Embedded signing</li>"
   },
   "Card2": {
     "Title": "Purchase New Device",
-    "Description": "Purchase a new device.",
+    "Description": "Buy a new mobile phone.",
     "Button": "Get Started",
     "FeaturesTitle": "DocuSign features:",
-    "FeaturesList": "<li>Remote Signing</li><li>Scheduled Sending</li><li>Payments</li>"
+    "FeaturesList": "<li>Remote signing</li><li>Scheduled sending</li><li>Anchor positioning</li><li>Payments</li>"
   },
   "Card3": {
     "Title": "Service Change Request",
     "Description": "Change the data limit for multiple accounts.",
     "Button": "Get Started",
     "FeaturesTitle": "DocuSign features:",
-    "FeaturesList": "<li>Remote Signing</li><li>Bulk Sending</li>"
+    "FeaturesList": "<li>Remote signing</li><li>Data entry tabs</li><li>Anchor positioning</li><li>Bulk sending</li>"
   },
 
   "PreFooter1": "DocuSign: It's time to agree better",

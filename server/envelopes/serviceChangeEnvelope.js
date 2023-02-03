@@ -93,6 +93,7 @@ function makeEnvelope(args) {
     name: 'limit',
     tabLabel: 'limit',
     anchorString: '/limit/',
+    anchorYOffset: '-5'
   });
 
   const limitChangeLabel = eSignSdk.Text.constructFromObject({
@@ -102,6 +103,7 @@ function makeEnvelope(args) {
     name: 'limitChange',
     tabLabel: 'limitChange',
     anchorString: '/limitChange/',
+    anchorYOffset: '-5',
     value: args.limitChange,
   });
 
@@ -112,6 +114,7 @@ function makeEnvelope(args) {
     name: 'name',
     tabLabel: 'name',
     anchorString: '/name/',
+    anchorYOffset: '-5',
   });
 
   const tabs = eSignSdk.Tabs.constructFromObject({

@@ -81,7 +81,7 @@ const AssumptionLiabilityForm = ({ onSubmit }) => {
                 message: t('InvalidPhoneNumberError'),
               },
               maxLength: {
-                value: 11,
+                value: 12,
                 message: t('InvalidPhoneNumberError'),
               },
               minLength: {

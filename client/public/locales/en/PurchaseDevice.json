@@ -7,22 +7,21 @@
   "Email": "Email:",
 
   "PhoneInfo": "Phone info",
-  "IPhone14": "iPhone 14 128GB ($799)",
-  "IPhone14Pro": "iPhone 14 Pro 128GB ($999)",
-  "IPhone14ProMax": "iPhone 14 Pro Max 128GB ($1099)",
-  "SamsungGalaxy": "Samsung Galaxy S22 Ultra 128GB ($1199)",
-  "GooglePixel": "Google Pixel 6 Pro 128GB ($899)",
-  "SelectPhone": "Select a phone",
+  "phoneA": "Phone A ($799)",
+  "phoneB": "Phone B ($999)",
+  "phoneC": "Phone C ($1099)",
+  "phoneD": "Phone D ($1199)",
+  "SelectPhone": "Select a phone:",
   "InsuranceLabel": "Would you like to include device insurance at $5/month for 2 years?",
-  "DownPayment": "How much would you like to put down for a down payment?",
+  "DownPayment": "Enter the down payment in USD:",
   "Yes": "Yes",
   "No": "No",
-  "ScheduleSend": "Enter the amount of time in minutes you would like to wait for the 2nd envelope to send:",
+  "ScheduleSend": "Enter the time delay in minutes for sending the second envelope:",
 
   "ButtonName": "Submit",
 
   "SeeMore": {
-    "Title": "See behind the scenes",
-    "Text": "View the <a target='_blank' rel='noopener noreferrer' href='https://github.com/docusign/sample-app-mytelecom-nodejs/blob/main/server/controllers/purchaseDeviceController.js'>controller</a> on and <a target='_blank' rel='noopener noreferrer' href='https://github.com/docusign/sample-app-mytelecom-nodejs/blob/main/server/envelopes/purchaseDeviceEnvelope.js'>envelope</a> code on GitHub.<br><br><h3>This sample features:</h3><ul><li>Remote signing</li><li>Scheduled sending</li><li>Anchor positioning</li><li>Payments</li></ul><h3>Code flow:</h3><h5>Step 1</h5>When the button is selected, we ask the user to provide their account information and information about the phone they would like to purchase.</p><h3>Step 2</h3>Next we create the first envelope definition. A document is created from a PDF and added to the envelope. Then we create the recipients and place tabs in the document using anchor strings. <h3>Step 4</h3>Then we create the second envelope that will be scheduled to be sent to the recipient later. Both documents include payment tabs and when they are signed the payment will be collected through DocuSign."
+    "Title": "Behind the scenes",
+    "Text": "<h3>This sample features:</h3><ul><li>Remote signing</li><li>Scheduled sending</li><li>Anchor positioning</li><li>Payments</li></ul><h3>Code flow:</h3><br>View the <a target='_blank' rel='noopener noreferrer' href='https://github.com/docusign/sample-app-mytelecom-nodejs/blob/main/server/controllers/purchaseDeviceController.js'>controller</a> and <a target='_blank' rel='noopener noreferrer' href='https://github.com/docusign/sample-app-mytelecom-nodejs/blob/main/server/envelopes/purchaseDeviceEnvelope.js'>envelope</a> code on GitHub.<br><br><h5>Step 1</h5>When the button is selected, we ask the user to provide their account information and information about the phone they would like to purchase.</p><h5>Step 2</h5>Next we create the first envelope definition. A document is created from a PDF and added to the envelope. Then we create the recipients, and place tabs in the document using anchor strings.</p><h5>Step 3</h5>Then we create the second envelope that will be scheduled to be sent to the recipient. Both documents include payment tabs; when they have been signed, the payment will be collected through DocuSign."
   }
 }
