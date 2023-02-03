@@ -68,7 +68,7 @@ function PurchaseDeviceForm({ onSubmit }) {
           <SelectInput
             id="signerPhoneSelection"
             label={t('SelectPhone')}
-            options={[t('IPhone14'), t('IPhone14Pro'), t('IPhone14ProMax'), t('SamsungGalaxy'), t('GooglePixel')]}
+            options={[t('phoneA'), t('phoneB'), t('phoneC'), t('phoneD')]}
             {...register('signerPhoneSelection', {
               required: formCheckFieldRequired,
             })}

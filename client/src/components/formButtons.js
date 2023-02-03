@@ -17,10 +17,6 @@ export const FormButtons = ({ onBack, onContinue }) => {
 
   return (
     <div className="d-flex justify-content-end">
-      <Button variant="link" onClick={handleBack}>
-        {t('BackButton')}
-      </Button>
-
       {onContinue && <Button onClick={onContinue}>{t('MainButton')}</Button>}
       {!onContinue && <Button type="submit">{t('MainButton')}</Button>}
     </div>

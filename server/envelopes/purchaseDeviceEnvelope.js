@@ -26,31 +26,25 @@ function makePurchasedEnvelope(args) {
   switch (args.signerPhoneSelection) {
     case 0:
       signerPhoneSelection = {
-        name: text.purchaseDeviceController.iPhone14,
+        name: text.purchaseDeviceController.phoneA,
         price: 799,
       };
       break;
     case 1:
       signerPhoneSelection = {
-        name: text.purchaseDeviceController.iPhone14Pro,
+        name: text.purchaseDeviceController.phoneB,
         price: 999,
       };
     case 2:
       signerPhoneSelection = {
-        name: text.purchaseDeviceController.iPhone14ProMax,
+        name: text.purchaseDeviceController.phoneC,
         price: 1099,
       };
       break;
     case 3:
       signerPhoneSelection = {
-        name: text.purchaseDeviceController.samsungGalaxy,
+        name: text.purchaseDeviceController.phoneD,
         price: 1199,
-      };
-      break;
-    case 4:
-      signerPhoneSelection = {
-        name: text.purchaseDeviceController.googlePixel,
-        price: 899,
       };
       break;
   }

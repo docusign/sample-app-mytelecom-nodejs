@@ -1,5 +1,5 @@
 # Node.js and React: MyTelecom Sample Application
-Welcome to the DocuSign sample app MyTelecom. MyTelecom showcases how the telecommunications industry could integrate with DocuSign technologies using Node.js and React. All scenarios are for **demonstration purposes only**, meaning none of what you sign is binding in any way and envelopes in their entirety are deleted after 30 days. The following are the 3 different scenarios you can test out yourself:
+MyTelecom showcases how the telecommunications industry could integrate with DocuSign technologies using Node.js and React. All scenarios are for **demonstration purposes only**, meaning none of what you sign is binding in any way and envelopes in their entirety are deleted after 30 days. The following are the 3 different scenarios you can test out yourself:
 1. **Assumption of Liability.**  
    This will describe the process of changing ownership of the account. User is asked who they would like to change ownership of the account to. User is asked if they agree to transfer the ownership by signing the document using Embedded Signing. The envelope is sent through SMS to the receiver taking ownership of the account.  
    * Embedded Signing
@@ -28,7 +28,7 @@ Welcome to the DocuSign sample app MyTelecom. MyTelecom showcases how the teleco
 ### Creating a new integration
 Before you can run this app on your local machine, you first must create a new integration with a DocuSign developer account.
 1. First, get a local copy of this repo by either downloading it or cloning it onto your computer.
-2. If you don't already have one, create a [free developer account](https://go.docusign.com/sandbox/productshot/?elqCampaignId=16535).
+2. If you don't already have one, create a [free developer account](https://go.docusign.com/o/sandbox/).
 3. Log into your developer account, and navigate to [My Apps & Keys](https://admindemo.docusign.com/apps-and-keys).
 4. Copy over **User ID** and **API Account ID** to your `env_example` file
    * Rename the file to `.env`

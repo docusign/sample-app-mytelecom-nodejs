@@ -27,7 +27,7 @@ const Success = (props) => {
           <b>{t('SandboxText')}</b>
         </p>
         <p>
-          <a href="https://go.docusign.com/sandbox/productshot?elq=16799" target="_blank" rel="noopener noreferrer">
+          <a href="hhttps://go.docusign.com/o/sandbox/" target="_blank" rel="noopener noreferrer">
             <button className="h-card-button" style={{ width: 'auto' }} type="submit">
               {t('SandboxButton')}
             </button>
