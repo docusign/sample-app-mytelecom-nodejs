@@ -67,7 +67,7 @@ export const RecipientNumberForm = ({ recipientCount, setRecipientCount, registe
         type="number"
         defaultValue={recipientCount}
         min="3"
-        label={t('RecipientNumber')}
+        label={t('RecipientNumberSmallText')}
         {...register('recipientNumber', {
           required: formCheckFieldRequired,
         })}
