@@ -33,7 +33,7 @@ MyTelecom showcases how the telecommunications industry could integrate with Doc
 Before you can run this app on your local machine, you first must create a new integration with a DocuSign developer account.
 1. First, get a local copy of this repo by either downloading it or cloning it onto your computer.
 2. If you don't already have one, create a [free developer account](https://go.docusign.com/o/sandbox/).
-3. Log into your developer account, and navigate to [Apps & Keys](https://admindemo.docusign.com/apps-and-keys).
+3. Log into your developer account, and navigate to [Apps and Keys](https://admindemo.docusign.com/authenticate?goTo=appsAndKeys).
 4. Copy over **User ID** and **API Account ID** to your `env_example` file
    * Rename the file to `.env`
 5. On the Apps and Keys page, select **Add App and Integration Key**.
@@ -60,7 +60,7 @@ If you are planning on running the Purchase New Device scenario, you will need t
 * **SESSION_SECRET** - A unique string of your choice that is used to encrypt the session cookie.
 * **TARGET_ACCOUNT_ID** - Target account ID. Use FALSE to indicate the user's default.
 * **PAYMENT_GATEWAY_ACCOUNT_ID**.
-* **PAYMENT_GATEWAY_NAME** - Payment gateway name.
+* **PAYMENT_GATEWAY_NAME**.
 * **PAYMENT_GATEWAY_DISPLAY_NAME**.
 * **REDIRECT_URI_HOME** - Where the user will be redirected after providing consent for JWT.
 * **REDIRECT_URI** - Where the user will be redirected after executing the scenarios.

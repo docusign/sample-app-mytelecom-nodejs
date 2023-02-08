@@ -10,7 +10,8 @@
   "Increase": "Increase data limit",
   "Decrease": "Decrease data limit",
 
-  "RecipientNumber": "How many will be receiving this change?",
+  "RecipientNumber": "How many recipients will be receiving this change?",
+  "RecipientNumberSmallText": "Number of recipients",
 
   "RecipientData": "Input recipient data to bulk send an envelope to",
   "SignerHeader": "Signer",
