@@ -17,7 +17,7 @@
     "Description": "Buy a new mobile phone.",
     "Button": "Get Started",
     "FeaturesTitle": "DocuSign features:",
-    "FeaturesList": "<li>Remote signing</li><li>Scheduled sending</li><li>Anchor positioning</li><li>Payments</li>"
+    "FeaturesList": "<li>Remote signing</li><li>Scheduled sending</li><li>Payments</li><li>Anchor positioning</li>"
   },
   "Card3": {
     "Title": "Service Change Request",
