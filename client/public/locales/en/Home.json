@@ -10,7 +10,7 @@
     "Description": "Change the ownership of your account.",
     "Button": "Get Started",
     "FeaturesTitle": "DocuSign features:",
-    "FeaturesList": "<li>SMS delivery</li><li>Data entry tabs</li><li>Anchor positioning</li><li>Embedded signing</li>"
+    "FeaturesList": "<li>Embedded signing</li><li>SMS delivery</li><li>Data entry tabs</li><li>Anchor positioning</li>"
   },
   "Card2": {
     "Title": "Purchase New Device",
@@ -24,7 +24,7 @@
     "Description": "Change the data limit for multiple accounts.",
     "Button": "Get Started",
     "FeaturesTitle": "DocuSign features:",
-    "FeaturesList": "<li>Remote signing</li><li>Data entry tabs</li><li>Anchor positioning</li><li>Bulk sending</li>"
+    "FeaturesList": "<li>Remote signing</li><li>Bulk sending</li><li>Data entry tabs</li><li>Anchor positioning</li>"
   },
 
   "PreFooter1": "DocuSign: It's time to agree better",
