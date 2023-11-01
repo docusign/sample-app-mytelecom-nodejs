@@ -17,6 +17,9 @@ const createController = async (req, res, next) => {
 
   // Construct arguments
   const { body } = req;
+
+  const appsURL = 'https://apps-d.docusign.com';
+
   const envelopeArgs = {
     signerEmail: body.signerEmail,
     signerName: body.signerName,
@@ -27,6 +30,9 @@ const createController = async (req, res, next) => {
     recipientName: body.recipientName,
     recipientCountryCode: body.recipientCountryCode,
     recipientPhone: body.recipientPhone,
+
+    frameAncestors: [process.env.REDIRECT_URI, appsURL],
+    messageOrigins: [appsURL],
   };
 
   const args = {
@@ -41,8 +47,7 @@ const createController = async (req, res, next) => {
 
   // Step 2: Send the envelopes to the signer
   try {
-    let results = null;
-    results = await sendEnvelope(assumptionLiabilityEnvelope, args);
+    let results = await sendEnvelope(assumptionLiabilityEnvelope, args);
     let envelopeId = results.envelopeId;
 
     // Step 3. create the recipient view, the embedded signing
@@ -63,7 +68,7 @@ const createController = async (req, res, next) => {
     if (results) {
       console.log(results);
       req.session.envelopeId = envelopeId;
-      res.status(200).send(results.url);
+      res.status(200).send({ integrationKey: process.env.INTEGRATION_KEY, url: results.url });
     }
   } catch (error) {
     console.log(error);
