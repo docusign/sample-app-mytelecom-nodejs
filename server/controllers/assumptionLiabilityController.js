@@ -50,7 +50,7 @@ const createController = async (req, res, next) => {
     let results = await sendEnvelope(assumptionLiabilityEnvelope, args);
     let envelopeId = results.envelopeId;
 
-    // Step 3. create the recipient view, the embedded signing
+    // Step 3. create the recipient view for focused view
     let viewRequest = makeRecipientViewRequest(args.envelopeArgs);
 
     // Call the CreateRecipientView API
