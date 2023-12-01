@@ -61,7 +61,7 @@ const Liability = () => {
             <div className="form-holder">
               <h2 className="form-title">{t('Title')}</h2>
               {!response && <AssumptionLiabilityForm onSubmit={handleSubmit} />}
-              {response && <div id="agreement" />}
+              {response && <div style={{ height: '600px' }} id="agreement" />}
               <Loader visible={loading} />
             </div>
           </Col>

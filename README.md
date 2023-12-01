@@ -1,20 +1,20 @@
 # Node.js and React: MyTelecom Sample Application
 MyTelecom showcases how the telecommunications industry could integrate with DocuSign technologies using Node.js and React. All scenarios are for **demonstration purposes only**, meaning none of what you sign is binding in any way and envelopes in their entirety are deleted after 30 days. The following are the 3 different scenarios you can test out yourself:
-1. **Assumption of Liability.**  
-   This will describe the process of changing ownership of the account. User is asked who they would like to change ownership of the account to. User is asked if they agree to transfer the ownership by signing the document using Embedded Signing. The envelope is sent through SMS to the receiver taking ownership of the account.  
+1. **Assumption of Liability.**
+   This will describe the process of changing ownership of the account. User is asked who they would like to change ownership of the account to. User is asked if they agree to transfer the ownership by signing the document using embedded signing with focused view. The envelope is sent through SMS to the receiver taking ownership of the account.
    * SMS delivery
    * Anchor positioning
    * Data entry tabs
-   * Embedded signing
+   * Focused view
 
-2. **Purchase New Device.**  
+2. **Purchase New Device.**
    The user can purchase a new device from the telecom provider through remote signing. The user should be taken to a form where they input their name, email, and choose device and payment options. After submitting the form they should receive two envelopes with device and payment information.
    * Remote Signing
    * Scheduled Sending
    * Anchor positioning
    * Payments
-   
-3. **Multi-Line Service Change Request for Business Accounts.**  
+
+3. **Multi-Line Service Change Request for Business Accounts.**
    This will describe the process of creating the service change request for multiple recipients. The user should be taken to a form where they choose the type of service change, set the number of customers receiving the changes, and information regarding each recipient.
    * Remote Signing
    * Data entry tabs
@@ -68,7 +68,7 @@ If you are planning on running the Purchase New Device scenario, you will need t
 
 ### Installing the dependencies
 After you have configured your DocuSign settings and integration, you can begin installing the dependencies on your local machine.
-1. If you do not already have Node.js installed on your computer, install it from the [Node.js website](https://nodejs.org/en/download/). If you are not sure whether you already have Node.js installed, open up a command-line window and enter: `npm version`  
+1. If you do not already have Node.js installed on your computer, install it from the [Node.js website](https://nodejs.org/en/download/). If you are not sure whether you already have Node.js installed, open up a command-line window and enter: `npm version`
 If you get the current version or a message about a patch, you have Node.js installed. If not, you will need to install it.
 2. Open up a command-line window and navigate to the client window with `cd client` and run `npm install`
 3. Then, navigate into the server directory with `cd ../server` and run `npm install`
@@ -78,10 +78,10 @@ If you get the current version or a message about a patch, you have Node.js inst
 1. Navigate to project folder: **`cd sample-app-mytelecom-nodejs`**
 2. Navigate to the client folder with **`cd client`** and run **`npm run start`**
 3. Navigate to the server directory with **`cd ../server`** and run **`npm run start`**
-4. Open a browser to http://localhost:3000 
+4. Open a browser to http://localhost:3000
 
 ### Using scripts
 1. Navigate to the application folder: **`cd sample-app-mytelecom-nodejs`**
 2. Navigate to the server folder: **`cd server`**
 3. Run **``npm run dev``**
-4. Open a browser to http://localhost:3000 
+4. Open a browser to http://localhost:3000
