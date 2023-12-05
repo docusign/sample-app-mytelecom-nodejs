@@ -10,7 +10,7 @@
     "Description": "Change the ownership of your account.",
     "Button": "Get Started",
     "FeaturesTitle": "DocuSign features:",
-    "FeaturesList": "<li>Embedded signing</li><li>SMS delivery</li><li>Data entry tabs</li><li>Anchor positioning</li>"
+    "FeaturesList": "<li>Focused view</li><li>SMS delivery</li><li>Data entry tabs</li><li>Anchor positioning</li>"
   },
   "Card2": {
     "Title": "Purchase New Device",

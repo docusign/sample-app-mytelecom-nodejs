@@ -10,12 +10,11 @@ const sendEnvelope = async (envelope, args) => {
   let eSignApi = new eSignSdk.ApiClient();
   eSignApi.setBasePath(args.basePath);
   eSignApi.addDefaultHeader('Authorization', 'Bearer ' + args.accessToken);
-  let envelopesApi = new eSignSdk.EnvelopesApi(eSignApi),
-    results = null;
+  let envelopesApi = new eSignSdk.EnvelopesApi(eSignApi);
 
   // Call Envelopes::create API method
   // Exceptions will be caught by the calling function
-  results = await envelopesApi.createEnvelope(args.accountId, {
+  let results = await envelopesApi.createEnvelope(args.accountId, {
     envelopeDefinition: envelope,
   });
 
@@ -32,17 +31,20 @@ function makeRecipientViewRequest(args) {
   // args.signerName
   // args.signerClientId
   // args.dsPingUrl
+  // args.frameAncestors
+  // args.messageOrigins
 
   // Create the recipient view request object
-  const viewRequest = new eSignSdk.RecipientViewRequest.constructFromObject({
+  return new eSignSdk.RecipientViewRequest.constructFromObject({
     authenticationMethod: 'none',
     clientUserId: '1',
     recipientId: '1',
     returnUrl: dsReturnUrl, // TODO: After finish signing, how to get back to this URL?
     userName: args.signerName,
     email: args.signerEmail,
+    frameAncestors: args.frameAncestors,
+    messageOrigins: args.messageOrigins,
   });
-  return viewRequest;
 }
 
 module.exports = { sendEnvelope, makeRecipientViewRequest };
