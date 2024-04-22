@@ -3,32 +3,32 @@
     "P1": "My Telecom ",
     "P2": "Sample Application"
   },
-  "Header2": "Discover the power of DocuSign APIs and how they can be used in the telecom industry.",
+  "Header2": "Discover the power of Docusign APIs and how they can be used in the telecom industry.",
 
   "Card1": {
     "Title": "Assumption of Liability",
     "Description": "Change the ownership of your account.",
     "Button": "Get Started",
-    "FeaturesTitle": "DocuSign features:",
+    "FeaturesTitle": "Docusign features:",
     "FeaturesList": "<li>Focused view</li><li>SMS delivery</li><li>Data entry tabs</li><li>Anchor positioning</li>"
   },
   "Card2": {
     "Title": "Purchase New Device",
     "Description": "Buy a new mobile phone.",
     "Button": "Get Started",
-    "FeaturesTitle": "DocuSign features:",
+    "FeaturesTitle": "Docusign features:",
     "FeaturesList": "<li>Remote signing</li><li>Scheduled sending</li><li>Payments</li><li>Anchor positioning</li>"
   },
   "Card3": {
     "Title": "Service Change Request",
     "Description": "Change the data limit for multiple accounts.",
     "Button": "Get Started",
-    "FeaturesTitle": "DocuSign features:",
+    "FeaturesTitle": "Docusign features:",
     "FeaturesList": "<li>Remote signing</li><li>Bulk sending</li><li>Data entry tabs</li><li>Anchor positioning</li>"
   },
 
-  "PreFooter1": "DocuSign: It's time to agree better",
-  "PreFooter2": "DocuSign helps organizations connect and automate how they prepare, sign, act on, and manage agreements.",
+  "PreFooter1": "Docusign: It's time to agree better",
+  "PreFooter2": "Docusign helps organizations connect and automate how they prepare, sign, act on, and manage agreements.",
   "CreateDeveloperAccountHeader": "Create Developer Account",
   "CreateDeveloperAccountHeaderLink": "https://go.docusign.com/o/sandbox/",
   "LearnMore": "Learn More",
