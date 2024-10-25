@@ -1,0 +1,22 @@
+version: '3'
+services:
+  nginx:
+    platform: linux/amd64
+    image: nginx:1.23.2-alpine
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./infra/nginx/local/conf/:/etc/nginx/conf.d/:ro
+
+  frontend:
+    build:
+      context: ./client/
+      dockerfile: Dockerfile
+
+  backend:
+    build:
+      context: ./server/
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
