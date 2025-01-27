@@ -5,8 +5,7 @@ const Footer = () => {
   const { t } = useTranslation('Common');
   return (
     <footer className="footer">
-      <div className="container text-center pt-3">
-      </div>
+      <div className="container text-center pt-3"></div>
     </footer>
   );
 };
