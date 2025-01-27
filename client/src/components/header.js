@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import logo from '../assets/img/logo.svg';
+import logo from '../assets/img/logo.png';
 import source from '../assets/img/github-source.svg';
 
 export const Header = () => {
