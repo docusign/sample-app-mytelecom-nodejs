@@ -1,13 +1,11 @@
 ﻿{
-  "ApplicationName": "MyTelecom",
+  "ApplicationName": "Telecom Sample App",
 
   "GitHubLinkText": "GitHub Source",
-  "GitHubLink": "https://github.com/docusign/sample-app-mytelecom-nodejs",
+  "GitHubLink": "https://github.com/docusign/sample-app-telecom-nodejs",
   "AboutLinkText": "About",
   "LogInText": "Log in",
   "LogOutText": "Log out",
-
-  "Copyright": "© 2024 Docusign Inc.",
 
   "RequiredFieldError": "This field is required.",
   "InputTooLongError": "Your input is too long.",

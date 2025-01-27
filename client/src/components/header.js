@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import logo from '../assets/img/logo.svg';
+import logo from '../assets/img/logo.png';
 import source from '../assets/img/github-source.svg';
 
 export const Header = () => {
@@ -11,7 +11,7 @@ export const Header = () => {
     <header className="header" role="banner">
       <nav className="navbar navbar-expand-md navbar-light bg-light">
         <Link className="navbar-brand" to="/">
-          <img src={logo} alt="logo" />
+          <img src={logo} alt="logo" height="40" />
         </Link>
 
         <div className="justify-content-end">
