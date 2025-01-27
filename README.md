@@ -1,5 +1,5 @@
-# Node.js and React: MyTelecom Sample Application
-MyTelecom showcases how the telecommunications industry could integrate with Docusign technologies using Node.js and React. All scenarios are for **demonstration purposes only**, meaning none of what you sign is binding in any way and envelopes in their entirety are deleted after 30 days. The following are the 3 different scenarios you can test out yourself:
+# Node.js and React: Telecom Sample Application
+The Telecom Sample App showcases how the telecommunications industry could integrate with Docusign technologies using Node.js and React. All scenarios are for **demonstration purposes only**, meaning none of what you sign is binding in any way and envelopes in their entirety are deleted after 30 days. The following are the 3 different scenarios you can test out yourself:
 1. **Assumption of Liability.**
    This will describe the process of changing ownership of the account. User is asked who they would like to change ownership of the account to. User is asked if they agree to transfer the ownership by signing the document using embedded signing with focused view. The envelope is sent through SMS to the receiver taking ownership of the account.
    * SMS delivery
@@ -25,7 +25,7 @@ MyTelecom showcases how the telecommunications industry could integrate with Doc
 ### Prerequisites
 * A Docusign Developer account (email and password) on [demo.docusign.net](https://demo.docusign.net). If you don't already have a developer account, create a [free account](https://go.docusign.com/sandbox/productshot/?elqCampaignId=16535).
 * A Docusign integration key (a client ID) that is configured to use **JSON Web Token (JWT) Grant**. You will need the **integration key** itself and its **RSA key pair**. To use this application, you must add your application's **Redirect URI** to your integration key. To run locally, add http://localhost:3000/index and http://localhost:3000 as your **Redirect URI**. This [**video**](https://www.youtube.com/watch?v=GgDqa7-L0yo) demonstrates how to create an integration key (client ID) for a user application like this example.
-* [Payment gateway](https://github.com/docusign/sample-app-mytelecom-nodejs#configure-a-payment-gateway) for your developer account.
+* [Payment gateway](https://github.com/docusign/sample-app-telecom-nodejs#configure-a-payment-gateway) for your developer account.
 * [Enable SMS delivery for your account](https://developers.docusign.com/docs/esign-rest-api/esign101/concepts/sms-delivery/).
 * [Node.js](https://nodejs.org/) v10+.
 
@@ -73,7 +73,7 @@ If you get the current version or a message about a patch, you have Node.js inst
 2. Open up a command-line window and navigate to the client window with `cd client` and run `npm install`
 3. Then, navigate into the server directory with `cd ../server` and run `npm install`
 
-## Running MyTelecom locally
+## Running the Telecom Sample App locally
 ### Manual
 1. Navigate to project folder: **`cd sample-app-mytelecom-nodejs`**
 2. Navigate to the client folder with **`cd client`** and run **`npm run start`**
