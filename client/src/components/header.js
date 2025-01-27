@@ -11,7 +11,7 @@ export const Header = () => {
     <header className="header" role="banner">
       <nav className="navbar navbar-expand-md navbar-light bg-light">
         <Link className="navbar-brand" to="/">
-          <img src={logo} alt="logo" />
+          <img src={logo} alt="logo" height="40" />
         </Link>
 
         <div className="justify-content-end">
