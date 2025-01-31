@@ -75,6 +75,10 @@
 
 .cards-container {
   max-width: 414px;
+
+  @media (max-width: 767.98px) {
+    padding: 0 16px;
+  }
 }
 
 @media (min-width: 768px) {
